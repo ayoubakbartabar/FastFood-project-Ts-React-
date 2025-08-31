@@ -1,0 +1,245 @@
+.navbar-bg {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: transparent;
+    backdrop-filter: blur(6px);
+    color: white;
+    transition: background 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-section {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    max-width: 180px;
+    width: 100%;
+}
+
+.menu-list {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu-item a:hover,
+.menu-item a.active {
+    color: var(--highlight);
+}
+
+.navbar-btn-section {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Search button & container */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.search-btn,
+.shop-basket-btn,
+.hamburger-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: white;
+}
+
+.nav-search-icon,
+.shop-basket-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--text-color);
+}
+
+.shop-basket-btn {
+    position: relative;
+}
+
+.basket-badge {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    background-color: var(--highlight);
+    font-weight: bold;
+    font-size: 12px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Basket slide-in panel */
+.basket-panel {
+    position: fixed;
+    top: 0;
+    right: -600px;
+    width: 500px;
+    max-width: 90%;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    overflow-y: scroll;
+}
+
+.basket-panel.open {
+    right: 0;
+}
+
+.basket-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+/* Overlay background */
+.basket-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1500;
+}
+
+/* Expanding search input box */
+.search-input-box {
+    width: 0;
+    opacity: 0;
+    padding: 0.4rem 0.75rem;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: white;
+    color: black;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.search-container.open .search-input-box {
+    width: 180px;
+    opacity: 1;
+}
+
+.search-input-box:focus {
+    outline: none;
+}
+
+.hamburger-btn {
+    display: none;
+    font-size: 24px;
+    color: var(--text-color);
+}
+
+/* Mobile menu styles */
+.mobile-menu-section {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 80%;
+    max-width: 320px;
+    background-color: var(--color-black);
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    animation: slideIn 900ms ease forwards;
+    z-index: 2000;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.mobile-btn-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.mobile-close-btn,
+.mobile-shop-basket-btn,
+.mobile-shop-basket-icon {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+.mobile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    font-weight: 600;
+}
+
+.mobile-menu .menu-item a {
+    font-size: 1rem;
+    color: var(--color-white);
+    transition: var(--transition);
+    position: relative;
+}
+
+.mobile-menu .menu-item a:hover,
+.mobile-menu .menu-item a.active {
+    color: var(--highlight);
+    font-weight: var(--font-weight-bold);
+}
+
+.mobile-menu .menu-item a {
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 1127px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .hamburger-btn {
+        display: block;
+    }
+
+}
