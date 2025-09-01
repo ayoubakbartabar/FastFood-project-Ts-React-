@@ -1,0 +1,98 @@
+.order-now-btn {
+    text-transform: capitalize;
+    background-color: var(--highlight);
+    border: none;
+    color: white;
+    font-weight: 800;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.order-now-btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.6) 50%,
+            rgba(255, 255, 255, 0.25) 100%);
+    transform: rotate(25deg) translateX(-100%);
+    transition: transform 0.5s ease;
+    pointer-events: none;
+    border-radius: 8px;
+}
+
+.order-now-btn:hover::before {
+    transform: rotate(25deg) translateX(100%);
+}
+
+.order-now-btn:hover {
+    background-color: #e14c13;
+    box-shadow: 0 0 8px #ff6a1a, 0 0 20px #ff6a1a;
+}
+
+
+.desktop-order-now {
+    display: flex;
+}
+
+.mobile-order-now {
+    text-transform: capitalize;
+    background-color: var(--highlight);
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-order-now::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.6) 50%,
+            rgba(255, 255, 255, 0.25) 100%);
+    transform: rotate(25deg) translateX(-100%);
+    transition: transform 0.5s ease;
+    pointer-events: none;
+    border-radius: 8px;
+}
+
+.mobile-order-now:hover::before {
+    transform: rotate(25deg) translateX(100%);
+}
+
+.mobile-order-now:hover {
+    background-color: #e14c13;
+    box-shadow: 0 0 8px #ff6a1a, 0 0 20px #ff6a1a;
+}
+
+@media (max-width: 1127px) {
+    .desktop-order-now {
+        display: none;
+    }
+}

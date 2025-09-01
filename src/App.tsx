@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { CartProvider } from "./components/layout/CartContext/CartContext";
+import HomePage from "./pages/HomePage/HomePage";
+
 
 function App() {
   return (
-    <>
-      HI
-    </>
-  )
+    <CartProvider>
+      <Router>
+        <HomePage />
+        
+      </Router>
+    </CartProvider>
+  );
 }
 
 export default App;

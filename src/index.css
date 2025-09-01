@@ -1,0 +1,71 @@
+/* ------------------------
+   Font Face Declarations
+-------------------------*/
+
+/* Jost Variable Font - Normal */
+@font-face {
+    font-family: 'Jost';
+    src: url('../src/assets/fonts/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Jost Variable Font - Italic */
+@font-face {
+    font-family: 'Jost';
+    src: url('../src/assets/fonts/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ------------------------
+   Root Variables
+-------------------------*/
+:root {
+    /* Font */
+    --font-jost: 'Jost', sans-serif;
+
+    /* Base Colors */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-primary: #cd9b33;
+
+    /* Grays */
+    --color-gray-dark: #2c2f3a;
+    --color-gray: #666666;
+    --color-gray-light: #c7c7c7;
+    --color-gray-very-light: #777777;
+
+    /* Custom Colors */
+    --heading: #010f1c;
+    --paragraph: #8a9197;
+    --secondary: #ffe9b0;
+    --background: #fff8e6;
+    --secondary-text: #b0b5b9;
+    --highlight: #ffb700;
+    --border: #e6e7e8;
+    --tertiary: #ecf1f0;
+    --white-90: #ffffffe6;
+    --transparent: transparent;
+    --color-star-yellow: #fbbf24;
+    --color-star-light: #e5e7eb;
+    --color-star-half: linear-gradient(90deg, #fbbf24 50%, #e5e7eb 50%);
+}
+
+/* ------------------------
+   Base Styling
+-------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-jost);
+    color: var(--color-black);
+    line-height: 1.6;
+    background-color: var(--color-white);
+}
