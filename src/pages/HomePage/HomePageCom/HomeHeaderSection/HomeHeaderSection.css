@@ -1,0 +1,224 @@
+.home-header-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("src/assets/images/661caddb2719d5ff96cc1ab4_bg.png") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    padding-top: 120px;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.home-header-container {
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.home-header-section {
+    max-width: 1200px;
+    margin: 0 auto 5rem;
+    position: relative;
+}
+
+.home-header-section-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    min-height: 500px;
+    flex-wrap: nowrap;
+}
+
+.header-left-side {
+    flex: 1 1 650px;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    font-family: var(--font-jost);
+    color: var(--color-white);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.header-left-content-wrapper {
+    width: 100%;
+}
+
+.header-left-sub-title {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: none;
+}
+
+.header-left-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--color-white);
+}
+
+.header-left-paragraph {
+    font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    color: var(--color-white);
+    letter-spacing: 0.3px;
+}
+
+.header-right-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1 1 500px;
+    gap: 2rem;
+    position: relative;
+}
+
+.header-img-wrapper {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+}
+
+.header-pagination-buttons {
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.header-pagination-btn {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-pagination-btn:hover,
+.header-pagination-btn.active {
+    background-color: var(--color-primary);
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px var(--color-primary);
+}
+
+.home-header-social-local {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 7rem;
+    z-index: 2;
+}
+
+.home-header-social-icon {
+    color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.6rem;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.home-header-social-icon:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 6px 12px var(--color-primary);
+}
+
+@media (max-width: 1024px) {
+    .header-left-side {
+        min-height: auto;
+    }
+
+    .header-img-wrapper {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-header-section-box {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        padding: 0 1rem;
+    }
+
+    .header-left-content-wrapper {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .header-pagination-buttons {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        transform: none;
+        margin-bottom: 1rem;
+    }
+
+    .header-right-wrapper {
+        flex-direction: column-reverse;
+        gap: 3rem;
+    }
+
+    .home-header-social-local {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-img-wrapper {
+        max-width: 260px;
+    }
+
+    .header-left-title {
+        font-size: 1.8rem;
+    }
+
+    .header-left-paragraph {
+        font-size: 1rem;
+    }
+
+    .header-pagination-btn {
+        width: 12px;
+        height: 12px;
+    }
+}
