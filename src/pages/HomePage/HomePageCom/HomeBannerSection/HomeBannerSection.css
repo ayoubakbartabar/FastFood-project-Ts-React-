@@ -1,0 +1,34 @@
+.home-banner-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem 1rem;
+    background-color: #fff;
+    overflow: hidden;
+    gap: 1rem;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s ease-out;
+}
+
+.banner-image.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .home-banner-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .banner-image {
+        max-width: 100%;
+    }
+}
