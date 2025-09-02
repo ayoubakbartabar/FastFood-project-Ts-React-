@@ -118,10 +118,15 @@
     color: var(--star-empty, #d1d5db);
 }
 
-/* Animation for entrance from bottom */
-.animate-popular {
-    animation: fadeInUp 1s ease-out forwards;
+.popular-items-section {
     opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease-out;
+}
+
+.popular-items-section.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @keyframes fadeInUp {

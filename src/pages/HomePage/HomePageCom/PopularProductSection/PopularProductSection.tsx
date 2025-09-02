@@ -11,6 +11,7 @@ function PopularProductSection() {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const { renderStars } = useRenderStars();
+  useIntersectionAnimation(".popular-items-section");
 
   return (
     <div className="popular-items-bg">
