@@ -1,0 +1,137 @@
+.popular-items-section {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+}
+
+.popular-items-top {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.popular-items-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--heading);
+}
+
+.popular-items-paragraph {
+    max-width: 640px;
+    margin: 0 auto;
+    color: var(--paragraph);
+    font-size: 1rem;
+}
+
+/* Responsive Grid */
+.popular-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+/* Card Style */
+.popular-item-card {
+    background-color: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.popular-item-card:hover {
+    transform: translateY(-5px);
+}
+
+.popular-item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.popular-item-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.5s ease-out;
+}
+
+.popular-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--heading);
+}
+
+.popular-item-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff6b00;
+    margin: 0.8rem 0;
+}
+
+.popular-item-stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.15rem;
+    font-size: 1.1rem;
+    color: var(--highlight, #facc15);
+}
+
+.star.full {
+    color: var(--highlight, #facc15);
+}
+
+.star.half {
+    color: var(--highlight, #facc15);
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width: 1.1em;
+}
+
+.star.half svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: var(--highlight, #facc15);
+}
+
+.star.half svg+svg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    color: var(--star-empty, #d1d5db);
+}
+
+.star.empty {
+    color: var(--star-empty, #d1d5db);
+}
+
+/* Animation for entrance from bottom */
+.animate-popular {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(60px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}

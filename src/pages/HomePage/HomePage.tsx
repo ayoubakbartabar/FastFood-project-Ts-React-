@@ -5,6 +5,7 @@ import HomeBannerSection from "./HomePageCom/HomeBannerSection/HomeBannerSection
 import HomeHeaderSection from "./HomePageCom/HomeHeaderSection/HomeHeaderSection";
 import SwiperSliderSection from "../../components/layout/SwiperSliderSection/SwiperSliderSection";
 import BestSellingSection from "./HomePageCom/BestSellingSection/BestSellingSection";
+import PopularProductSection from "./HomePageCom/PopularProductSection/PopularProductSection";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <SwiperSliderSection />
       <BestSellingSection />
       <HomeBannerSection />
+      <PopularProductSection />
     </>
   );
 }
