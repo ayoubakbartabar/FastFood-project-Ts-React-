@@ -8,6 +8,7 @@ import BestSellingSection from "./HomePageCom/BestSellingSection/BestSellingSect
 import PopularProductSection from "./HomePageCom/PopularProductSection/PopularProductSection";
 import RequestReservationSection from "./HomePageCom/RequestReservationSection/RequestReservationSection";
 import WhyChooseUsSection from "./HomePageCom/WhyChooseUsSection/WhyChooseUsSection";
+import TestimonialCarouselSection from "./HomePageCom/TestimonialCarouselSection/TestimonialCarouselSection";
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <PopularProductSection />
       <RequestReservationSection />
       <WhyChooseUsSection />
+      <TestimonialCarouselSection />
     </>
   );
 }
