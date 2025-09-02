@@ -6,7 +6,6 @@ import { useRenderStars } from "../../../../core/hooks/useRenderStars/useRenderS
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation.ts";
 
 function PopularProductSection() {
-    
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 

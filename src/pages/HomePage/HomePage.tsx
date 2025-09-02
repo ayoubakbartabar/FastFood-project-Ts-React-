@@ -7,6 +7,7 @@ import SwiperSliderSection from "../../components/layout/SwiperSliderSection/Swi
 import BestSellingSection from "./HomePageCom/BestSellingSection/BestSellingSection";
 import PopularProductSection from "./HomePageCom/PopularProductSection/PopularProductSection";
 import RequestReservationSection from "./HomePageCom/RequestReservationSection/RequestReservationSection";
+import WhyChooseUsSection from "./HomePageCom/WhyChooseUsSection/WhyChooseUsSection";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <HomeBannerSection />
       <PopularProductSection />
       <RequestReservationSection />
+      <WhyChooseUsSection />
     </>
   );
 }
