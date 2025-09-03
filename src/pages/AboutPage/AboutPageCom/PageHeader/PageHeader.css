@@ -1,0 +1,53 @@
+.page-header-bg {
+    background:
+        url("src/assets/images/661caddb2719d5ff96cc1ab4_bg.png") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    padding-top: 80px;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.page-header-section {
+    max-width: 1600px;
+    margin: 2.5rem auto;
+    position: relative;
+    padding: 5rem 2rem;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-header-title {
+    font-size: clamp(1.8rem, 5vw, 4rem);
+    text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 90%;
+}
+
+
+
+.page-header-menu {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.page-header-link {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--color-white);
+    font-weight: 600;
+}
+
+.page-header-paragraph {
+    font-size: 1.2rem;
+
+}
