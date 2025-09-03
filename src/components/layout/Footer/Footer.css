@@ -1,0 +1,219 @@
+.footer-bg {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-family: var(--font-jost);
+}
+
+.footer-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    row-gap: 2rem;
+}
+
+.footer-company {
+    margin-right: 3rem;
+}
+
+.footer-links,
+.footer-hours,
+.footer-newsletter {
+    flex: 1 1 220px;
+    margin-bottom: 2rem;
+}
+
+.footer-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+    max-width: 420px;
+    color: var(--color-white);
+}
+
+.footer-heading {
+    position: relative;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--color-white);
+}
+
+.footer-heading::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-primary), var(--highlight), var(--secondary-text));
+    border-radius: 2px;
+}
+
+.footer-address div,
+.footer-links ul li,
+.footer-hours p,
+.footer-newsletter p {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li a {
+    color: var(--color-gray-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: var(--color-primary);
+}
+
+.footer-subtext {
+    color: var(--color-gray-light);
+    font-size: 0.95rem;
+}
+
+.footer-subscribe-text {
+    font-size: 0.95rem;
+    color: var(--color-gray-light);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.footer-input-group {
+    display: flex;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-light);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.footer-input-group input {
+    flex: 1;
+    padding: 0.6rem;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    color: var(--color-black);
+}
+
+.footer-input-group button {
+    background-color: var(--color-primary);
+    padding: 0 1.2rem;
+    border: none;
+    cursor: pointer;
+    color: var(--color-black);
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.footer-input-group button:hover {
+    background-color: #eab308;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.footer-social-icons a {
+    color: var(--color-white);
+    transition: color 0.3s ease;
+}
+
+/* Hover Colors by Brand */
+.footer-social-icons a[aria-label="Facebook"]:hover {
+    color: #1877f2;
+}
+
+.footer-social-icons a[aria-label="Twitter"]:hover {
+    color: #1da1f2;
+}
+
+.footer-social-icons a[aria-label="Pinterest"]:hover {
+    color: #e60023;
+}
+
+.footer-social-icons a[aria-label="YouTube"]:hover {
+    color: #ff0000;
+}
+
+.footer-copy {
+    width: 100%;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    margin-top: 2rem;
+    border-top: 1px solid var(--color-gray-dark);
+    padding-top: 1.2rem;
+}
+
+.developer-link {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.developer-link:hover {
+    text-decoration: underline;
+}
+
+/* Animation Keyframes */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up-init {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-up-init.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .footer-section {
+        flex-direction: column;
+        padding: 3rem 1.5rem;
+        align-items: flex-start;
+    }
+
+    .footer-input-group {
+        flex-direction: column;
+    }
+
+    .footer-input-group input {
+        width: 100%;
+        border-bottom: 1px solid var(--color-gray-light);
+    }
+
+    .footer-input-group button {
+        width: 100%;
+        border-radius: 0;
+    }
+}

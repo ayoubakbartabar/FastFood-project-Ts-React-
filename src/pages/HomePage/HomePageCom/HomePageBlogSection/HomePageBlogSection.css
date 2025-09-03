@@ -1,0 +1,122 @@
+.home-page-blog-section {
+    padding: 3rem 1rem;
+    max-width: 1600px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+    margin: 0 auto;
+}
+
+.home-page-blog-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- Heading ---------- */
+.home-page-blog-top {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.home-page-blog-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--heading, #1a1a1a);
+}
+
+.home-page-blog-paragraph {
+    max-width: 640px;
+    margin: 0 auto;
+    color: var(--paragraph, #666);
+    font-size: 1rem;
+}
+
+/* ---------- Grid Layout ---------- */
+.home-page-blog-grid {
+    padding: 0 10px;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+}
+
+/* ---------- Blog Card ---------- */
+.blog-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.blog-content {
+    padding: 1rem 1.25rem;
+}
+
+.blog-category {
+    margin: 1rem 0;
+    font-size: 1rem;
+    color: #888;
+    display: block;
+
+}
+
+.blog-title {
+    width: 80%;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.blog-paragraph {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* ---------- Read More Link ---------- */
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #000;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.read-more .arrow {
+    margin-left: 6px;
+    transition: transform 0.2s ease;
+}
+
+.read-more:hover .arrow {
+    transform: translateX(4px);
+}
+
+@keyframes slide-up-fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .home-page-blog-title {
+        font-size: 2rem;
+    }
+
+    .blog-title {
+        font-size: 1rem;
+    }
+
+    .blog-paragraph {
+        font-size: 0.9rem;
+    }
+}

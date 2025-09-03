@@ -9,6 +9,10 @@ import PopularProductSection from "./HomePageCom/PopularProductSection/PopularPr
 import RequestReservationSection from "./HomePageCom/RequestReservationSection/RequestReservationSection";
 import WhyChooseUsSection from "./HomePageCom/WhyChooseUsSection/WhyChooseUsSection";
 import TestimonialCarouselSection from "./HomePageCom/TestimonialCarouselSection/TestimonialCarouselSection";
+import HomePageBlogSection from "./HomePageCom/HomePageBlogSection/HomePageBlogSection";
+import SocialSection from "../../components/layout/SocialSection/SocialSection";
+import Footer from "../../components/layout/Footer/Footer";
+
 
 export default function HomePage() {
   return (
@@ -22,6 +26,9 @@ export default function HomePage() {
       <RequestReservationSection />
       <WhyChooseUsSection />
       <TestimonialCarouselSection />
+      <HomePageBlogSection />
+      <SocialSection />
+      <Footer />
     </>
   );
 }
