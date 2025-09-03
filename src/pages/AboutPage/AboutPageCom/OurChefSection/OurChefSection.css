@@ -1,0 +1,242 @@
+.our-chef-section {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+    font-family: var(--font-jost);
+    transition: all 0.8s ease-in-out;
+}
+
+.our-chef-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.our-chef-top {
+    text-align: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-in-out;
+}
+
+.our-chef-top.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.our-chef-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--heading);
+}
+
+.our-chef-paragraph {
+    max-width: 640px;
+    margin: 0 auto;
+    color: var(--paragraph);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.carousel-container {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.arrow-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #000;
+    transition: transform 0.2s ease;
+}
+
+.arrow-btn:hover {
+    transform: scale(1.2);
+}
+
+.chef-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1300px;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.chef-cards.slide-out-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.chef-cards.slide-out-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.chef-cards.slide-in-left {
+    transform: translateX(100%);
+    opacity: 0;
+    animation: slideInFromRight 0.4s forwards;
+}
+
+.chef-cards.slide-in-right {
+    transform: translateX(-100%);
+    opacity: 0;
+    animation: slideInFromLeft 0.4s forwards;
+}
+
+@keyframes slideInFromRight {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.chef-card {
+    background-color: #fff8e7;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-in-out;
+}
+
+.chef-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chef-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.chef-image-container {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.chef-image {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.chef-info {
+    position: relative;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chef-info::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background-color: var(--highlight);
+    transition: width 0.6s ease-in-out;
+}
+
+.chef-card:hover .chef-info::before {
+    width: 100%;
+}
+
+.social-icons {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-white);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+.chef-card:hover .social-icons {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.social-icons svg {
+    font-size: 2rem;
+    border-radius: 4px;
+    padding: 5px;
+    transition: all 0.2s ease;
+    background-color: #f43f5e;
+    color: #fff;
+}
+
+.social-icons .facebook {
+    background-color: #1877f2;
+}
+
+.social-icons .instagram {
+    background: radial-gradient(circle at 30% 107%,
+            #fdf497 0%,
+            #fdf497 5%,
+            #fd5949 45%,
+            #d6249f 60%,
+            #285aeb 90%);
+}
+
+.social-icons .pinterest {
+    background-color: #e60023;
+}
+
+.social-icons .twitter {
+    background-color: #1da1f2;
+}
+
+.social-icons .youtube {
+    background-color: #ff0000;
+}
+
+@media (max-width: 1024px) {
+    .chef-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .chef-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .arrow-btn {
+        font-size: 1.5rem;
+    }
+
+    .chef-image-container {
+        height: 250px;
+    }
+}
