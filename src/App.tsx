@@ -9,10 +9,11 @@ import ServiceCardDetails from "./pages/ServicePage/ServicePageCom/ServiceCardDe
 import BlogPage from "./pages/BlogPage/BlogPage";
 import BlogDetailsSection from "./pages/BlogPage/BlogPageCom/BlogDetailsSection/BlogDetailsSection";
 import BlogCategoryTagsSection from "./pages/BlogPage/BlogPageCom/BlogCategoryTagsSection/BlogCategoryTagsSection";
+import MenuPage from "./pages/MenuPage/MenuPage";
 
 import { CartProvider } from "./core/context/CartContext/CartContext";
 
-function App() {
+const App: React.FC = () => {
   return (
     <CartProvider>
       <Routes>
@@ -20,8 +21,9 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/service" element={<ServicesPage />} />
-        <Route path="/service/:id" element={<ServiceCardDetails />} />
+        <Route path="/menu" element={<MenuPage />} />
 
+        <Route path="/service/:id" element={<ServiceCardDetails />} />
         <Route path="/blogs" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogDetailsSection />} />
         <Route
@@ -31,6 +33,6 @@ function App() {
       </Routes>
     </CartProvider>
   );
-}
+};
 
 export default App;
