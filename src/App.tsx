@@ -12,6 +12,7 @@ import BlogCategoryTagsSection from "./pages/BlogPage/BlogPageCom/BlogCategoryTa
 import MenuPage from "./pages/MenuPage/MenuPage";
 
 import { CartProvider } from "./core/context/CartContext/CartContext";
+import CheckOutPage from "./pages/CheckOutPage/CheckOutPage";
 
 const App: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ const App: React.FC = () => {
           path="/blog/:type/:value"
           element={<BlogCategoryTagsSection />}
         />
+        <Route path="/product/:id" element={<CheckOutPage />} />
       </Routes>
     </CartProvider>
   );

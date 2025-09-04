@@ -133,9 +133,7 @@ export default function NavBar() {
             onClick={openBasket}
           >
             <LuShoppingBasket className="shop-basket-icon" />
-            {totalItems > 0 && (
-              <span className="basket-badge">{totalItems}</span>
-            )}
+            <span className="basket-badge"></span>
           </button>
 
           {/* Order Now button */}
