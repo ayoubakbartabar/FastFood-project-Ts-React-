@@ -13,12 +13,19 @@ import useClickOutside from "../../../core/hooks/useClickOutSide/useClickOutSide
 import { CartContext } from "../../../core/context/CartContext/CartContext";
 import logo from "../../../assets/images/661caca505c900f7a61a73ce_logo (1).png";
 
+import ShoppingBasketSection from "../ShoppingBasketSection/ShoppingBasketSection";
 import { LuSearch, LuShoppingBasket } from "react-icons/lu";
 import { FaHamburger } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 
-export default function NavBar() {
+interface NavbarMenuItem {
+  id: number;
+  title: string;
+  href: string;
+}
+
+const NavBar: React.FC = () => {
   // Access cart context
   const cartContext = useContext(CartContext);
   if (!cartContext)
@@ -41,7 +48,7 @@ export default function NavBar() {
   );
 
   // Menu items
-  const navbarMenus = useMemo(
+  const navbarMenus: NavbarMenuItem[] = useMemo(
     () => [
       { id: 1, title: "Home", href: "/" },
       { id: 2, title: "About", href: "/about" },
@@ -133,7 +140,7 @@ export default function NavBar() {
             onClick={openBasket}
           >
             <LuShoppingBasket className="shop-basket-icon" />
-            <span className="basket-badge"></span>
+            {totalItems > 0 && <span className="basket-badge"></span>}
           </button>
 
           {/* Order Now button */}
@@ -196,6 +203,9 @@ export default function NavBar() {
         >
           <IoCloseCircle size={28} />
         </button>
+
+        {/* Insert ShoppingBasketSection here */}
+        <ShoppingBasketSection />
       </div>
 
       {/* Overlay */}
@@ -204,4 +214,6 @@ export default function NavBar() {
       )}
     </div>
   );
-}
+};
+
+export default NavBar;

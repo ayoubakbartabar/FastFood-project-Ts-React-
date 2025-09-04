@@ -5,7 +5,7 @@ import NavBar from "../../components/layout/NavBar/NavBar";
 import PageHeader from "../../components/layout/PageHeader/PageHeader";
 import SocialSection from "../../components/layout/SocialSection/SocialSection";
 import Footer from "../../components/layout/Footer/Footer";
-import ProductListSection from "./CheckOutPageCom/ProductListSection";
+import ProductListSection from "./CheckOutPageCom/ProductListSection/ProductListSection";
 
 export default function CheckOutPage() {
   const location = useLocation();

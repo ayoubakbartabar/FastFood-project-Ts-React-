@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
-import { CartContext } from "../../../core/context/CartContext/CartContext";
+import { CartContext } from "../../../../core/context/CartContext/CartContext";
 import type {
   CartContextType,
   Product,
-} from "../../../core/context/CartContext/CartContext.type";
+} from "../../../../core/context/CartContext/CartContext.type";
 
-import ProductListImg1 from "../../../assets/images/661cbeea84a87bb38b64302e_image 2.png";
-import ProductListImg2 from "../../../assets/images/661cbeeaefc1a1ed7fef7c08_default image-p-800.png";
-import ProductListImg3 from "../../../assets/images/661cbee88858c3a3e86734a1_image 1.png";
-import ProductListImg4 from "../../../assets/images/661cbefcf5f19d80c4e02f48_image 3.png";
+import ProductListImg1 from "../../../../assets/images/661cbeea84a87bb38b64302e_image 2.png";
+import ProductListImg2 from "../../../../assets/images/661cbeeaefc1a1ed7fef7c08_default image-p-800.png";
+import ProductListImg3 from "../../../../assets/images/661cbee88858c3a3e86734a1_image 1.png";
+import ProductListImg4 from "../../../../assets/images/661cbefcf5f19d80c4e02f48_image 3.png";
 
 import {
   FaFacebookF,
@@ -16,7 +16,7 @@ import {
   FaPinterestP,
   FaYoutube,
 } from "react-icons/fa";
-import { useRenderStars } from "../../../core/hooks/useRenderStars/useRenderStars";
+import { useRenderStars } from "../../../../core/hooks/useRenderStars/useRenderStars";
 
 import "./ProductListSection.css";
 

@@ -1,0 +1,136 @@
+.basket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.basket-header h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-black);
+}
+
+/* Empty cart message */
+.empty-cart {
+    text-align: center;
+    font-size: 16px;
+    color: var(--paragraph);
+    margin-top: 40px;
+}
+
+/* Cart item */
+.basket-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Product image */
+.basket-image-container {
+    border: 1px solid var(--secondary-text);
+    background-color: var(--tertiary);
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    display: flex;
+}
+
+.basket-product-image {
+    object-fit: contain;
+    width: 100%;
+    max-width: 70px;
+    height: 100%;
+}
+
+/* Product info */
+.basket-product-info {
+    flex: 1;
+}
+
+.basket-product-name {
+    font-size: 15px;
+    margin: 0;
+    font-weight: 500;
+    color: var(--heading);
+}
+
+.basket-product-price {
+    color: var(--highlight);
+    font-weight: bold;
+    margin: 5px 0 0;
+}
+
+.currency {
+    font-size: 12px;
+    color: var(--color-gray-dark);
+    margin-left: 2px;
+    font-weight: normal;
+}
+
+/* Quantity input */
+.basket-quantity-input {
+    width: 50px;
+    padding: 6px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Subtotal */
+.basket-subtotal {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-top: 1px solid var(--border);
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: auto;
+}
+
+.subtotal-text {
+    color: var(--color-gray-dark);
+}
+
+.subtotal-price {
+    color: var(--highlight);
+}
+
+/* Checkout button */
+.checkout-btn {
+    background: var(--highlight);
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.2s ease-in-out;
+}
+
+.checkout-btn:hover {
+    background: #e6a200;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .shopping-basket-section {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .basket-product-image {
+        width: 55px;
+        height: 55px;
+    }
+
+    .basket-quantity-input {
+        width: 40px;
+        padding: 4px;
+    }
+}
