@@ -27,35 +27,46 @@ const BlogData: BlogDataProps[] = [
     content: [
       {
         type: "paragraph",
-        text: "Exploring the evolving landscape of FastFood TNC...",
+        text: "Exploring the evolving landscape of FastFood TNC the blog delves into its impact on consumer habits and the broader food industry, dissecting its strategies and societal implications in just two lines.",
       },
       {
         type: "paragraph",
-        text: "Embark on a gastronomic adventure with FastFood TNC...",
+        text: "Embark on a gastronomic adventure with FastFood TNC as we invite you to discover the essence of our culinary artistry through a curated exploration of our signature dishes. Each plate is a testament to our passion for creating unforgettable dining experiences, showcasing the finest ingredients and culinary techniques that define the unique character of TNC.",
       },
-      { type: "title", text: "Grilled Peach Salad - A Symphony of Freshness:" },
       {
-        type: "paragraph",
-        text: "Immerse yourself in the vibrant flavors of summer...",
-      },
-      { type: "image" },
-      { type: "title", text: "Lobster Risotto - Luxurious Indulgence" },
-      {
-        type: "paragraph",
-        text: "Elevate your dining experience with our Lobster Risotto...",
+        type: "title",
+        text: "Grilled Peach Salad - A Symphony of Freshness:",
       },
       {
         type: "paragraph",
-        text: "Unleash your taste buds with our TNC Signature Burger...",
-      },
-      { type: "title", text: "Chocolate Decadence Cake - Sweet Culmination" },
-      {
-        type: "paragraph",
-        text: "Conclude your culinary journey on a sweet note...",
+        text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
       },
       {
+        type: "image",
+      },
+      {
+        type: "title",
+        text: "Lobster Risotto - Luxurious Indulgence",
+      },
+      {
         type: "paragraph",
-        text: "At FastFood TNC, our signature dishes are not just meals...",
+        text: "Elevate your dining experience with our Lobster Risotto, a luxurious dish that captures the essence of the sea. Succulent lobster mingles with perfectly cooked Arborio rice in a creamy symphony of flavors. Each spoonful reveals a perfect blend of richness, sophistication, and the unmistakable taste of culinary excellence.",
+      },
+      {
+        type: "paragraph",
+        text: "Unleash your taste buds with our TNC Signature Burger, where a juicy Angus beef patty meets the richness of melted Swiss cheese, the savory allure of caramelized onions, and the elevated notes of truffle aioli. Nestled in a brioche bun, this burger is a modern classic, reinvented to satisfy the most discerning palates.",
+      },
+      {
+        type: "title",
+        text: "Chocolate Decadence Cake - Sweet Culmination",
+      },
+      {
+        type: "paragraph",
+        text: "Conclude your culinary journey on a sweet note with our Chocolate Decadence Cake. Imbued with layers of rich chocolate and ganache, this dessert is a celebration of indulgence. Each bite is a symphony of velvety textures and intense flavors, ensuring a sweet culmination to your memorable dining experience.",
+      },
+      {
+        type: "paragraph",
+        text: "At FastFood TNC, our signature dishes are not just meals; they are culinary stories crafted to delight and inspire. Join us on this gastronomic journey, where every dish tells a tale of passion, innovation, and the pursuit of culinary perfection. Indulge in the extraordinary as you savor the flavors that define the heart and soul of TNC.",
       },
     ],
     categories: "Subway",
@@ -68,35 +79,46 @@ const BlogData: BlogDataProps[] = [
     content: [
       {
         type: "paragraph",
-        text: "Exploring the evolving landscape of FastFood TNC...",
+        text: "Exploring the evolving landscape of FastFood TNC the blog delves into its impact on consumer habits and the broader food industry, dissecting its strategies and societal implications in just two lines.",
       },
       {
         type: "paragraph",
-        text: "Embark on a gastronomic adventure with FastFood TNC...",
+        text: "Embark on a gastronomic adventure with FastFood TNC as we invite you to discover the essence of our culinary artistry through a curated exploration of our signature dishes. Each plate is a testament to our passion for creating unforgettable dining experiences, showcasing the finest ingredients and culinary techniques that define the unique character of TNC.",
       },
-      { type: "title", text: "Grilled Peach Salad - A Symphony of Freshness:" },
       {
-        type: "paragraph",
-        text: "Immerse yourself in the vibrant flavors of summer...",
-      },
-      { type: "image" },
-      { type: "title", text: "Lobster Risotto - Luxurious Indulgence" },
-      {
-        type: "paragraph",
-        text: "Elevate your dining experience with our Lobster Risotto...",
+        type: "title",
+        text: "Grilled Peach Salad - A Symphony of Freshness:",
       },
       {
         type: "paragraph",
-        text: "Unleash your taste buds with our TNC Signature Burger...",
-      },
-      { type: "title", text: "Chocolate Decadence Cake - Sweet Culmination" },
-      {
-        type: "paragraph",
-        text: "Conclude your culinary journey on a sweet note...",
+        text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
       },
       {
+        type: "image",
+      },
+      {
+        type: "title",
+        text: "Lobster Risotto - Luxurious Indulgence",
+      },
+      {
         type: "paragraph",
-        text: "At FastFood TNC, our signature dishes are not just meals...",
+        text: "Elevate your dining experience with our Lobster Risotto, a luxurious dish that captures the essence of the sea. Succulent lobster mingles with perfectly cooked Arborio rice in a creamy symphony of flavors. Each spoonful reveals a perfect blend of richness, sophistication, and the unmistakable taste of culinary excellence.",
+      },
+      {
+        type: "paragraph",
+        text: "Unleash your taste buds with our TNC Signature Burger, where a juicy Angus beef patty meets the richness of melted Swiss cheese, the savory allure of caramelized onions, and the elevated notes of truffle aioli. Nestled in a brioche bun, this burger is a modern classic, reinvented to satisfy the most discerning palates.",
+      },
+      {
+        type: "title",
+        text: "Chocolate Decadence Cake - Sweet Culmination",
+      },
+      {
+        type: "paragraph",
+        text: "Conclude your culinary journey on a sweet note with our Chocolate Decadence Cake. Imbued with layers of rich chocolate and ganache, this dessert is a celebration of indulgence. Each bite is a symphony of velvety textures and intense flavors, ensuring a sweet culmination to your memorable dining experience.",
+      },
+      {
+        type: "paragraph",
+        text: "At FastFood TNC, our signature dishes are not just meals; they are culinary stories crafted to delight and inspire. Join us on this gastronomic journey, where every dish tells a tale of passion, innovation, and the pursuit of culinary perfection. Indulge in the extraordinary as you savor the flavors that define the heart and soul of TNC.",
       },
     ],
     categories: "Italian Dish",
@@ -109,35 +131,46 @@ const BlogData: BlogDataProps[] = [
     content: [
       {
         type: "paragraph",
-        text: "Exploring the evolving landscape of FastFood TNC...",
+        text: "Exploring the evolving landscape of FastFood TNC the blog delves into its impact on consumer habits and the broader food industry, dissecting its strategies and societal implications in just two lines.",
       },
       {
         type: "paragraph",
-        text: "Embark on a gastronomic adventure with FastFood TNC...",
+        text: "Embark on a gastronomic adventure with FastFood TNC as we invite you to discover the essence of our culinary artistry through a curated exploration of our signature dishes. Each plate is a testament to our passion for creating unforgettable dining experiences, showcasing the finest ingredients and culinary techniques that define the unique character of TNC.",
       },
-      { type: "title", text: "Grilled Peach Salad - A Symphony of Freshness:" },
       {
-        type: "paragraph",
-        text: "Immerse yourself in the vibrant flavors of summer...",
-      },
-      { type: "image" },
-      { type: "title", text: "Lobster Risotto - Luxurious Indulgence" },
-      {
-        type: "paragraph",
-        text: "Elevate your dining experience with our Lobster Risotto...",
+        type: "title",
+        text: "Grilled Peach Salad - A Symphony of Freshness:",
       },
       {
         type: "paragraph",
-        text: "Unleash your taste buds with our TNC Signature Burger...",
-      },
-      { type: "title", text: "Chocolate Decadence Cake - Sweet Culmination" },
-      {
-        type: "paragraph",
-        text: "Conclude your culinary journey on a sweet note...",
+        text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
       },
       {
+        type: "image",
+      },
+      {
+        type: "title",
+        text: "Lobster Risotto - Luxurious Indulgence",
+      },
+      {
         type: "paragraph",
-        text: "At FastFood TNC, our signature dishes are not just meals...",
+        text: "Elevate your dining experience with our Lobster Risotto, a luxurious dish that captures the essence of the sea. Succulent lobster mingles with perfectly cooked Arborio rice in a creamy symphony of flavors. Each spoonful reveals a perfect blend of richness, sophistication, and the unmistakable taste of culinary excellence.",
+      },
+      {
+        type: "paragraph",
+        text: "Unleash your taste buds with our TNC Signature Burger, where a juicy Angus beef patty meets the richness of melted Swiss cheese, the savory allure of caramelized onions, and the elevated notes of truffle aioli. Nestled in a brioche bun, this burger is a modern classic, reinvented to satisfy the most discerning palates.",
+      },
+      {
+        type: "title",
+        text: "Chocolate Decadence Cake - Sweet Culmination",
+      },
+      {
+        type: "paragraph",
+        text: "Conclude your culinary journey on a sweet note with our Chocolate Decadence Cake. Imbued with layers of rich chocolate and ganache, this dessert is a celebration of indulgence. Each bite is a symphony of velvety textures and intense flavors, ensuring a sweet culmination to your memorable dining experience.",
+      },
+      {
+        type: "paragraph",
+        text: "At FastFood TNC, our signature dishes are not just meals; they are culinary stories crafted to delight and inspire. Join us on this gastronomic journey, where every dish tells a tale of passion, innovation, and the pursuit of culinary perfection. Indulge in the extraordinary as you savor the flavors that define the heart and soul of TNC.",
       },
     ],
     categories: "Subway",
@@ -150,35 +183,46 @@ const BlogData: BlogDataProps[] = [
     content: [
       {
         type: "paragraph",
-        text: "Exploring the evolving landscape of FastFood TNC...",
+        text: "Exploring the evolving landscape of FastFood TNC the blog delves into its impact on consumer habits and the broader food industry, dissecting its strategies and societal implications in just two lines.",
       },
       {
         type: "paragraph",
-        text: "Embark on a gastronomic adventure with FastFood TNC...",
+        text: "Embark on a gastronomic adventure with FastFood TNC as we invite you to discover the essence of our culinary artistry through a curated exploration of our signature dishes. Each plate is a testament to our passion for creating unforgettable dining experiences, showcasing the finest ingredients and culinary techniques that define the unique character of TNC.",
       },
-      { type: "title", text: "Grilled Peach Salad - A Symphony of Freshness:" },
       {
-        type: "paragraph",
-        text: "Immerse yourself in the vibrant flavors of summer...",
-      },
-      { type: "image" },
-      { type: "title", text: "Lobster Risotto - Luxurious Indulgence" },
-      {
-        type: "paragraph",
-        text: "Elevate your dining experience with our Lobster Risotto...",
+        type: "title",
+        text: "Grilled Peach Salad - A Symphony of Freshness:",
       },
       {
         type: "paragraph",
-        text: "Unleash your taste buds with our TNC Signature Burger...",
-      },
-      { type: "title", text: "Chocolate Decadence Cake - Sweet Culmination" },
-      {
-        type: "paragraph",
-        text: "Conclude your culinary journey on a sweet note...",
+        text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
       },
       {
+        type: "image",
+      },
+      {
+        type: "title",
+        text: "Lobster Risotto - Luxurious Indulgence",
+      },
+      {
         type: "paragraph",
-        text: "At FastFood TNC, our signature dishes are not just meals...",
+        text: "Elevate your dining experience with our Lobster Risotto, a luxurious dish that captures the essence of the sea. Succulent lobster mingles with perfectly cooked Arborio rice in a creamy symphony of flavors. Each spoonful reveals a perfect blend of richness, sophistication, and the unmistakable taste of culinary excellence.",
+      },
+      {
+        type: "paragraph",
+        text: "Unleash your taste buds with our TNC Signature Burger, where a juicy Angus beef patty meets the richness of melted Swiss cheese, the savory allure of caramelized onions, and the elevated notes of truffle aioli. Nestled in a brioche bun, this burger is a modern classic, reinvented to satisfy the most discerning palates.",
+      },
+      {
+        type: "title",
+        text: "Chocolate Decadence Cake - Sweet Culmination",
+      },
+      {
+        type: "paragraph",
+        text: "Conclude your culinary journey on a sweet note with our Chocolate Decadence Cake. Imbued with layers of rich chocolate and ganache, this dessert is a celebration of indulgence. Each bite is a symphony of velvety textures and intense flavors, ensuring a sweet culmination to your memorable dining experience.",
+      },
+      {
+        type: "paragraph",
+        text: "At FastFood TNC, our signature dishes are not just meals; they are culinary stories crafted to delight and inspire. Join us on this gastronomic journey, where every dish tells a tale of passion, innovation, and the pursuit of culinary perfection. Indulge in the extraordinary as you savor the flavors that define the heart and soul of TNC.",
       },
     ],
     categories: "Dinner DIsh",
@@ -192,35 +236,46 @@ const BlogData: BlogDataProps[] = [
     content: [
       {
         type: "paragraph",
-        text: "Exploring the evolving landscape of FastFood TNC...",
+        text: "Exploring the evolving landscape of FastFood TNC the blog delves into its impact on consumer habits and the broader food industry, dissecting its strategies and societal implications in just two lines.",
       },
       {
         type: "paragraph",
-        text: "Embark on a gastronomic adventure with FastFood TNC...",
+        text: "Embark on a gastronomic adventure with FastFood TNC as we invite you to discover the essence of our culinary artistry through a curated exploration of our signature dishes. Each plate is a testament to our passion for creating unforgettable dining experiences, showcasing the finest ingredients and culinary techniques that define the unique character of TNC.",
       },
-      { type: "title", text: "Grilled Peach Salad - A Symphony of Freshness:" },
       {
-        type: "paragraph",
-        text: "Immerse yourself in the vibrant flavors of summer...",
-      },
-      { type: "image" },
-      { type: "title", text: "Lobster Risotto - Luxurious Indulgence" },
-      {
-        type: "paragraph",
-        text: "Elevate your dining experience with our Lobster Risotto...",
+        type: "title",
+        text: "Grilled Peach Salad - A Symphony of Freshness:",
       },
       {
         type: "paragraph",
-        text: "Unleash your taste buds with our TNC Signature Burger...",
-      },
-      { type: "title", text: "Chocolate Decadence Cake - Sweet Culmination" },
-      {
-        type: "paragraph",
-        text: "Conclude your culinary journey on a sweet note...",
+        text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
       },
       {
+        type: "image",
+      },
+      {
+        type: "title",
+        text: "Lobster Risotto - Luxurious Indulgence",
+      },
+      {
         type: "paragraph",
-        text: "At FastFood TNC, our signature dishes are not just meals...",
+        text: "Elevate your dining experience with our Lobster Risotto, a luxurious dish that captures the essence of the sea. Succulent lobster mingles with perfectly cooked Arborio rice in a creamy symphony of flavors. Each spoonful reveals a perfect blend of richness, sophistication, and the unmistakable taste of culinary excellence.",
+      },
+      {
+        type: "paragraph",
+        text: "Unleash your taste buds with our TNC Signature Burger, where a juicy Angus beef patty meets the richness of melted Swiss cheese, the savory allure of caramelized onions, and the elevated notes of truffle aioli. Nestled in a brioche bun, this burger is a modern classic, reinvented to satisfy the most discerning palates.",
+      },
+      {
+        type: "title",
+        text: "Chocolate Decadence Cake - Sweet Culmination",
+      },
+      {
+        type: "paragraph",
+        text: "Conclude your culinary journey on a sweet note with our Chocolate Decadence Cake. Imbued with layers of rich chocolate and ganache, this dessert is a celebration of indulgence. Each bite is a symphony of velvety textures and intense flavors, ensuring a sweet culmination to your memorable dining experience.",
+      },
+      {
+        type: "paragraph",
+        text: "At FastFood TNC, our signature dishes are not just meals; they are culinary stories crafted to delight and inspire. Join us on this gastronomic journey, where every dish tells a tale of passion, innovation, and the pursuit of culinary perfection. Indulge in the extraordinary as you savor the flavors that define the heart and soul of TNC.",
       },
     ],
     categories: "Italian Dish",
@@ -233,35 +288,46 @@ const BlogData: BlogDataProps[] = [
     content: [
       {
         type: "paragraph",
-        text: "Exploring the evolving landscape of FastFood TNC...",
+        text: "Exploring the evolving landscape of FastFood TNC the blog delves into its impact on consumer habits and the broader food industry, dissecting its strategies and societal implications in just two lines.",
       },
       {
         type: "paragraph",
-        text: "Embark on a gastronomic adventure with FastFood TNC...",
+        text: "Embark on a gastronomic adventure with FastFood TNC as we invite you to discover the essence of our culinary artistry through a curated exploration of our signature dishes. Each plate is a testament to our passion for creating unforgettable dining experiences, showcasing the finest ingredients and culinary techniques that define the unique character of TNC.",
       },
-      { type: "title", text: "Grilled Peach Salad - A Symphony of Freshness:" },
       {
-        type: "paragraph",
-        text: "Immerse yourself in the vibrant flavors of summer...",
-      },
-      { type: "image" },
-      { type: "title", text: "Lobster Risotto - Luxurious Indulgence" },
-      {
-        type: "paragraph",
-        text: "Elevate your dining experience with our Lobster Risotto...",
+        type: "title",
+        text: "Grilled Peach Salad - A Symphony of Freshness:",
       },
       {
         type: "paragraph",
-        text: "Unleash your taste buds with our TNC Signature Burger...",
-      },
-      { type: "title", text: "Chocolate Decadence Cake - Sweet Culmination" },
-      {
-        type: "paragraph",
-        text: "Conclude your culinary journey on a sweet note...",
+        text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
       },
       {
+        type: "image",
+      },
+      {
+        type: "title",
+        text: "Lobster Risotto - Luxurious Indulgence",
+      },
+      {
         type: "paragraph",
-        text: "At FastFood TNC, our signature dishes are not just meals...",
+        text: "Elevate your dining experience with our Lobster Risotto, a luxurious dish that captures the essence of the sea. Succulent lobster mingles with perfectly cooked Arborio rice in a creamy symphony of flavors. Each spoonful reveals a perfect blend of richness, sophistication, and the unmistakable taste of culinary excellence.",
+      },
+      {
+        type: "paragraph",
+        text: "Unleash your taste buds with our TNC Signature Burger, where a juicy Angus beef patty meets the richness of melted Swiss cheese, the savory allure of caramelized onions, and the elevated notes of truffle aioli. Nestled in a brioche bun, this burger is a modern classic, reinvented to satisfy the most discerning palates.",
+      },
+      {
+        type: "title",
+        text: "Chocolate Decadence Cake - Sweet Culmination",
+      },
+      {
+        type: "paragraph",
+        text: "Conclude your culinary journey on a sweet note with our Chocolate Decadence Cake. Imbued with layers of rich chocolate and ganache, this dessert is a celebration of indulgence. Each bite is a symphony of velvety textures and intense flavors, ensuring a sweet culmination to your memorable dining experience.",
+      },
+      {
+        type: "paragraph",
+        text: "At FastFood TNC, our signature dishes are not just meals; they are culinary stories crafted to delight and inspire. Join us on this gastronomic journey, where every dish tells a tale of passion, innovation, and the pursuit of culinary perfection. Indulge in the extraordinary as you savor the flavors that define the heart and soul of TNC.",
       },
     ],
     categories: "FastFood TNC",

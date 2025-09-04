@@ -1,0 +1,33 @@
+.blog-main-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}
+
+.blog-aside-section {
+    flex: 1 1 300px;
+    max-width: 350px;
+    width: 100%;
+}
+
+.blogs-content-section {
+    flex: 3 1 0%;
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .blog-main-wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .blog-aside-section,
+    .blogs-content-section {
+        max-width: 100%;
+    }
+}

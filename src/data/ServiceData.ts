@@ -17,8 +17,7 @@ export interface ServiceItem {
   paragraph: string;
   content: ServiceContent[];
 }
-
-const ServiceData: ServiceItem[] = [
+const ServiceSectionData : ServiceItem[] = [
   {
     id: 1,
     image: Img1,
@@ -35,15 +34,17 @@ const ServiceData: ServiceItem[] = [
       {
         type: "paragraph",
         value:
-          "Bold opacity scale polygon share edit link background move pixel...",
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
       },
       {
         type: "paragraph",
-        value: "Pixel ipsum vector union text rectangle figjam...",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
       },
       {
         type: "paragraph",
-        value: "Variant editor italic editor rectangle vertical...",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
       },
     ],
   },
@@ -63,15 +64,17 @@ const ServiceData: ServiceItem[] = [
       {
         type: "paragraph",
         value:
-          "Bold opacity scale polygon share edit link background move pixel...",
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
       },
       {
         type: "paragraph",
-        value: "Pixel ipsum vector union text rectangle figjam...",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
       },
       {
         type: "paragraph",
-        value: "Variant editor italic editor rectangle vertical...",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
       },
     ],
   },
@@ -91,15 +94,17 @@ const ServiceData: ServiceItem[] = [
       {
         type: "paragraph",
         value:
-          "Bold opacity scale polygon share edit link background move pixel...",
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
       },
       {
         type: "paragraph",
-        value: "Pixel ipsum vector union text rectangle figjam...",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
       },
       {
         type: "paragraph",
-        value: "Variant editor italic editor rectangle vertical...",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
       },
     ],
   },
@@ -119,15 +124,17 @@ const ServiceData: ServiceItem[] = [
       {
         type: "paragraph",
         value:
-          "Bold opacity scale polygon share edit link background move pixel...",
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
       },
       {
         type: "paragraph",
-        value: "Pixel ipsum vector union text rectangle figjam...",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
       },
       {
         type: "paragraph",
-        value: "Variant editor italic editor rectangle vertical...",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
       },
     ],
   },
@@ -147,15 +154,17 @@ const ServiceData: ServiceItem[] = [
       {
         type: "paragraph",
         value:
-          "Bold opacity scale polygon share edit link background move pixel...",
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
       },
       {
         type: "paragraph",
-        value: "Pixel ipsum vector union text rectangle figjam...",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
       },
       {
         type: "paragraph",
-        value: "Variant editor italic editor rectangle vertical...",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
       },
     ],
   },
@@ -175,18 +184,20 @@ const ServiceData: ServiceItem[] = [
       {
         type: "paragraph",
         value:
-          "Bold opacity scale polygon share edit link background move pixel...",
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
       },
       {
         type: "paragraph",
-        value: "Pixel ipsum vector union text rectangle figjam...",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
       },
       {
         type: "paragraph",
-        value: "Variant editor italic editor rectangle vertical...",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
       },
     ],
   },
 ];
 
-export default ServiceData;
+export default ServiceSectionData;

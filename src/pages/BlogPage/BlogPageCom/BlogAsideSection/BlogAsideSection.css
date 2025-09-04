@@ -1,0 +1,8 @@
+.blog-layout-container {
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 380px;
+    box-sizing: border-box;
+    height: fit-content;
+} 

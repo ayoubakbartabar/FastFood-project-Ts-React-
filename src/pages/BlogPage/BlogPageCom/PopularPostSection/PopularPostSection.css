@@ -1,0 +1,124 @@
+.blog-aside {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 3rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    font-size: 1.2rem;
+}
+
+.popular-posts h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.underline {
+    width: 40px;
+    height: 3px;
+    background-color: orange;
+    margin-bottom: 1.5rem;
+}
+
+.popular-post-item {
+    padding: 0.8rem 0.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.popular-post-item {
+    opacity: 0;
+}
+
+.popular-post-item.show {
+    animation: slideInFromLeft 1.2s ease forwards;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-150px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.popular-post-item:hover {
+    background-color: var(--color-primary);
+    border-radius: 8px;
+    transition: all 0.5s ease;
+}
+
+.popular-post-item:hover p {
+    cursor: pointer;
+    color: var(--color-white);
+}
+
+.popular-post-item {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.popular-post-item img {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.popular-post-item p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .blog-layout-container {
+        flex-direction: column;
+    }
+
+    .blog-aside {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,123 @@
+.blog-main-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.blog-aside-section {
+    flex: 1 1 300px;
+    max-width: 350px;
+    width: 100%;
+}
+
+.blog-section-content {
+    flex: 3 1 0%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 900px;
+    min-width: 300px;
+}
+
+/* Initial state for reveal animation */
+.reveal-item {
+    opacity: 0;
+    transform: translateX(50px);
+    /* Start from right */
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* Show state */
+.reveal-item.show {
+    opacity: 1;
+    transform: translateX(0);
+    /* Move to final position */
+}
+
+.blog-image {
+    margin: 1.5rem 0;
+}
+
+.blog-main-image {
+    object-fit: cover;
+    border-radius: 5px;
+    width: 100%;
+    max-height: 500px;
+    margin: 1rem 0 2rem 0;
+}
+
+.blog-section-title,
+.index-title {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+    font-weight: 800;
+}
+
+.blog-paragraph,
+.index-paraph {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.blog-subtitle {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 0.5rem;
+    font-weight: 700;
+}
+
+.blog-section-content-footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 0.05rem solid var(--color-gray);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.blog-section-content-tags,
+.blog-section-content-social {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.8rem;
+}
+
+.blog-section-content-social a {
+    color: var(--color-gray-very-light);
+    transition: color 0.3s ease;
+}
+
+/* Hover Colors by Brand */
+.blog-section-content-social a[aria-label="Facebook"]:hover {
+    color: #1877f2;
+}
+
+.blog-section-content-social a[aria-label="Twitter"]:hover {
+    color: #1da1f2;
+}
+
+.blog-section-content-social a[aria-label="Pinterest"]:hover {
+    color: #e60023;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .blog-main-wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .blog-aside-section,
+    .blog-section-content {
+        max-width: 100%;
+    }
+}
