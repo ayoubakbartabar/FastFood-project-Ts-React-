@@ -2,6 +2,8 @@ import React from "react";
 import "./PageHeader.css";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
+import headerBg from "../../../assets/images/661caddb2719d5ff96cc1ab4_bg.png";
+
 // Props type
 interface PageHeaderProps {
   title: string;
@@ -9,7 +11,10 @@ interface PageHeaderProps {
 
 const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
   return (
-    <div className="page-header-bg">
+    <div
+      className="page-header-bg"
+      style={{ backgroundImage: `url(${headerBg})` }}
+    >
       <section className="page-header-section">
         <h1 className="page-header-title">{title}</h1>
         <span className="page-header-menu">

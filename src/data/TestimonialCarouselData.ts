@@ -1,3 +1,13 @@
+import Img1 from "../assets/images/661cd14a88dd92f7fc455bf8_Ellipse 41.webp";
+import Img2 from "../assets/images/661cd14a88dd92f7fc455bfa_Rectangle 126.webp";
+import Img3 from "../assets/images/661cd14a88dd92f7fc455bf6_Rectangle 127.webp";
+import Img4 from "../assets/images/661cd14a88dd92f7fc455bf4_Ellipse 165 (1).webp";
+import Img5 from "../assets/images/661cd14a88dd92f7fc455bf2_Ellipse 131.webp";
+import Img6 from "../assets/images/661cd14a88dd92f7fc455bf0_Rectangle 125.webp";
+import Img7 from "../assets/images/661cd14a88dd92f7fc455bee_image.webp";
+import Img8 from "../assets/images/661cd14a88dd92f7fc455bec_Ellipse 2.png";
+import Img9 from "../assets/images/661cd14a88dd92f7fc455bea_Ellipse 2 (1).png";
+
 export interface TestimonialItem {
   id: number;
   name: string;
@@ -9,7 +19,7 @@ export interface TestimonialItem {
 const TestimonialCarouselData: TestimonialItem[] = [
   {
     id: 1,
-    image: "src/assets/images/661cd14a88dd92f7fc455bf8_Ellipse 41.webp",
+    image: Img1,
     name: "Leslie Alexander",
     job: "UX/UI Designer",
     paragraph:
@@ -17,7 +27,7 @@ const TestimonialCarouselData: TestimonialItem[] = [
   },
   {
     id: 2,
-    image: "src/assets/images/661cd14a88dd92f7fc455bfa_Rectangle 126.webp",
+    image: Img2,
     name: "Stuart Mark",
     job: "Chef",
     paragraph:
@@ -25,7 +35,7 @@ const TestimonialCarouselData: TestimonialItem[] = [
   },
   {
     id: 3,
-    image: "src/assets/images/661cd14a88dd92f7fc455bf6_Rectangle 127.webp",
+    image: Img3,
     name: "Megan Johnson",
     job: "Customer",
     paragraph:
@@ -33,7 +43,7 @@ const TestimonialCarouselData: TestimonialItem[] = [
   },
   {
     id: 4,
-    image: "src/assets/images/661cd14a88dd92f7fc455bf4_Ellipse 165 (1).webp",
+    image: Img4,
     name: "Mila Smith",
     job: "Food Blogger",
     paragraph:
@@ -41,7 +51,7 @@ const TestimonialCarouselData: TestimonialItem[] = [
   },
   {
     id: 5,
-    image: "src/assets/images/661cd14a88dd92f7fc455bf2_Ellipse 131.webp",
+    image: Img5,
     name: "Stuart Mark",
     job: "Chef",
     paragraph:
@@ -49,7 +59,7 @@ const TestimonialCarouselData: TestimonialItem[] = [
   },
   {
     id: 6,
-    image: "src/assets/images/661cd14a88dd92f7fc455bf0_Rectangle 125.webp",
+    image: Img6,
     name: "Megan Johnson",
     job: "Customer",
     paragraph:
@@ -57,7 +67,7 @@ const TestimonialCarouselData: TestimonialItem[] = [
   },
   {
     id: 7,
-    image: "src/assets/images/661cd14a88dd92f7fc455bee_image.webp",
+    image: Img7,
     name: "Armas Rosie",
     job: "UX/UI Designer",
     paragraph:
@@ -65,7 +75,7 @@ const TestimonialCarouselData: TestimonialItem[] = [
   },
   {
     id: 8,
-    image: "src/assets/images/661cd14a88dd92f7fc455bec_Ellipse 2.png",
+    image: Img8,
     name: "Andrew Watson",
     job: "Chef",
     paragraph:
@@ -73,7 +83,7 @@ const TestimonialCarouselData: TestimonialItem[] = [
   },
   {
     id: 9,
-    image: "src/assets/images/661cd14a88dd92f7fc455bea_Ellipse 2 (1).png",
+    image: Img9,
     name: "Johnson Pele",
     job: "Customer",
     paragraph:

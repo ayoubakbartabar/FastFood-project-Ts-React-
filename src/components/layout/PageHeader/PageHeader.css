@@ -1,6 +1,7 @@
 .page-header-bg {
-    background:
-        url("src/assets/images/661caddb2719d5ff96cc1ab4_bg.png") no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     background-size: cover;
     position: relative;
     padding-top: 80px;
@@ -9,6 +10,7 @@
     top: 0;
     z-index: 0;
 }
+
 
 .page-header-section {
     max-width: 1600px;

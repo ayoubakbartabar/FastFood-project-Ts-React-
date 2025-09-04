@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components/layout/NavBar/NavBar";
-import PageHeader from "./AboutPageCom/PageHeader/PageHeader";
+import PageHeader from "../../components/layout/PageHeader/PageHeader";
 import BrandIntroSection from "./AboutPageCom/BrandIntroSection/BrandIntroSection";
 import TestimonialCarouselSection from "../HomePage/HomePageCom/TestimonialCarouselSection/TestimonialCarouselSection";
 import SocialSection from "../../components/layout/SocialSection/SocialSection";

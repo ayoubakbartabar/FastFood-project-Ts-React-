@@ -10,12 +10,15 @@ import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnim
 import "./FAQSection.css";
 
 export default function FAQSection(): React.JSX.Element {
+  // State to keep track of which FAQ item is currently open
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  // Toggle the open/close state of an FAQ item
   const toggleAccordion = (index: number): void => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
+  // Trigger intersection animations when FAQ header or items enter viewport
   useIntersectionAnimation(".faq-header");
   useIntersectionAnimation(".faq-item");
 
@@ -23,8 +26,8 @@ export default function FAQSection(): React.JSX.Element {
     <div className="faq-bg">
       {/* FAQ Header */}
       <div className="faq-header container">
-        <h2>Frequently Asked Questions</h2>
-        <p>
+        <h2 className="faq-header-title">Frequently Asked Questions</h2>
+        <p className="faq-header-text">
           Dictumst vel enim massa neque lacus eu lorem suscipit. Habitant
           aliquet elit ultricies in facilisi.
         </p>
@@ -39,12 +42,12 @@ export default function FAQSection(): React.JSX.Element {
               <div key={item.id} className="faq-item">
                 <button
                   className={`faq-question ${
-                    activeIndex === index ? "active" : ""
+                    activeIndex === index ? "faq-question-active" : ""
                   }`}
                   onClick={() => toggleAccordion(index)}
                   aria-expanded={activeIndex === index}
                 >
-                  <span>{item.title}</span>
+                  <span className="faq-question-text">{item.title}</span>
                   <span className="faq-icon">
                     {activeIndex === index ? <FaMinus /> : <FaPlus />}
                   </span>
@@ -52,7 +55,7 @@ export default function FAQSection(): React.JSX.Element {
 
                 {activeIndex === index && (
                   <div className="faq-answer">
-                    <p>{item.paragraph}</p>
+                    <p className="faq-answer-text">{item.paragraph}</p>
                   </div>
                 )}
               </div>
@@ -73,13 +76,13 @@ export default function FAQSection(): React.JSX.Element {
             alt="Messaging Icon"
             className="faq-right-icon"
           />
-          <h3>You have different Questions?</h3>
-          <p>
+          <h3 className="faq-right-title">You have different Questions?</h3>
+          <p className="faq-right-text">
             Amet donec risus elementum sollicitudin. Odio dui cum arcu
             vestibulum nunc massa.
           </p>
           <button className="faq-contact-btn">
-            Contact us <MdOutlineArrowRightAlt className="arrow" />
+            Contact us <MdOutlineArrowRightAlt className="faq-contact-arrow" />
           </button>
         </div>
       </section>

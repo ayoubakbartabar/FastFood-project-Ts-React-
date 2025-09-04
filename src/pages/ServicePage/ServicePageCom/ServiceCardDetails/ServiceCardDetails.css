@@ -1,0 +1,44 @@
+.service-card-section {
+    display: flex;
+    max-width: 1600px;
+    margin: 2rem auto;
+    gap: 2rem;
+    padding: 2rem;
+    flex-wrap: wrap;
+    background-color: #fff;
+}
+
+.service-card-content {
+    flex: 1 1 500px;
+    max-width: 600px;
+}
+
+.service-card-content-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.service-card-content-paragraph {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1190px) {
+    .service-card-content {
+        flex: 1 1 1060px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-card-section {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .service-card-content {
+        max-width: 100%;
+    }
+}
