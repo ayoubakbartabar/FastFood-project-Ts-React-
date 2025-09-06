@@ -1,29 +1,31 @@
 import React from "react";
-import "./PageHeader.css";
+import "./PageHeader.css"; // Component-specific styles
 import { FaLongArrowAltRight } from "react-icons/fa";
-
 import headerBg from "../../../assets/images/661caddb2719d5ff96cc1ab4_bg.png";
 
-// Props type
+// Props for PageHeader component
 interface PageHeaderProps {
-  title: string;
+  title: string; // Page title to display
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
   return (
     <div
       className="page-header-bg"
-      style={{ backgroundImage: `url(${headerBg})` }}
+      style={{ backgroundImage: `url(${headerBg})` }} // Inline background image
     >
       <section className="page-header-section">
+        {/* Page Title */}
         <h1 className="page-header-title">{title}</h1>
-        <span className="page-header-menu">
+
+        {/* Breadcrumb Navigation */}
+        <nav className="page-header-menu" aria-label="breadcrumb">
           <a href="/" className="page-header-link">
             HOME
           </a>
-          <FaLongArrowAltRight />
-          <p className="page-header-paragraph">{title}</p>
-        </span>
+          <FaLongArrowAltRight aria-hidden="true" />
+          <span className="page-header-paragraph">{title}</span>
+        </nav>
       </section>
     </div>
   );

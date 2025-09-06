@@ -6,6 +6,7 @@ import TestimonialCarouselData from "../../../../data/TestimonialCarouselData";
 import type { TestimonialItem } from "../../../../data/TestimonialCarouselData";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 
+// Carousel utility functions
 import {
   getCardsPerView,
   buildVisible,
@@ -15,9 +16,14 @@ import {
   clearAutoScroll,
 } from "../../../../core/utils/carouselUtils";
 
-export default function TestimonialCarouselSection() {
+const TestimonialCarouselSection: React.FC = () => {
+  // State for starting index of visible cards
   const [startIndex, setStartIndex] = useState<number>(0);
+
+  // Dynamic number of cards visible based on screen size
   const [cardsPerView, setCardsPerView] = useState<number>(getCardsPerView());
+
+  // Section visibility (for triggering animations)
   const [visible, setVisible] = useState<boolean>(false);
 
   const topRef = useRef<HTMLElement | null>(null);
@@ -25,15 +31,15 @@ export default function TestimonialCarouselSection() {
 
   const TOTAL = TestimonialCarouselData.length;
 
-  /** Move carousel to next group of cards */
+  /** Move carousel to next set of cards */
   const goNext = () =>
     setStartIndex((prev) => goNextIndex(prev, cardsPerView, TOTAL));
 
-  /** Move carousel to previous group of cards */
+  /** Move carousel to previous set of cards */
   const goPrev = () =>
     setStartIndex((prev) => goPrevIndex(prev, cardsPerView, TOTAL));
 
-  /** Update cardsPerView dynamically on window resize */
+  /** Update cardsPerView on window resize for responsiveness */
   useEffect(() => {
     const onResize = () => setCardsPerView(getCardsPerView());
     window.addEventListener("resize", onResize);
@@ -46,7 +52,7 @@ export default function TestimonialCarouselSection() {
     return () => clearAutoScroll(intervalRef.current);
   }, [cardsPerView]);
 
-  /** Intersection animation when section enters viewport */
+  /** Trigger intersection animation when the section enters the viewport */
   useIntersectionAnimation(".testimonial-carousel-section");
 
   return (
@@ -57,7 +63,7 @@ export default function TestimonialCarouselSection() {
         }`}
         ref={topRef}
       >
-        {/* Section Header */}
+        {/* Section header */}
         <div className="testimonial-top">
           <h1 className="testimonial-title">Testimonials</h1>
           <p className="testimonial-paragraph">
@@ -65,7 +71,7 @@ export default function TestimonialCarouselSection() {
           </p>
         </div>
 
-        {/* Carousel */}
+        {/* Carousel wrapper */}
         <div className="testimonial-carousel-wrapper">
           {/* Previous Button */}
           <button
@@ -76,7 +82,7 @@ export default function TestimonialCarouselSection() {
             <FaArrowRight />
           </button>
 
-          {/* Cards Container */}
+          {/* Cards container */}
           <div
             className="testimonial-carousel"
             style={{ "--cards": cardsPerView } as React.CSSProperties}
@@ -91,7 +97,7 @@ export default function TestimonialCarouselSection() {
                   src={item.image}
                   alt={item.name}
                   className="testimonial-img"
-                  loading="lazy"
+                  loading="lazy" // Lazy load for better performance
                 />
                 <h3 className="testimonial-name">{item.name}</h3>
                 <p className="testimonial-job">{item.job}</p>
@@ -112,4 +118,6 @@ export default function TestimonialCarouselSection() {
       </section>
     </div>
   );
-}
+};
+
+export default TestimonialCarouselSection;

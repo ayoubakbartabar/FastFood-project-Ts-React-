@@ -4,7 +4,18 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App.tsx";
 
-createRoot(document.getElementById("root")!).render(
+// Get the root element from the HTML
+const container = document.getElementById("root");
+
+if (!container) {
+  throw new Error("Root container not found");
+}
+
+// Create React 18 root
+const root = createRoot(container);
+
+// Render the app inside StrictMode and BrowserRouter
+root.render(
   <StrictMode>
     <BrowserRouter>
       <App />

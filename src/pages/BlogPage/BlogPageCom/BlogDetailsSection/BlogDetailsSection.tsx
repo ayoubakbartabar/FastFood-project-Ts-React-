@@ -1,50 +1,62 @@
 import React, { useRef } from "react";
 import type { FC } from "react";
-
 import { useLocation } from "react-router-dom";
 
 import NavBar from "../../../../components/layout/NavBar/NavBar";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import SocialSection from "../../../../components/layout/SocialSection/SocialSection";
 import Footer from "../../../../components/layout/Footer/Footer";
-
 import BlogAsideSection from "../BlogAsideSection/BlogAsideSection";
-import blogSectionImg from "../../../../assets/images/661cabff491ead7e40ea57ec_image.png";
 
 import { FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
 
-import "./BlogDetailsSection.css";
+import blogSectionImg from "../../../../assets/images/661cabff491ead7e40ea57ec_image.png";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 import type { BlogDataProps } from "../../../../data/BlogData";
 
+import "./BlogDetailsSection.css";
+
 const BlogDetailsSection: FC = () => {
+  // Access the post data passed via navigation state
   const location = useLocation();
   const post = location.state?.post as BlogDataProps | undefined;
-  const contentRef = useRef<HTMLDivElement | null>(null); // Ref for main content animation
 
+  // Ref for main content to trigger scroll animations
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  // Initialize intersection animation for elements with class "reveal-item"
   useIntersectionAnimation(".reveal-item");
 
+  // If post data is missing, show fallback
   if (!post) return <p>Post not found</p>;
 
   return (
     <section className="blog-section">
+      {/* Navbar */}
       <NavBar />
+
+      {/* Page Header */}
       <PageHeader title={post.title} />
 
       <div className="blog-main-wrapper">
-        <div className="blog-aside-section">
+        {/* Sidebar */}
+        <aside className="blog-aside-section">
           <BlogAsideSection />
-        </div>
+        </aside>
 
-        {/* Blog Content with reveal animation */}
+        {/* Blog Main Content */}
         <div className="blog-section-content" ref={contentRef}>
+          {/* Main featured image */}
           <img
             src={post.image}
             alt={post.title}
             className="blog-main-image reveal-item"
           />
+
+          {/* Blog Title */}
           <h2 className="blog-section-title reveal-item">{post.title}</h2>
 
+          {/* Blog Content Blocks */}
           {post.content.map((block, index) => {
             switch (block.type) {
               case "paragraph":
@@ -73,8 +85,9 @@ const BlogDetailsSection: FC = () => {
             }
           })}
 
-          {/* Footer Content */}
+          {/* Footer: Tags & Social Links */}
           <div className="blog-section-content-footer reveal-item">
+            {/* Tags */}
             <div className="blog-section-content-tags">
               <h3>Tags:</h3>
               <div className="blog-tags-wrapper">
@@ -87,6 +100,7 @@ const BlogDetailsSection: FC = () => {
               </div>
             </div>
 
+            {/* Social Share Buttons */}
             <div
               className="blog-section-content-social"
               aria-label="Social media links"
@@ -106,6 +120,7 @@ const BlogDetailsSection: FC = () => {
         </div>
       </div>
 
+      {/* Global Social Section & Footer */}
       <SocialSection />
       <Footer />
     </section>

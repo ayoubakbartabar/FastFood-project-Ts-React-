@@ -1,15 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+// WhyChooseUsSection.tsx
+import React from "react";
 import "./WhyChooseUsSection.css";
-
-import WhyChooseUsData from "./WhyChooseUsData";
-import type { WhyChooseUsItem } from "./WhyChooseUsData";
+import WhyChooseUsData from "../../../../data/WhyChooseUsData";
+import type { WhyChooseUsItem } from "../../../../data/WhyChooseUsData";
 
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 
 export default function WhyChooseUsSection() {
-  const boxRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const [visibleBoxes, setVisibleBoxes] = useState<number[]>([]);
-
+  // Animate boxes when they enter viewport
   useIntersectionAnimation(".why-choose-us-box");
 
   return (
@@ -23,14 +21,8 @@ export default function WhyChooseUsSection() {
         </div>
 
         <div className="why-choose-us-grid">
-          {WhyChooseUsData.map((item: WhyChooseUsItem, index: number) => (
-            <div
-              key={item.id}
-              ref={(el) => {
-                boxRefs.current[index] = el;
-              }}
-              className="why-choose-us-box"
-            >
+          {WhyChooseUsData.map((item: WhyChooseUsItem) => (
+            <div key={item.id} className="why-choose-us-box">
               <img
                 className="why-choose-us-image"
                 src={item.image}

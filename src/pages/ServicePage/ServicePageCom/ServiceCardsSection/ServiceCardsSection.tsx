@@ -10,8 +10,10 @@ import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnim
 import useDynamicNavigate from "../../../../core/hooks/useNavigateTo/useNavigateTo";
 
 const ServiceCardsSection: React.FC = (): React.JSX.Element => {
-  
+  // Trigger intersection animation for card appearance
   useIntersectionAnimation(".service-card");
+
+  // Custom hook to handle dynamic navigation
   const { navigateTo } = useDynamicNavigate();
 
   return (
@@ -20,11 +22,18 @@ const ServiceCardsSection: React.FC = (): React.JSX.Element => {
         <div className="service-grid">
           {ServiceData.map((item: ServiceItem) => (
             <div key={item.id} className="service-card">
+              {/* Service icon/image */}
               <div className="service-icon">
-                <img src={item.image} alt={item.title} />
+                <img src={item.image} alt={item.title} loading="lazy" />
               </div>
+
+              {/* Service title */}
               <h3 className="service-title">{item.title}</h3>
+
+              {/* Service short description */}
               <p className="service-paragraph">{item.paragraph}</p>
+
+              {/* Navigate to detailed service page */}
               <button
                 className="service-button"
                 onClick={() => navigateTo(`/service/${item.id}`)}

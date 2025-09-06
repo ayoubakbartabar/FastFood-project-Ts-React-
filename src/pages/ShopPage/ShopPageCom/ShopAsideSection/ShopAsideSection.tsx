@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useMemo } from "react";
 import "./ShopAsideSection.css";
 import ProductsData from "../../../../data/ProductsData";
-import type { Product } from "../../../../core/context/CartContext/CartContext.type";
+import type { Product } from "../../../../store/cartStore";
 import { FaSearch } from "react-icons/fa";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 
@@ -21,18 +21,18 @@ const ShopAsideSection: React.FC<ShopAsideSectionProps> = ({
 }) => {
   const asideRef = useRef<HTMLElement | null>(null);
 
-  // Use custom hook for fade-in animation
+  // Apply fade-in animation when element is in view
   useIntersectionAnimation(".shop-aside");
 
-  // Extract unique categories from products
-  const categories: string[] = [
-    "all",
-    ...Array.from(
+  // Memoize unique categories to avoid unnecessary recalculations
+  const categories = useMemo(() => {
+    const uniqueCategories = Array.from(
       new Set(
         ProductsData.map((item: Product) => item.category.trim().toLowerCase())
       )
-    ),
-  ];
+    );
+    return ["all", ...uniqueCategories];
+  }, []);
 
   return (
     <aside ref={asideRef} className="shop-aside show">
@@ -45,7 +45,7 @@ const ShopAsideSection: React.FC<ShopAsideSectionProps> = ({
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button className="shop-search-btn">
+        <button className="shop-search-btn" aria-label="Search">
           <FaSearch />
         </button>
       </div>
@@ -55,9 +55,9 @@ const ShopAsideSection: React.FC<ShopAsideSectionProps> = ({
         <div className="shop-categories-box">
           <h3 className="shop-categories-title">Categories</h3>
           <ul className="shop-categories-list">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <li
-                key={index}
+                key={category} // Using category as key since it's unique
                 className={`shop-category-item ${
                   selectedCategory === category ? "active" : ""
                 }`}

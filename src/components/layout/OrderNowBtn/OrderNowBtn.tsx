@@ -1,21 +1,21 @@
 import React from "react";
-import "./OrderNowBtn.css"; // Import component-specific styles
-import { MdArrowRightAlt } from "react-icons/md"; // Import right arrow icon
+import "./OrderNowBtn.css"; // Component-specific styles
+import { MdArrowRightAlt } from "react-icons/md"; // Right arrow icon
 import { useNavigate } from "react-router-dom"; // React Router hook for navigation
 
 // Props for OrderNowBtn component
-type OrderNowBtnProps = {
-  variant?: "desktop" | "mobile"; // Determines the button style variant
+interface OrderNowBtnProps {
+  variant?: "desktop" | "mobile"; // Button style variant
   className?: string; // Optional additional class names
-};
+}
 
-export default function OrderNowBtn({
-  variant = "desktop", // Default variant is "desktop"
+const OrderNowBtn: React.FC<OrderNowBtnProps> = ({
+  variant = "desktop", // Default is desktop
   className = "", // Default no extra class
-}: OrderNowBtnProps) {
+}) => {
   const navigate = useNavigate(); // Hook to programmatically navigate
 
-  // Compose the final className based on variant and any extra classes
+  // Compute final className
   const btnClassName = `order-now-btn ${
     variant === "mobile" ? "mobile-order-now" : "desktop-order-now"
   } ${className}`.trim();
@@ -24,9 +24,11 @@ export default function OrderNowBtn({
     <button
       className={btnClassName} // Apply computed className
       onClick={() => navigate("/menu")} // Navigate to /menu on click
+      aria-label="Order Now Button"
     >
-      order now
-      <MdArrowRightAlt /> 
+      order now <MdArrowRightAlt aria-hidden="true" />
     </button>
   );
-}
+};
+
+export default OrderNowBtn;

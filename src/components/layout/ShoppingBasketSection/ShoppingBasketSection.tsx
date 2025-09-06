@@ -1,17 +1,16 @@
-// ShoppingBasketSection.tsx
-import React, { useContext } from "react";
-import { CartContext } from "../../../core/context/CartContext/CartContext";
-import type { CartContextType } from "../../../core/context/CartContext/CartContext.type";
+import React, { useMemo } from "react";
+import { useCartStore } from "../../../store/cartStore";
 import "./ShoppingBasketSection.css";
 
 const ShoppingBasketSection: React.FC = () => {
-  // Access cart context values with proper typing
-  const { cart, updateQuantity } = useContext(CartContext) as CartContextType;
+  // Access cart state and updateQuantity action from Zustand store
+  const cart = useCartStore((state) => state.cart);
+  const updateQuantity = useCartStore((state) => state.updateQuantity);
 
-  // Calculate subtotal of all cart items
-  const subtotal = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
+  // Calculate subtotal using useMemo for performance
+  const subtotal = useMemo(
+    () => cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
+    [cart]
   );
 
   return (
@@ -21,7 +20,7 @@ const ShoppingBasketSection: React.FC = () => {
         <h2>Your Cart</h2>
       </div>
 
-      {/* Show empty basket message */}
+      {/* Empty basket */}
       {cart.length === 0 ? (
         <p className="empty-cart">Your basket is empty</p>
       ) : (
@@ -46,7 +45,7 @@ const ShoppingBasketSection: React.FC = () => {
                 </p>
               </div>
 
-              {/* Quantity input (if 0 → product removed automatically) */}
+              {/* Quantity input */}
               <input
                 type="number"
                 min={0}
@@ -55,11 +54,12 @@ const ShoppingBasketSection: React.FC = () => {
                   updateQuantity(item.id, Number(e.target.value))
                 }
                 className="basket-quantity-input"
+                aria-label={`Quantity of ${item.title}`}
               />
             </div>
           ))}
 
-          {/* Subtotal section */}
+          {/* Subtotal */}
           <div className="basket-subtotal">
             <span className="subtotal-text">Subtotal</span>
             <span className="subtotal-price">${subtotal.toFixed(2)} USD</span>

@@ -1,38 +1,43 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./BrandIntroSection.css";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 
-const BrandIntroSection: React.FC = () => {
-  // Ref to the section
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+// Import images directly
+import BgShape from "../../../../assets/images/661e02d69d8c67c1854e7950_Rectangle 52.png";
+import HappyMan from "../../../../assets/images/661e02d6b08a6673bc5127ad_Rectangle 50-p-500.png";
+import HappyWoman from "../../../../assets/images/661e02d62401c65334b8f23c_Rectangle 51-p-500.png";
 
-  // Animate all elements with class 'scroll-fade' inside this section
+const BrandIntroSection: React.FC = () => {
+  // Trigger scroll animation on all elements with class 'scroll-fade'
   useIntersectionAnimation(".scroll-fade");
 
   return (
     <div className="brand-intro-bg">
-      <section className="brand-intro-section container" ref={sectionRef}>
+      <section className="brand-intro-section container">
+        {/* Images wrapper */}
         <div className="brand-intro-images-wrapper scroll-fade">
           <img
-            src="src/assets/images/661e02d69d8c67c1854e7950_Rectangle 52.png"
-            alt="Background shape"
+            src={BgShape}
+            alt="Decorative background shape"
             className="brand-bg-image"
           />
+
           <div className="brand-intro-images">
             <img
-              src="src/assets/images/661e02d6b08a6673bc5127ad_Rectangle 50-p-500.png"
-              alt="Happy man with pizza"
+              src={HappyMan}
+              alt="Happy man enjoying pizza"
               className="brand-image"
             />
             <img
-              src="src/assets/images/661e02d62401c65334b8f23c_Rectangle 51-p-500.png"
-              alt="Happy woman with pizza"
+              src={HappyWoman}
+              alt="Happy woman enjoying pizza"
               className="brand-image"
             />
           </div>
         </div>
 
+        {/* Content section */}
         <div className="brand-intro-content scroll-fade">
           <p className="brand-subtitle">Discover Fastfood TNC</p>
           <h2 className="brand-title">

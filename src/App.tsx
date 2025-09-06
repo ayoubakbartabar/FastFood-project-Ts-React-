@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+// Import all pages
 import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ShopPage from "./pages/ShopPage/ShopPage";
@@ -10,30 +11,28 @@ import BlogPage from "./pages/BlogPage/BlogPage";
 import BlogDetailsSection from "./pages/BlogPage/BlogPageCom/BlogDetailsSection/BlogDetailsSection";
 import BlogCategoryTagsSection from "./pages/BlogPage/BlogPageCom/BlogCategoryTagsSection/BlogCategoryTagsSection";
 import MenuPage from "./pages/MenuPage/MenuPage";
-
-import { CartProvider } from "./core/context/CartContext/CartContext";
 import CheckOutPage from "./pages/CheckOutPage/CheckOutPage";
+
+// Note: CartProvider is removed because we now use Zustand store for global cart state
+// No need for a context provider wrapper
 
 const App: React.FC = () => {
   return (
-    <CartProvider>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/shop" element={<ShopPage />} />
-        <Route path="/service" element={<ServicesPage />} />
-        <Route path="/menu" element={<MenuPage />} />
+    <Routes>
+      {/* Main pages */}
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/service" element={<ServicesPage />} />
+      <Route path="/menu" element={<MenuPage />} />
 
-        <Route path="/service/:id" element={<ServiceCardDetails />} />
-        <Route path="/blogs" element={<BlogPage />} />
-        <Route path="/blog/:id" element={<BlogDetailsSection />} />
-        <Route
-          path="/blog/:type/:value"
-          element={<BlogCategoryTagsSection />}
-        />
-        <Route path="/product/:id" element={<CheckOutPage />} />
-      </Routes>
-    </CartProvider>
+      {/* Dynamic / details pages */}
+      <Route path="/service/:id" element={<ServiceCardDetails />} />
+      <Route path="/blogs" element={<BlogPage />} />
+      <Route path="/blog/:id" element={<BlogDetailsSection />} />
+      <Route path="/blog/:type/:value" element={<BlogCategoryTagsSection />} />
+      <Route path="/product/:id" element={<CheckOutPage />} />
+    </Routes>
   );
 };
 

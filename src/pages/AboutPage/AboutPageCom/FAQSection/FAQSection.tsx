@@ -7,10 +7,14 @@ import type { FAQDataProps } from "../../../../data/FAQData";
 
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 
+// Import images for professional bundler handling
+import FAQBg from "../../../../assets/images/661e0da93587e5adbe8d8031_bg (1).png";
+import MessagingIcon from "../../../../assets/svg/661e0d75b08a6673bc59fb4a_messaging 1.svg";
+
 import "./FAQSection.css";
 
 export default function FAQSection(): React.JSX.Element {
-  // State to keep track of which FAQ item is currently open
+  // State to track which FAQ item is currently open
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   // Toggle the open/close state of an FAQ item
@@ -18,7 +22,7 @@ export default function FAQSection(): React.JSX.Element {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
-  // Trigger intersection animations when FAQ header or items enter viewport
+  // Trigger intersection animations for headers and FAQ items
   useIntersectionAnimation(".faq-header");
   useIntersectionAnimation(".faq-item");
 
@@ -64,15 +68,9 @@ export default function FAQSection(): React.JSX.Element {
         </div>
 
         {/* Right Column - Contact Box */}
-        <div
-          className="faq-right"
-          style={{
-            backgroundImage:
-              "url('src/assets/images/661e0da93587e5adbe8d8031_bg (1).png')",
-          }}
-        >
+        <div className="faq-right" style={{ backgroundImage: `url(${FAQBg})` }}>
           <img
-            src="src/assets/svg/661e0d75b08a6673bc59fb4a_messaging 1.svg"
+            src={MessagingIcon}
             alt="Messaging Icon"
             className="faq-right-icon"
           />

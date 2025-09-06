@@ -3,14 +3,12 @@ import React, {
   useRef,
   useCallback,
   useEffect,
-  useContext,
   useMemo,
 } from "react";
 import "./NavBar.css";
 
 import OrderNowBtn from "../OrderNowBtn/OrderNowBtn";
 import useClickOutside from "../../../core/hooks/useClickOutSide/useClickOutSide";
-import { CartContext } from "../../../core/context/CartContext/CartContext";
 import logo from "../../../assets/images/661caca505c900f7a61a73ce_logo (1).png";
 
 import ShoppingBasketSection from "../ShoppingBasketSection/ShoppingBasketSection";
@@ -18,6 +16,7 @@ import { LuSearch, LuShoppingBasket } from "react-icons/lu";
 import { FaHamburger } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import { useCartStore } from "../../../store/cartStore";
 
 interface NavbarMenuItem {
   id: number;
@@ -26,11 +25,9 @@ interface NavbarMenuItem {
 }
 
 const NavBar: React.FC = () => {
-  // Access cart context
-  const cartContext = useContext(CartContext);
-  if (!cartContext)
-    throw new Error("CartContext must be used within a CartProvider");
-  const { cart } = cartContext;
+
+  const cart = useCartStore((state) => state.cart);
+  const totalItems = useCartStore((state) => state.totalItems);
 
   // State
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -40,12 +37,6 @@ const NavBar: React.FC = () => {
   // Refs for click outside detection
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const basketRef = useRef<HTMLDivElement>(null);
-
-  // Derived values
-  const totalItems = useMemo(
-    () => cart.reduce((sum, item) => sum + item.quantity, 0),
-    [cart]
-  );
 
   // Menu items
   const navbarMenus: NavbarMenuItem[] = useMemo(
@@ -68,10 +59,8 @@ const NavBar: React.FC = () => {
   const openMobileMenu = useCallback(() => setIsMobileMenuOpen(true), []);
   const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 
-  // Close mobile menu when clicking outside
+  // Click outside detection
   useClickOutside(mobileMenuRef, closeMobileMenu, isMobileMenuOpen);
-
-  // Close basket panel when clicking outside
   useClickOutside(basketRef, closeBasket, isBasketOpen);
 
   // Close search input when clicking outside
@@ -204,14 +193,11 @@ const NavBar: React.FC = () => {
           <IoCloseCircle size={28} />
         </button>
 
-        {/* Insert ShoppingBasketSection here */}
         <ShoppingBasketSection />
       </div>
 
       {/* Overlay */}
-      {isBasketOpen && (
-        <div className="basket-overlay" onClick={closeBasket}></div>
-      )}
+      {isBasketOpen && <div className="basket-overlay" onClick={closeBasket} />}
     </div>
   );
 };

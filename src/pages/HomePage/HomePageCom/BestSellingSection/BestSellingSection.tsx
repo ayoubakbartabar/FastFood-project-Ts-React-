@@ -1,43 +1,40 @@
 // components/BestSellingSection.tsx
-import React, { useState, useEffect } from "react";
-import ProductData from "../../../../data/ProductsData";
-import { IoChevronBack, IoChevronForward } from "react-icons/io5";
+import React, { FC, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import type { Product } from "../../../../core/context/CartContext/CartContext.type";
+import ProductData from "../../../../data/ProductsData";
+import type { Product } from "../../../../store/cartStore";
+import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useRenderStars } from "../../../../core/hooks/useRenderStars/useRenderStars";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 import "./BestSellingSection.css";
 
-export default function BestSellingSection() {
-  // State to track current carousel index
+const BestSellingSection: FC = () => {
+  // Carousel state
   const [index, setIndex] = useState<number>(0);
 
-  // State to detect if viewport is mobile size
+  // Detect if the viewport is mobile
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 1024);
 
   const total: number = ProductData.length;
-
-  // Number of cards visible at once: all for mobile, 4 for desktop
-  const visibleCards: number = isMobile ? total : 4;
+  const visibleCards: number = isMobile ? total : 4; // Show all on mobile
 
   const navigate = useNavigate();
   const { renderStars } = useRenderStars();
 
-  // Custom hook to add "show" class when cards enter viewport
-  // This triggers the CSS animation for smooth appearance
+  // Animate product cards when entering viewport
   useIntersectionAnimation(".product-card");
 
   // Update isMobile state on window resize
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1024);
-      setIndex(0); // Reset carousel index on resize
+      setIndex(0); // Reset index when resizing
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Move to next set of cards in carousel (desktop only)
+  // Navigate carousel forward (desktop only)
   const next = () => {
     if (isMobile) return;
     setIndex((prev) =>
@@ -45,7 +42,7 @@ export default function BestSellingSection() {
     );
   };
 
-  // Move to previous set of cards in carousel (desktop only)
+  // Navigate carousel backward (desktop only)
   const prev = () => {
     if (isMobile) return;
     setIndex((prev) =>
@@ -53,11 +50,11 @@ export default function BestSellingSection() {
     );
   };
 
-  // Get currently visible products for the carousel
+  // Get products currently visible in the carousel
   const getVisibleData = (): Product[] => {
-    if (isMobile) return ProductData; // Show all on mobile
+    if (isMobile) return ProductData;
     if (index + visibleCards > total) {
-      // Wrap around if reaching the end of the array
+      // Wrap around at the end
       return [
         ...ProductData.slice(index),
         ...ProductData.slice(0, visibleCards - (total - index)),
@@ -66,7 +63,7 @@ export default function BestSellingSection() {
     return ProductData.slice(index, index + visibleCards);
   };
 
-  // Navigate to product details page with state
+  // Navigate to product details page
   const goToProductPage = (item: Product) => {
     navigate(`/product/${item.id}`, { state: item });
   };
@@ -74,7 +71,7 @@ export default function BestSellingSection() {
   return (
     <div className="best-selling-bg">
       <section className="best-selling-section">
-        {/* Top section with title and description */}
+        {/* Top section */}
         <div className="best-selling-top">
           <h1 className="best-selling-title">Best Selling Items</h1>
           <p className="best-selling-paragraph">
@@ -83,9 +80,9 @@ export default function BestSellingSection() {
           </p>
         </div>
 
-        {/* Carousel wrapper */}
+        {/* Carousel */}
         <div className="carousel-wrapper">
-          {/* Left arrow button (desktop only) */}
+          {/* Left arrow */}
           {!isMobile && (
             <button className="carousel-button left" onClick={prev}>
               <IoChevronBack />
@@ -98,10 +95,8 @@ export default function BestSellingSection() {
               isMobile ? "grid-view" : "carousel-view"
             }`}
           >
-            {/* Render visible product cards */}
             {getVisibleData().map((item) => (
               <div key={item.id} className="product-card animate-entry">
-                {/* Product image */}
                 <div
                   className="product-image"
                   style={{ cursor: "pointer" }}
@@ -110,7 +105,6 @@ export default function BestSellingSection() {
                   <img src={item.image} alt={item.title} />
                 </div>
 
-                {/* Product title */}
                 <h3
                   className="product-title"
                   style={{ cursor: "pointer" }}
@@ -119,16 +113,13 @@ export default function BestSellingSection() {
                   {item.title}
                 </h3>
 
-                {/* Product star rating */}
                 <div className="product-stars">{renderStars(item.star)}</div>
-
-                {/* Product price */}
                 <p className="product-price">${item.price.toFixed(2)} USD</p>
               </div>
             ))}
           </div>
 
-          {/* Right arrow button (desktop only) */}
+          {/* Right arrow */}
           {!isMobile && (
             <button className="carousel-button right" onClick={next}>
               <IoChevronForward />
@@ -138,4 +129,6 @@ export default function BestSellingSection() {
       </section>
     </div>
   );
-}
+};
+
+export default BestSellingSection;

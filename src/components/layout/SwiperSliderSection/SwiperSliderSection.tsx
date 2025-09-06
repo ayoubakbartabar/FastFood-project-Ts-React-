@@ -4,24 +4,22 @@ import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/autoplay";
-
 import "./SwiperSliderSection.css";
 
-// Import data and type
-import SwiperSliderData from "./SwiperSliderData";
-import type { SliderItem } from "./SwiperSliderData";
+import SwiperSliderData from "../../../data/SwiperSliderData";
+import type { SliderItem } from "../../../data/SwiperSliderData";
 
 const SwiperSliderSection: React.FC = () => {
   return (
     <div className="swiper-container">
-      {/* Swiper Section for larger screens */}
+      {/* Desktop Swiper Section */}
       <section className="swiper-section desktop-swiper">
         <Swiper
           modules={[Autoplay]}
           spaceBetween={5}
           slidesPerView={6}
           speed={2000}
-          loop={true}
+          loop
           autoplay={{
             delay: 0,
             disableOnInteraction: false,
@@ -38,8 +36,12 @@ const SwiperSliderSection: React.FC = () => {
         >
           {SwiperSliderData.map((item: SliderItem) => (
             <SwiperSlide key={item.id}>
-              <a href={item.href} className="fade-slide">
-                <img src={item.image} alt={item.title} />
+              <a
+                href={item.href}
+                className="fade-slide"
+                aria-label={item.title}
+              >
+                <img src={item.image} alt={item.title} loading="lazy" />
                 <h4>{item.title}</h4>
               </a>
             </SwiperSlide>
@@ -47,12 +49,17 @@ const SwiperSliderSection: React.FC = () => {
         </Swiper>
       </section>
 
-      {/* Grid Section for mobile screens */}
+      {/* Mobile Grid Section */}
       <section className="mobile-grid">
         <div className="grid-wrapper">
           {SwiperSliderData.map((item: SliderItem) => (
-            <a href={item.href} className="fade-slide" key={item.id}>
-              <img src={item.image} alt={item.title} />
+            <a
+              href={item.href}
+              className="fade-slide"
+              key={item.id}
+              aria-label={item.title}
+            >
+              <img src={item.image} alt={item.title} loading="lazy" />
               <h4>{item.title}</h4>
             </a>
           ))}

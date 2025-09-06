@@ -3,6 +3,7 @@ import CountUp from "react-countup";
 import "./QuickStatsSection.css";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 
+// Type for each statistic item
 interface StatItem {
   value: number;
   suffix?: string;
@@ -10,6 +11,7 @@ interface StatItem {
   formatter?: (value: number) => string;
 }
 
+// Define all statistics
 const stats: StatItem[] = [
   { value: 11, suffix: "+", label: "Years experience" },
   { value: 40, suffix: "+", label: "Fastfood items" },
@@ -27,23 +29,23 @@ const QuickStatsSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [startCount, setStartCount] = useState<boolean>(false);
 
-  // Animate stat boxes
+  // Trigger scroll animation on stat boxes
   useIntersectionAnimation(".stat-box");
 
-  // Start counting when section enters viewport
+  // Start counting numbers when section is visible in viewport
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setStartCount(true);
-            observer.unobserve(entry.target);
+            obs.unobserve(entry.target); // Stop observing after first trigger
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 } // Trigger when 30% of the section is visible
     );
 
     observer.observe(sectionRef.current);
@@ -58,6 +60,7 @@ const QuickStatsSection: React.FC = () => {
       <section className="quick-stats-section">
         {stats.map((stat, index) => (
           <div className="stat-box" key={index}>
+            {/* Animated number */}
             <h2 className="stat-number">
               {startCount && (
                 <CountUp
@@ -68,6 +71,7 @@ const QuickStatsSection: React.FC = () => {
                 />
               )}
             </h2>
+            {/* Statistic label */}
             <p className="stat-label">{stat.label}</p>
           </div>
         ))}

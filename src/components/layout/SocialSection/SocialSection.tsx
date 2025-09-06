@@ -9,29 +9,32 @@ import useIntersectionAnimation from "../../../core/hooks/useIntersectionAnimati
 const SocialSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  // Add "show" class to section when it enters viewport
+  // Trigger fade-in animation when section enters viewport
   useIntersectionAnimation(".social-section");
 
   return (
     <div className="social-bg">
-      <section ref={sectionRef} className="social-section">
-        {SocialData.map(({ id, image, alt }: SocialDataProps, index) => (
-          <figure
-            key={id}
-            className="social-image"
-           
-          >
+      <section
+        ref={sectionRef}
+        className="social-section"
+        aria-label="Social media"
+      >
+        {/* Render social images */}
+        {SocialData.map(({ id, image, alt }: SocialDataProps) => (
+          <figure key={id} className="social-image">
             <img src={image} alt={alt} loading="lazy" />
           </figure>
         ))}
 
+        {/* Instagram link */}
         <a
           href="#"
           className="social-icon"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Follow us on Instagram"
         >
-          <FaInstagram />
+          <FaInstagram aria-hidden="true" />
         </a>
       </section>
     </div>

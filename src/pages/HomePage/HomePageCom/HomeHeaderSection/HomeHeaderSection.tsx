@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 import "./HomeHeaderSection.css";
 
-// Import data and types
-import HomeHeaderSectionData from "./HomeHeaderSectionData";
-import type { Slide } from "./HomeHeaderSectionData";
+// Import slides data and type
+import HomeHeaderSectionData from "../../../../data/HomeHeaderSectionData";
+import type { Slide } from "../../../../data/HomeHeaderSectionData";
 
-// Import shared button component
+// Shared "Order Now" button component
 import OrderNowBtn from "../../../../components/layout/OrderNowBtn/OrderNowBtn";
 
 // Social media icons
@@ -19,23 +19,23 @@ import {
 } from "react-icons/fa";
 
 const HomeHeaderSection: React.FC = () => {
-  // Current active slide index
+  // State to track currently active slide
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   /**
-   * Handle selecting a slide via pagination buttons
-   * Prevents re-selecting the same slide
+   * Handle pagination button click
+   * Prevents selecting the same slide again
    */
   const handleSelectItem = (newIndex: number) => {
     if (newIndex === currentIndex) return;
     setCurrentIndex(newIndex);
   };
 
-  // Destructure current slide data with type safety
+  // Destructure current slide data
   const { header, title, description, image }: Slide =
     HomeHeaderSectionData[currentIndex];
 
-  // Animation variants for text content (fade + slide)
+  // Animation variants for text content (fade in + slide)
   const fadeSlideVariants: Variants = {
     initial: { opacity: 0, y: 20 },
     animate: {
@@ -51,7 +51,7 @@ const HomeHeaderSection: React.FC = () => {
       <div className="home-header-container">
         <section className="home-header-section">
           <div className="home-header-section-box">
-            {/* Left side: text content */}
+            {/* Left side: slide text content */}
             <div className="header-left-side">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -62,15 +62,22 @@ const HomeHeaderSection: React.FC = () => {
                   exit="exit"
                   className="header-left-content-wrapper"
                 >
+                  {/* Slide header */}
                   <h3 className="header-left-sub-title">{header}</h3>
+
+                  {/* Slide main title */}
                   <h1 className="header-left-title">{title}</h1>
+
+                  {/* Slide description */}
                   <p className="header-left-paragraph">{description}</p>
+
+                  {/* Call-to-action button */}
                   <OrderNowBtn />
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* Right side: image + pagination */}
+            {/* Right side: slide image + pagination */}
             <div className="header-right-wrapper">
               {/* Pagination buttons */}
               <div className="header-pagination-buttons">
@@ -94,11 +101,12 @@ const HomeHeaderSection: React.FC = () => {
                     src={image}
                     alt={`Slide ${currentIndex + 1} image`}
                     className="header-img"
+                    loading="lazy"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{
                       opacity: 1,
                       scale: 1,
-                      rotate: currentIndex === 0 ? -6 : 0,
+                      rotate: currentIndex === 0 ? -6 : 0, // Example of dynamic rotation for first slide
                     }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
@@ -109,7 +117,7 @@ const HomeHeaderSection: React.FC = () => {
           </div>
         </section>
 
-        {/* Social icons */}
+        {/* Social media icons */}
         <div className="home-header-social-local">
           <a href="#" aria-label="Facebook" className="home-header-social-icon">
             <FaFacebookF />

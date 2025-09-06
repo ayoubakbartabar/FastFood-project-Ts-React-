@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useMemo } from "react";
 import "./ShopProductSection.css";
 import ProductsData from "../../../../data/ProductsData";
-import type { Product } from "../../../../core/context/CartContext/CartContext.type";
+import type { Product } from "../../../../store/cartStore";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 import useDynamicNavigate from "../../../../core/hooks/useNavigateTo/useNavigateTo";
 import { useRenderStars } from "../../../../core/hooks/useRenderStars/useRenderStars";
@@ -20,16 +20,21 @@ const ShopProductSection: React.FC<ShopProductSectionProps> = ({
   const { navigateTo } = useDynamicNavigate();
   const { renderStars } = useRenderStars();
 
-  // Filter products based on category AND search term
-  const filteredProducts: Product[] = ProductsData.filter(
-    (product) =>
-      product.image &&
-      product.title &&
-      (selectedCategory === "all" ||
-        product.category.trim().toLowerCase() === selectedCategory) &&
-      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  // Memoize filtered products to optimize re-renders
+  const filteredProducts: Product[] = useMemo(
+    () =>
+      ProductsData.filter(
+        (product) =>
+          product.image &&
+          product.title &&
+          (selectedCategory === "all" ||
+            product.category.trim().toLowerCase() === selectedCategory) &&
+          product.title.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
+    [selectedCategory, searchTerm]
   );
 
+  // Apply fade-in animation for product cards when they enter viewport
   useIntersectionAnimation(".shop-product-card");
 
   return (
@@ -37,23 +42,28 @@ const ShopProductSection: React.FC<ShopProductSectionProps> = ({
       <div className="shop-product-grid">
         {filteredProducts.map((product) => (
           <div key={product.id} className="shop-product-card">
+            {/* Product image clickable to navigate to product details */}
             <div
-              className="shop-product-image"
+              className="shop-product-image clickable"
               onClick={() => navigateTo(`/product/${product.id}`, product)}
-              style={{ cursor: "pointer" }}
             >
               <img src={product.image} alt={product.title} />
             </div>
+
+            {/* Product title clickable to navigate to product details */}
             <h3
-              className="shop-product-name"
+              className="shop-product-name clickable"
               onClick={() => navigateTo(`/product/${product.id}`, product)}
-              style={{ cursor: "pointer" }}
             >
               {product.title}
             </h3>
+
+            {/* Product rating stars */}
             <div className="shop-product-stars">
               {renderStars(product.star)}
             </div>
+
+            {/* Product price */}
             <div className="shop-product-price">
               ${product.price.toFixed(2)} USD
             </div>

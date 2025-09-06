@@ -1,6 +1,4 @@
-import React from "react";
-import type {FC} from "react";
-
+import React, { FC } from "react";
 import "./Footer.css";
 import {
   FaHome,
@@ -11,15 +9,16 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-
 import useIntersectionAnimation from "../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 
-// Types
+// Footer component props (currently empty but ready for future use)
 interface FooterProps {}
 
 const Footer: FC<FooterProps> = () => {
-  // Animate all elements with class .fade-up-init
+  // Animate all elements with class .fade-up-init when they appear in viewport
   useIntersectionAnimation(".fade-up-init");
+
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="footer-bg">
@@ -32,13 +31,14 @@ const Footer: FC<FooterProps> = () => {
           </h2>
           <address className="footer-address">
             <div className="footer-location">
-              <FaHome /> 4XX7 Washington Ave. Manchester, Kentucky 39495.
+              <FaHome aria-hidden="true" /> 4XX7 Washington Ave. Manchester,
+              Kentucky 39495.
             </div>
             <div className="footer-phone">
-              <FaPhone /> (406) 5XX-012X
+              <FaPhone aria-hidden="true" /> (406) 5XX-012X
             </div>
             <div className="footer-email">
-              <MdEmail /> exampleX@gmail.com
+              <MdEmail aria-hidden="true" /> exampleX@gmail.com
             </div>
           </address>
         </div>
@@ -60,7 +60,7 @@ const Footer: FC<FooterProps> = () => {
               <a href="/blog">Blog</a>
             </li>
             <li>
-              <a href="/contact-us">Contact US</a>
+              <a href="/contact-us">Contact Us</a>
             </li>
           </ul>
         </nav>
@@ -97,6 +97,8 @@ const Footer: FC<FooterProps> = () => {
               ✉
             </button>
           </form>
+
+          {/* Social Media Links */}
           <div className="footer-social-icons" aria-label="Social media links">
             <a href="#" aria-label="Facebook">
               <FaFacebookF />
@@ -115,7 +117,7 @@ const Footer: FC<FooterProps> = () => {
 
         {/* Copyright */}
         <div className="footer-copy fade-up-init">
-          © {new Date().getFullYear()} FastFood TNC | Designed by{" "}
+          © {currentYear} FastFood TNC | Designed by{" "}
           <a
             href="https://github.com/ayoubakbartabar"
             className="developer-link"
