@@ -1,9 +1,9 @@
 /* ------------------------
-   Login Page Styling
+   Sign In Page Styling
 -------------------------*/
 
 /* Background */
-.login-container {
+.signin-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@
 }
 
 /* White Card */
-.login-box {
+.signin-box {
     background: var(--color-white);
     display: flex;
     flex-direction: row;
@@ -27,7 +27,7 @@
 }
 
 /* Left Side */
-.login-illustration {
+.signin-illustration {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -44,20 +44,20 @@
     align-items: center;
 }
 
-.login-icon {
+.signin-icon {
     width: 120px;
     opacity: 0.9;
 }
 
 /* Right Side */
-.login-form {
+.signin-form {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.login-form h2 {
+.signin-form h2 {
     font-size: 24px;
     margin-bottom: 20px;
     color: var(--heading);
@@ -79,7 +79,7 @@
 .input-group .icon {
     margin-right: 10px;
     font-size: 16px;
-    color: var(--color-gray);
+    color: var(--color-star-half);
     transition: color 0.3s ease;
 }
 
@@ -100,12 +100,11 @@
 }
 
 .input-group:focus-within .icon {
-    color: var(--color-star-half);
+    color: var(--color-primary);
 }
 
-
 /* Button */
-.login-btn {
+.signin-btn {
     width: 100%;
     background: var(--color-primary);
     color: var(--color-white);
@@ -118,49 +117,32 @@
     margin-top: 10px;
 }
 
-.login-btn:hover {
+.signin-btn:hover {
     background: var(--highlight);
 }
 
 /* Links */
-.forgot {
-    margin-top: 10px;
-    font-size: 13px;
-    text-align: center;
-    color: var(--color-gray);
-}
-
-.forgot a {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.forgot a:hover {
-    text-decoration: underline;
-}
-
-.create-account {
-    margin-top: 25px;
+.have-account {
+    margin-top: 20px;
     font-size: 14px;
     text-align: center;
     color: var(--paragraph);
     text-decoration: none;
 }
 
-.create-account a {
+.have-account a {
     color: var(--color-primary);
     text-decoration: none;
     font-weight: 600;
 }
 
-.create-account a:hover {
+.have-account a:hover {
     text-decoration: underline;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .login-box {
+    .signin-box {
         flex-direction: column;
         padding: 30px 20px;
         gap: 20px;
@@ -171,7 +153,7 @@
         height: 180px;
     }
 
-    .login-icon {
+    .signin-icon {
         width: 80px;
     }
 }

@@ -2,6 +2,8 @@ import React from "react";
 import { FiMail, FiLock } from "react-icons/fi";
 import "./LoginPage.css";
 
+import { Link } from "react-router-dom";
+
 const LoginPage: React.FC = () => {
   return (
     <div className="login-container">
@@ -36,9 +38,9 @@ const LoginPage: React.FC = () => {
               Forgot <a href="#">Username</a> / <a href="#">Password</a>?
             </p>
           </form>
-          <a href="#" className="create-account">
-            Create your Account <a href="#">→</a>
-          </a>
+          <Link to="/signup" className="create-account">
+            Create your Account →
+          </Link>
         </div>
       </div>
     </div>

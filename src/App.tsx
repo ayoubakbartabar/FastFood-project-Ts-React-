@@ -13,6 +13,7 @@ import BlogCategoryTagsSection from "./pages/BlogPage/BlogPageCom/BlogCategoryTa
 import MenuPage from "./pages/MenuPage/MenuPage";
 import CheckOutPage from "./pages/CheckOutPage/CheckOutPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import SignInPage from "./pages/SingInPage/SignInPage";
 
 // Note: CartProvider is removed because we now use Zustand store for global cart state
 // No need for a context provider wrapper
@@ -26,7 +27,8 @@ const App: React.FC = () => {
       <Route path="/shop" element={<ShopPage />} />
       <Route path="/service" element={<ServicesPage />} />
       <Route path="/menu" element={<MenuPage />} />
-      <Route path="/login page" element={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignInPage />} />
 
       {/* Dynamic / details pages */}
       <Route path="/service/:id" element={<ServiceCardDetails />} />
