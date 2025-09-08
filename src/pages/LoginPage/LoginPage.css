@@ -103,6 +103,17 @@
     color: var(--color-star-half);
 }
 
+.password-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+}
 
 /* Button */
 .login-btn {

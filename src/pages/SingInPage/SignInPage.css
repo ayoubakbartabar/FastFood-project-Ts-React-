@@ -91,6 +91,17 @@
     font-size: 14px;
     color: var(--color-black);
 }
+.password-group {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #666;
+}
 
 /* Focus Effect */
 .input-group:focus-within {
