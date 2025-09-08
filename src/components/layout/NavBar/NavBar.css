@@ -3,11 +3,10 @@
     top: 0;
     width: 100%;
     z-index: 100;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(6px);
     color: white;
     transition: background 0.3s ease;
-    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar-section {
@@ -52,51 +51,96 @@
     align-items: center;
 }
 
-/* Search button & container */
-.search-container {
+/* User icon dropdown */
+.user-menu-container {
     position: relative;
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
+    display: inline-block;
 }
 
-.search-btn,
-.shop-basket-btn,
-.hamburger-btn {
+.user-icon-btn {
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
-    color: white;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
 }
 
-.nav-search-icon,
+.user-dropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 140px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.user-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    color: var(--color-black);
+}
+
+.dropdown-item:hover {
+    background-color: var(--highlight);
+    color: white;
+    border-radius: 6px;
+}
+
+/* Basket & hamburger */
+.shop-basket-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    position: relative;
+}
+
 .shop-basket-icon {
     width: 22px;
     height: 22px;
     color: var(--text-color);
 }
 
-.shop-basket-btn {
-    position: relative;
-}
-
 .basket-badge {
     position: absolute;
-    top: -1px;
-    right: -1px;
+    top: -7px;
+    right: -4px;
     background-color: var(--highlight);
-    font-weight: bold;
-    font-size: 12px;
-    width: 11px;
-    height: 11px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-/* Basket slide-in panel */
+.hamburger-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 24px;
+}
+
+/* Basket panel */
 .basket-panel {
     position: fixed;
     top: 0;
@@ -125,7 +169,6 @@
     align-self: flex-end;
 }
 
-/* Overlay background */
 .basket-overlay {
     position: fixed;
     inset: 0;
@@ -133,36 +176,7 @@
     z-index: 1500;
 }
 
-/* Expanding search input box */
-.search-input-box {
-    width: 0;
-    opacity: 0;
-    padding: 0.4rem 0.75rem;
-    margin-left: 0.5rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 6px;
-    background-color: white;
-    color: black;
-    transition: width 0.3s ease, opacity 0.3s ease;
-}
-
-.search-container.open .search-input-box {
-    width: 180px;
-    opacity: 1;
-}
-
-.search-input-box:focus {
-    outline: none;
-}
-
-.hamburger-btn {
-    display: none;
-    font-size: 24px;
-    color: var(--text-color);
-}
-
-/* Mobile menu styles */
+/* Mobile menu */
 .mobile-menu-section {
     position: fixed;
     top: 0;
@@ -197,9 +211,7 @@
     margin-bottom: 2rem;
 }
 
-.mobile-close-btn,
-.mobile-shop-basket-btn,
-.mobile-shop-basket-icon {
+.mobile-close-btn {
     background: transparent;
     border: none;
     font-size: 28px;
@@ -218,18 +230,12 @@
     font-size: 1rem;
     color: var(--color-white);
     transition: var(--transition);
-    position: relative;
 }
 
 .mobile-menu .menu-item a:hover,
 .mobile-menu .menu-item a.active {
     color: var(--highlight);
     font-weight: var(--font-weight-bold);
-}
-
-.mobile-menu .menu-item a {
-    position: relative;
-    transition: color 0.3s ease-in-out;
 }
 
 /* Responsive */
@@ -241,5 +247,4 @@
     .hamburger-btn {
         display: block;
     }
-
 }

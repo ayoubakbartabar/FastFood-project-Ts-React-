@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useMemo,
 } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 
 import OrderNowBtn from "../OrderNowBtn/OrderNowBtn";
@@ -12,11 +13,11 @@ import useClickOutside from "../../../core/hooks/useClickOutSide/useClickOutSide
 import logo from "../../../assets/images/661caca505c900f7a61a73ce_logo (1).png";
 
 import ShoppingBasketSection from "../ShoppingBasketSection/ShoppingBasketSection";
-import { LuSearch, LuShoppingBasket } from "react-icons/lu";
-import { FaHamburger } from "react-icons/fa";
+import { LuShoppingBasket } from "react-icons/lu";
+import { FaHamburger, FaUserCircle } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
 import { useCartStore } from "../../../store/cartStore";
+import { useAuthStore } from "../../../store/authStore";
 
 interface NavbarMenuItem {
   id: number;
@@ -25,20 +26,22 @@ interface NavbarMenuItem {
 }
 
 const NavBar: React.FC = () => {
-
   const cart = useCartStore((state) => state.cart);
   const totalItems = useCartStore((state) => state.totalItems);
+  const { currentUser, logout, loadUser } = useAuthStore();
+  const navigate = useNavigate();
 
-  // State
+  // UI states
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
-  // Refs for click outside detection
+  // Refs
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const basketRef = useRef<HTMLDivElement>(null);
+  const userMenuRef = useRef<HTMLDivElement>(null);
 
-  // Menu items
+  // Navbar links
   const navbarMenus: NavbarMenuItem[] = useMemo(
     () => [
       { id: 1, title: "Home", href: "/" },
@@ -53,23 +56,31 @@ const NavBar: React.FC = () => {
   );
 
   // Handlers
-  const toggleSearch = useCallback(() => setIsSearchOpen((prev) => !prev), []);
   const openBasket = useCallback(() => setIsBasketOpen(true), []);
   const closeBasket = useCallback(() => setIsBasketOpen(false), []);
   const openMobileMenu = useCallback(() => setIsMobileMenuOpen(true), []);
   const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
+  const toggleUserMenu = useCallback(
+    () => setIsUserMenuOpen((prev) => !prev),
+    []
+  );
 
-  // Click outside detection
+  // Click outside handlers
   useClickOutside(mobileMenuRef, closeMobileMenu, isMobileMenuOpen);
   useClickOutside(basketRef, closeBasket, isBasketOpen);
 
-  // Close search input when clicking outside
   useEffect(() => {
-    if (!isSearchOpen) return;
+    loadUser();
+  }, [loadUser]);
+
+  // Close user menu on outside click
+  useEffect(() => {
+    if (!isUserMenuOpen) return;
 
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (!(event.target instanceof HTMLElement)) return;
-      if (!event.target.closest(".search-container")) setIsSearchOpen(false);
+      if (!event.target.closest(".user-menu-container"))
+        setIsUserMenuOpen(false);
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -79,7 +90,7 @@ const NavBar: React.FC = () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchstart", handleClickOutside);
     };
-  }, [isSearchOpen]);
+  }, [isUserMenuOpen]);
 
   return (
     <div className="navbar-bg">
@@ -87,7 +98,7 @@ const NavBar: React.FC = () => {
         {/* Logo */}
         <img className="navbar-logo" src={logo} alt="logo" />
 
-        {/* Desktop menu */}
+        {/* Desktop Menu */}
         <ul className="menu-list desktop-menu">
           {navbarMenus.map((item) => (
             <li key={item.id} className="menu-item">
@@ -103,23 +114,57 @@ const NavBar: React.FC = () => {
           ))}
         </ul>
 
-        {/* Buttons Section */}
+        {/* Right Section */}
         <div className="navbar-btn-section">
-          {/* Search */}
-          <div className={`search-container ${isSearchOpen ? "open" : ""}`}>
+          {/* User Menu */}
+          <div className="user-menu-container" ref={userMenuRef}>
             <button
-              className="search-btn"
-              aria-label="Search"
-              onClick={toggleSearch}
+              className="user-icon-btn"
+              onClick={toggleUserMenu}
+              aria-label="User menu"
             >
-              <LuSearch className="nav-search-icon" />
+              <FaUserCircle size={26} />
             </button>
-            <input
-              type="text"
-              placeholder="Search..."
-              className="search-input-box"
-              autoFocus
-            />
+            <div className={`user-dropdown ${isUserMenuOpen ? "open" : ""}`}>
+              {!currentUser ? (
+                <>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => {
+                      navigate("/login");
+                      setIsUserMenuOpen(false);
+                    }}
+                  >
+                    Login
+                  </button>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => {
+                      navigate("/signup");
+                      setIsUserMenuOpen(false);
+                    }}
+                  >
+                    Sign Up
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span className="dropdown-item" style={{ cursor: "default" }}>
+                    👋 {currentUser.name}
+                  </span>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => {
+                      logout();
+                      setIsUserMenuOpen(false);
+                      navigate("/");
+                    }}
+                  >
+                    Logout
+                  </button>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Basket */}
@@ -132,10 +177,10 @@ const NavBar: React.FC = () => {
             {totalItems > 0 && <span className="basket-badge"></span>}
           </button>
 
-          {/* Order Now button */}
+          {/* Order Now */}
           <OrderNowBtn variant="desktop" className="order-now-desktop" />
 
-          {/* Mobile menu toggle */}
+          {/* Mobile Menu Toggle */}
           <button
             className="hamburger-btn"
             onClick={openMobileMenu}
@@ -158,7 +203,6 @@ const NavBar: React.FC = () => {
               <IoCloseCircle />
             </button>
           </div>
-
           <ul className="menu-list mobile-menu">
             {navbarMenus.map((item) => (
               <li key={item.id} className="menu-item">
@@ -174,8 +218,6 @@ const NavBar: React.FC = () => {
               </li>
             ))}
           </ul>
-
-          {/* Mobile order now button */}
           <OrderNowBtn variant="mobile" />
         </section>
       )}
@@ -192,11 +234,10 @@ const NavBar: React.FC = () => {
         >
           <IoCloseCircle size={28} />
         </button>
-
         <ShoppingBasketSection />
       </div>
 
-      {/* Overlay */}
+      {/* Basket Overlay */}
       {isBasketOpen && <div className="basket-overlay" onClick={closeBasket} />}
     </div>
   );
