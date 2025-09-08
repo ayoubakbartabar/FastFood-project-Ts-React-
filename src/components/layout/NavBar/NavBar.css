@@ -1,14 +1,18 @@
+/* Navbar background */
 .navbar-bg {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.6);
+    /* slightly darker for contrast */
+    backdrop-filter: blur(8px);
+    /* smooth blur effect */
     color: white;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Navbar container */
 .navbar-section {
     max-width: 1600px;
     margin: 0 auto;
@@ -18,11 +22,19 @@
     align-items: center;
 }
 
+/* Logo */
 .navbar-logo {
     max-width: 180px;
     width: 100%;
+    transition: transform 0.3s ease;
 }
 
+/* Logo hover effect */
+.navbar-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Desktop menu list */
 .menu-list {
     display: flex;
     gap: 3rem;
@@ -31,32 +43,37 @@
     margin: 0;
 }
 
+/* Menu items links */
 .menu-item a {
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-color);
     text-decoration: none;
     position: relative;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out, transform 0.2s ease;
 }
 
+/* Strong hover effect for menu links */
 .menu-item a:hover,
 .menu-item a.active {
     color: var(--highlight);
+    transform: scale(1.05);
 }
 
+/* Right section buttons container */
 .navbar-btn-section {
     display: flex;
     gap: 1rem;
     align-items: center;
 }
 
-/* User icon dropdown */
+/* User menu container */
 .user-menu-container {
     position: relative;
     display: inline-block;
 }
 
+/* User icon button */
 .user-icon-btn {
     background: transparent;
     border: none;
@@ -64,16 +81,25 @@
     color: var(--text-color);
     display: flex;
     align-items: center;
+    font-size: 26px;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
+/* Hover effect for user icon */
+.user-icon-btn:hover {
+    color: var(--highlight);
+    transform: scale(1.1);
+}
+
+/* Dropdown container */
 .user-dropdown {
     position: absolute;
     top: 120%;
     right: 0;
-    width: 140px;
+    width: 160px;
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
@@ -83,44 +109,83 @@
     z-index: 1000;
 }
 
+/* Dropdown open state */
 .user-dropdown.open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
+/* Dropdown items */
 .dropdown-item {
-    padding: 10px 15px;
+    padding: 12px 18px;
     background: none;
     border: none;
     text-align: left;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
     color: var(--color-black);
-}
-
-.dropdown-item:hover {
-    background-color: var(--highlight);
-    color: white;
     border-radius: 6px;
 }
 
-/* Basket & hamburger */
+/* Strong hover for dropdown items */
+.dropdown-item:hover {
+    background-color: var(--highlight);
+    color: white;
+    transform: scale(1);
+}
+
+/* User name link in dropdown */
+.user-name-link {
+    font-weight: 600;
+    color: #1f2937;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for user name link */
+.user-name-link:hover {
+    color: var(--color-white);
+    transform: scale(1);
+}
+
+/* Logout button specific style */
+.logout-btn {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+    transform: scale(1);
+}
+
+/* Shopping basket button */
 .shop-basket-btn {
     background: transparent;
     border: none;
     cursor: pointer;
     color: white;
     position: relative;
+    transition: transform 0.2s ease, color 0.3s ease;
 }
 
+/* Hover effect for basket */
+.shop-basket-btn:hover {
+    color: var(--highlight);
+    transform: scale(1);
+}
+
+/* Basket icon */
 .shop-basket-icon {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     color: var(--text-color);
 }
 
+/* Basket badge */
 .basket-badge {
     position: absolute;
     top: -7px;
@@ -131,13 +196,21 @@
     border-radius: 50%;
 }
 
+/* Hamburger button for mobile */
 .hamburger-btn {
     display: none;
     background: transparent;
     border: none;
     cursor: pointer;
     color: var(--text-color);
-    font-size: 24px;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover for hamburger */
+.hamburger-btn:hover {
+    color: var(--highlight);
+    transform: scale(1);
 }
 
 /* Basket panel */
@@ -149,34 +222,44 @@
     max-width: 90%;
     height: 100vh;
     background: #fff;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+    box-shadow: -2px 0 12px rgba(0, 0, 0, 0.3);
     z-index: 2000;
     display: flex;
     flex-direction: column;
     padding: 20px;
     transition: right 0.3s ease-in-out;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .basket-panel.open {
     right: 0;
 }
 
+/* Close button inside basket */
 .basket-close-btn {
     background: none;
     border: none;
     cursor: pointer;
     align-self: flex-end;
+    font-size: 28px;
+    color: var(--color-black);
+    transition: transform 0.2s ease, color 0.3s ease;
 }
 
+.basket-close-btn:hover {
+    color: var(--highlight);
+    transform: scale(1.1);
+}
+
+/* Basket overlay */
 .basket-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1500;
 }
 
-/* Mobile menu */
+/* Mobile menu section */
 .mobile-menu-section {
     position: fixed;
     top: 0;
@@ -185,7 +268,7 @@
     width: 80%;
     max-width: 320px;
     background-color: var(--color-black);
-    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -194,6 +277,7 @@
     z-index: 2000;
 }
 
+/* Slide-in animation */
 @keyframes slideIn {
     from {
         transform: translateX(100%);
@@ -204,6 +288,7 @@
     }
 }
 
+/* Mobile menu top section */
 .mobile-btn-section {
     display: flex;
     justify-content: space-between;
@@ -211,14 +296,22 @@
     margin-bottom: 2rem;
 }
 
+/* Mobile close button */
 .mobile-close-btn {
     background: transparent;
     border: none;
     font-size: 28px;
     color: var(--color-white);
     cursor: pointer;
+    transition: transform 0.2s ease, color 0.3s ease;
 }
 
+.mobile-close-btn:hover {
+    color: var(--highlight);
+    transform: scale(1.1);
+}
+
+/* Mobile menu items */
 .mobile-menu {
     display: flex;
     flex-direction: column;
@@ -229,16 +322,17 @@
 .mobile-menu .menu-item a {
     font-size: 1rem;
     color: var(--color-white);
-    transition: var(--transition);
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .mobile-menu .menu-item a:hover,
 .mobile-menu .menu-item a.active {
     color: var(--highlight);
     font-weight: var(--font-weight-bold);
+    transform: scale(1.05);
 }
 
-/* Responsive */
+/* Responsive adjustments */
 @media (max-width: 1127px) {
     .desktop-menu {
         display: none;

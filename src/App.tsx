@@ -14,6 +14,7 @@ import MenuPage from "./pages/MenuPage/MenuPage";
 import CheckOutPage from "./pages/CheckOutPage/CheckOutPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignInPage from "./pages/SingInPage/SignInPage";
+import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 
 // Note: CartProvider is removed because we now use Zustand store for global cart state
 // No need for a context provider wrapper
@@ -29,6 +30,7 @@ const App: React.FC = () => {
       <Route path="/menu" element={<MenuPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignInPage />} />
+      <Route path="/userprofile" element={<UserProfilePage />} />
 
       {/* Dynamic / details pages */}
       <Route path="/service/:id" element={<ServiceCardDetails />} />

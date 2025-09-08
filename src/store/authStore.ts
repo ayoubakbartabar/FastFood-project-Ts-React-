@@ -1,24 +1,33 @@
+// Zustand store for authentication management
 import { create } from "zustand";
 import { NewUser, signUp, fetchUsers } from "../types/services/authService";
 
 interface AuthState {
-  currentUser: NewUser | null;
-  register: (user: NewUser) => Promise<void>;
-  login: (email: string, password: string) => Promise<void>;
-  loadUser: () => void;
-  logout: () => void;
+  currentUser: NewUser | null; // Currently logged-in user
+  register: (user: NewUser) => Promise<void>; // Register a new user
+  login: (email: string, password: string) => Promise<void>; // Login existing user
+  loadUser: () => void; // Load user from localStorage
+  logout: () => void; // Logout user
 }
 
 export const useAuthStore = create<AuthState>((set, get) => ({
-  currentUser: null,
+  currentUser: null, // Initial state
 
   // Register a new user
   register: async (user) => {
     try {
+      // Fetch all users to prevent duplicate emails
+      const users = await fetchUsers();
+      const emailExists = users.some((u) => u.email === user.email);
+
+      if (emailExists) {
+        throw new Error("This email is already registered ❌");
+      }
+
       // Call API to create new user
       const savedUser = await signUp(user);
 
-      // Persist in localStorage and store
+      // Persist user in localStorage and Zustand store
       localStorage.setItem("currentUser", JSON.stringify(savedUser));
       set({ currentUser: savedUser });
     } catch (error: any) {
@@ -44,7 +53,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  // Load user from localStorage
+  // Load user from localStorage (persistent login)
   loadUser: () => {
     try {
       const user = localStorage.getItem("currentUser");
@@ -53,7 +62,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         set({ currentUser: parsedUser });
       }
     } catch {
-      // If parsing fails, clear corrupted data
+      // Clear corrupted data
       localStorage.removeItem("currentUser");
       set({ currentUser: null });
     }

@@ -125,6 +125,7 @@ const NavBar: React.FC = () => {
             >
               <FaUserCircle size={26} />
             </button>
+
             <div className={`user-dropdown ${isUserMenuOpen ? "open" : ""}`}>
               {!currentUser ? (
                 <>
@@ -149,11 +150,17 @@ const NavBar: React.FC = () => {
                 </>
               ) : (
                 <>
-                  <span className="dropdown-item" style={{ cursor: "default" }}>
+                  {/* Navigate to user profile on click */}
+                  <NavLink
+                    to="/userprofile"
+                    className="dropdown-item user-name-link"
+                    onClick={() => setIsUserMenuOpen(false)}
+                  >
                     👋 {currentUser.name}
-                  </span>
+                  </NavLink>
+
                   <button
-                    className="dropdown-item"
+                    className="dropdown-item logout-btn"
                     onClick={() => {
                       logout();
                       setIsUserMenuOpen(false);

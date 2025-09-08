@@ -20,7 +20,7 @@ const schema = Yup.object().shape({
   name: Yup.string()
     .trim() // Remove leading/trailing spaces
     .required("Name is required")
-    .matches(/^[A-Za-z0-9 ]+$/, "Only letters and numbers are allowed"), // letters and numbers only
+    .matches(/^[A-Za-z0-9 ]+$/, "Only letters and numbers are allowed"),
   email: Yup.string()
     .trim()
     .email("Invalid email")
@@ -45,6 +45,7 @@ const SignInPage: React.FC = () => {
     loadUser();
   }, [loadUser]);
 
+  // Redirect if user already logged in
   useEffect(() => {
     if (currentUser) navigate("/");
   }, [currentUser, navigate]);
@@ -69,7 +70,8 @@ const SignInPage: React.FC = () => {
       });
       navigate("/");
     } catch (err: any) {
-      alert(err.message || "Failed to register user ❌");
+      // Show error for duplicate email or other registration errors
+      alert(err.message);
     }
   };
 
