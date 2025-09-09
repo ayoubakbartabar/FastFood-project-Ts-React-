@@ -1,0 +1,71 @@
+.profile-tabs {
+    display: flex;
+    gap: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    /* Tailwind border-gray-200 */
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.profile-tabs::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Edge */
+}
+
+.tab-btn {
+    position: relative;
+    padding-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #6b7280;
+    /* gray-500 */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s ease-in-out;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.tab-btn:hover {
+    color: #374151;
+    /* gray-700 */
+}
+
+.tab-btn.active {
+    color: #2563eb;
+    /* blue-600 */
+    font-weight: 600;
+}
+
+.tab-icon {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.tab-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #2563eb;
+    /* blue-600 */
+    border-radius: 2px;
+    animation: slide-in 0.3s ease-in-out;
+}
+
+@keyframes slide-in {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
