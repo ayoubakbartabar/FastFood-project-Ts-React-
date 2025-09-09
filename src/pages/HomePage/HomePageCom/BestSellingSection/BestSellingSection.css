@@ -122,9 +122,10 @@
     transition: transform 0.5s ease-out;
 }
 
-.product-title {
-    font-size: 1.2rem;
-    font-weight: 600;
+.best-selling-product-title {
+    font-size: 19px;
+    font-weight: bold;
+    margin: 10px 0;
     color: var(--heading);
 }
 

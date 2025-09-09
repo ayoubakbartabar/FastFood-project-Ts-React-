@@ -106,7 +106,7 @@ const BestSellingSection: FC = () => {
                 </div>
 
                 <h3
-                  className="product-title"
+                  className="best-selling-product-title"
                   style={{ cursor: "pointer" }}
                   onClick={() => goToProductPage(item)}
                 >
