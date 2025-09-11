@@ -1,28 +1,5 @@
 {
   "users": [
-    {
-      "id": "cc56",
-      "name": "ayoub",
-      "email": "ayoub@gmail.com",
-      "password": "123456a"
-    },
-    {
-      "id": "7f73",
-      "name": "Yeganeh",
-      "email": "Yeganeh@gmil.com",
-      "password": "123456y"
-    },
-    {
-      "id": "7ea7",
-      "name": "Ayoub",
-      "email": "Ayoub@gmil.com",
-      "password": "123456a"
-    },
-    {
-      "id": "5518",
-      "name": "F",
-      "email": "F@gmil.com",
-      "password": "123456f"
-    }
+   
   ]
 }

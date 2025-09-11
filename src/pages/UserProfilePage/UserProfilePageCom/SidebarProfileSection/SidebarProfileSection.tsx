@@ -7,12 +7,12 @@ const SidebarProfileSection: React.FC = () => {
   // Get currentUser and loadUser from Zustand store
   const { currentUser, loadUser } = useAuthStore();
 
-  // Load user on component mount
+  // Load user data on mount
   useEffect(() => {
     loadUser();
   }, [loadUser]);
 
-  // Static/default values for avatar, role and stats
+  // Default role and static stats
   const defaultRole = "Member";
   const defaultStats = {
     applied: 32,
@@ -34,32 +34,26 @@ const SidebarProfileSection: React.FC = () => {
       <h2 className="user-name">{currentUser?.name || "Guest User"}</h2>
       <p className="user-role">{defaultRole}</p>
 
-      {/* Stats */}
+      {/* Stats Section */}
       <div className="stats">
         <div className="stat-item">
           <span>Opportunities applied</span>
-          <span className="profile-stat-number">
-            {defaultStats.applied}
-          </span>
+          <span className="profile-stat-number">{defaultStats.applied}</span>
         </div>
         <div className="stat-item">
           <span>Opportunities won</span>
-          <span className="profile-stat-number">
-            {defaultStats.won}
-          </span>
+          <span className="profile-stat-number">{defaultStats.won}</span>
         </div>
         <div className="stat-item">
           <span>Current opportunities</span>
-          <span className="profile-stat-number">
-            {defaultStats.current}
-          </span>
+          <span className="profile-stat-number">{defaultStats.current}</span>
         </div>
       </div>
 
-      {/* Buttons */}
+      {/* Button: Navigate to Public Profile */}
       <button className="btn-public-profile">View Public Profile</button>
 
-      {/* Public profile link */}
+      {/* Public Profile Link */}
       <div className="profile-link">
         <FaLink className="link-icon" />
         <span>https://domain.com/user</span>

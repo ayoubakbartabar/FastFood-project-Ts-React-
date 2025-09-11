@@ -6,7 +6,6 @@ import {
   updateUser,
 } from "../types/services/authService";
 
-// -------------------------------
 // Auth state interface
 interface AuthState {
   currentUser: NewUser | null; // Currently logged-in user
@@ -17,10 +16,9 @@ interface AuthState {
   updateProfile: (data: Partial<NewUser>) => Promise<void>; // Update logged-in user's profile
 }
 
-// -------------------------------
 // Zustand auth store
 export const useAuthStore = create<AuthState>((set, get) => ({
-  currentUser: null, // Initial state
+  currentUser: null, // initial state
 
   // Register a new user
   register: async (user) => {
@@ -72,11 +70,12 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   // Update profile of logged-in user
-  updateProfile: async (data: Partial<NewUser>) => {
+  updateProfile: async (data) => {
     const { currentUser } = get();
     if (!currentUser) throw new Error("No user logged in");
 
     try {
+      // Update user via API
       const updatedUser = await updateUser(currentUser.id!, data);
       localStorage.setItem("currentUser", JSON.stringify(updatedUser));
       set({ currentUser: updatedUser });

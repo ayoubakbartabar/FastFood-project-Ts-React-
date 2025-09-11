@@ -1,5 +1,4 @@
-// -------------------------------
-// User model
+// User model interface
 export interface NewUser {
   id?: number;
   name: string;
@@ -7,7 +6,6 @@ export interface NewUser {
   password: string;
 }
 
-// -------------------------------
 // Create a new user (Sign Up)
 export const signUp = async (newUser: NewUser): Promise<NewUser> => {
   try {
@@ -27,7 +25,6 @@ export const signUp = async (newUser: NewUser): Promise<NewUser> => {
   }
 };
 
-// -------------------------------
 // Fetch all users
 export const fetchUsers = async (): Promise<NewUser[]> => {
   try {
@@ -43,7 +40,6 @@ export const fetchUsers = async (): Promise<NewUser[]> => {
   }
 };
 
-// -------------------------------
 // Update an existing user
 export const updateUser = async (
   id: number | string,
@@ -57,7 +53,6 @@ export const updateUser = async (
     });
 
     if (!res.ok) throw new Error(`Update failed: ${res.statusText}`);
-
     return res.json();
   } catch (error: any) {
     throw new Error(error.message || "Unknown error while updating user");

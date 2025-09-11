@@ -16,8 +16,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignInPage from "./pages/SingInPage/SignInPage";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 
-// Note: CartProvider is removed because we now use Zustand store for global cart state
-// No need for a context provider wrapper
+
 
 const App: React.FC = () => {
   return (
