@@ -3,22 +3,26 @@ import { FaUser, FaCamera, FaLink } from "react-icons/fa";
 import { useAuthStore } from "../../../../store/authStore";
 import "./SidebarProfileSection.css";
 
+// Move constants outside to avoid re-creation on each render
+const DEFAULT_ROLE = "Member";
+const DEFAULT_STATS = {
+  applied: 32,
+  won: 26,
+  current: 6,
+};
+
 const SidebarProfileSection: React.FC = () => {
-  // Get currentUser and loadUser from Zustand store
+  // Extract only needed values from store (prevents unnecessary re-renders if store grows)
   const { currentUser, loadUser } = useAuthStore();
 
-  // Load user data on mount
+  // Load user once when component mounts
   useEffect(() => {
     loadUser();
   }, [loadUser]);
 
-  // Default role and static stats
-  const defaultRole = "Member";
-  const defaultStats = {
-    applied: 32,
-    won: 26,
-    current: 6,
-  };
+  // Fallback values
+  const userName = currentUser?.name || "Guest User";
+  const profileLink = currentUser?.profileUrl || "https://domain.com/user";
 
   return (
     <aside className="sidebar-card">
@@ -31,22 +35,22 @@ const SidebarProfileSection: React.FC = () => {
       </div>
 
       {/* User Info */}
-      <h2 className="user-name">{currentUser?.name || "Guest User"}</h2>
-      <p className="user-role">{defaultRole}</p>
+      <h2 className="user-name">{userName}</h2>
+      <p className="user-role">{currentUser?.role || DEFAULT_ROLE}</p>
 
       {/* Stats Section */}
       <div className="stats">
         <div className="stat-item">
           <span>Opportunities applied</span>
-          <span className="profile-stat-number">{defaultStats.applied}</span>
+          <span className="profile-stat-number">{DEFAULT_STATS.applied}</span>
         </div>
         <div className="stat-item">
           <span>Opportunities won</span>
-          <span className="profile-stat-number">{defaultStats.won}</span>
+          <span className="profile-stat-number">{DEFAULT_STATS.won}</span>
         </div>
         <div className="stat-item">
           <span>Current opportunities</span>
-          <span className="profile-stat-number">{defaultStats.current}</span>
+          <span className="profile-stat-number">{DEFAULT_STATS.current}</span>
         </div>
       </div>
 
@@ -56,7 +60,9 @@ const SidebarProfileSection: React.FC = () => {
       {/* Public Profile Link */}
       <div className="profile-link">
         <FaLink className="link-icon" />
-        <span>https://domain.com/user</span>
+        <a href={profileLink} target="_blank" rel="noopener noreferrer">
+          {profileLink}
+        </a>
       </div>
     </aside>
   );
