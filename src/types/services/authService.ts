@@ -1,60 +1,44 @@
-// User model interface
 export interface NewUser {
-  id?: number;
+  id?: number | string;
   name: string;
   email: string;
   password: string;
+  role?: string;
+  avatar?: string;
+  profileUrl?: string;
 }
 
-// Create a new user (Sign Up)
-export const signUp = async (newUser: NewUser): Promise<NewUser> => {
-  try {
-    const res = await fetch("http://localhost:5000/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newUser),
-    });
-
-    if (!res.ok) {
-      throw new Error(`Sign up failed: ${res.statusText}`);
-    }
-
-    return res.json();
-  } catch (error: any) {
-    throw new Error(error.message || "Unknown error during sign up");
+// A small helper to reduce repetition
+const apiRequest = async <T>(
+  url: string,
+  options?: RequestInit
+): Promise<T> => {
+  const res = await fetch(url, options);
+  if (!res.ok) {
+    throw new Error(`Request failed: ${res.status} ${res.statusText}`);
   }
+  return res.json() as Promise<T>;
 };
+
+// Create a new user (Sign Up)
+export const signUp = (newUser: NewUser): Promise<NewUser> =>
+  apiRequest<NewUser>("http://localhost:5000/users", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newUser),
+  });
 
 // Fetch all users
-export const fetchUsers = async (): Promise<NewUser[]> => {
-  try {
-    const res = await fetch("http://localhost:5000/users");
-
-    if (!res.ok) {
-      throw new Error(`Fetch users failed: ${res.statusText}`);
-    }
-
-    return res.json();
-  } catch (error: any) {
-    throw new Error(error.message || "Unknown error while fetching users");
-  }
-};
+export const fetchUsers = (): Promise<NewUser[]> =>
+  apiRequest<NewUser[]>("http://localhost:5000/users");
 
 // Update an existing user
-export const updateUser = async (
+export const updateUser = (
   id: number | string,
   data: Partial<NewUser>
-): Promise<NewUser> => {
-  try {
-    const res = await fetch(`http://localhost:5000/users/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    if (!res.ok) throw new Error(`Update failed: ${res.statusText}`);
-    return res.json();
-  } catch (error: any) {
-    throw new Error(error.message || "Unknown error while updating user");
-  }
-};
+): Promise<NewUser> =>
+  apiRequest<NewUser>(`http://localhost:5000/users/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
