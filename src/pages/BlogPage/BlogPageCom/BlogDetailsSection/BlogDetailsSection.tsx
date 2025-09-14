@@ -1,41 +1,55 @@
-import React, { useRef } from "react";
-import type { FC } from "react";
-import { useLocation } from "react-router-dom";
+import React, { FC, useMemo, useRef } from "react";
+import { useParams, useLocation } from "react-router-dom";
 
+// Components
 import NavBar from "../../../../components/layout/NavBar/NavBar";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
+import BlogAsideSection from "../BlogAsideSection/BlogAsideSection";
 import SocialSection from "../../../../components/layout/SocialSection/SocialSection";
 import Footer from "../../../../components/layout/Footer/Footer";
-import BlogAsideSection from "../BlogAsideSection/BlogAsideSection";
 
+// Icons
 import { FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
 
-import blogSectionImg from "../../../../assets/images/661cabff491ead7e40ea57ec_image.png";
+// Images & hooks
+import blogSectionImg from "/images/661cabff491ead7e40ea57ec_image.png";
+import { useBlogData } from "../../../../core/hooks/useBlogData/useBlogData";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
-import type { BlogDataProps } from "../../../../data/BlogData";
 
+// Types
+import type {
+  BlogContent,
+  BlogDataProps,
+} from "../../../../types/models/BlogTypes";
+
+// Styles
 import "./BlogDetailsSection.css";
 
 const BlogDetailsSection: FC = () => {
-  // Access the post data passed via navigation state
-  const location = useLocation();
-  const post = location.state?.post as BlogDataProps | undefined;
-
-  // Ref for main content to trigger scroll animations
+  const { id } = useParams<{ id: string }>(); // Get post ID from route
+  const { blogs, loading } = useBlogData(); // Fetch all blogs
   const contentRef = useRef<HTMLDivElement | null>(null);
 
-  // Initialize intersection animation for elements with class "reveal-item"
-  useIntersectionAnimation(".reveal-item");
+  // Access navigation state if coming from PopularPostSection
+  const location = useLocation();
+  const statePost = location.state?.post as BlogDataProps | undefined;
 
-  // If post data is missing, show fallback
-  if (!post) return <p>Post not found</p>;
+  // Determine which post to display
+  const post: BlogDataProps | undefined = useMemo(() => {
+    if (statePost) return statePost; // Use passed state if available
+    return blogs.find((b) => b.id.toString() === id); // Fallback: find from blogs array
+  }, [blogs, id, statePost]);
+
+  // Initialize intersection animation for reveal elements
+  useIntersectionAnimation(".reveal-item", { threshold: 0.2 });
+
+  // Handle loading / not found states
+  if (loading && !statePost) return <p>Loading...</p>;
+  if (!post) return <p>Post not found.</p>;
 
   return (
     <section className="blog-section">
-      {/* Navbar */}
       <NavBar />
-
-      {/* Page Header */}
       <PageHeader title={post.title} />
 
       <div className="blog-main-wrapper">
@@ -44,20 +58,17 @@ const BlogDetailsSection: FC = () => {
           <BlogAsideSection />
         </aside>
 
-        {/* Blog Main Content */}
+        {/* Main content */}
         <div className="blog-section-content" ref={contentRef}>
-          {/* Main featured image */}
           <img
             src={post.image}
             alt={post.title}
             className="blog-main-image reveal-item"
           />
-
-          {/* Blog Title */}
           <h2 className="blog-section-title reveal-item">{post.title}</h2>
 
-          {/* Blog Content Blocks */}
-          {post.content.map((block, index) => {
+          {/* Render dynamic content */}
+          {post.content.map((block: BlogContent, index: number) => {
             switch (block.type) {
               case "paragraph":
                 return (
@@ -85,13 +96,12 @@ const BlogDetailsSection: FC = () => {
             }
           })}
 
-          {/* Footer: Tags & Social Links */}
+          {/* Footer with tags and social links */}
           <div className="blog-section-content-footer reveal-item">
-            {/* Tags */}
             <div className="blog-section-content-tags">
               <h3>Tags:</h3>
               <div className="blog-tags-wrapper">
-                {post.tags.map((tag, i) => (
+                {post.tags.map((tag: string, i: number) => (
                   <span key={i} className="blog-tag-item">
                     {tag}
                     {i < post.tags.length - 1 && ","}
@@ -100,7 +110,6 @@ const BlogDetailsSection: FC = () => {
               </div>
             </div>
 
-            {/* Social Share Buttons */}
             <div
               className="blog-section-content-social"
               aria-label="Social media links"
@@ -120,7 +129,6 @@ const BlogDetailsSection: FC = () => {
         </div>
       </div>
 
-      {/* Global Social Section & Footer */}
       <SocialSection />
       <Footer />
     </section>

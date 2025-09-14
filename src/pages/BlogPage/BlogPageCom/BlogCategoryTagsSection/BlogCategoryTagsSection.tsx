@@ -12,14 +12,13 @@ import { MdOutlineArrowRightAlt } from "react-icons/md";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 import useDynamicNavigate from "../../../../core/hooks/useNavigateTo/useNavigateTo";
 
-import BlogData from "../../../../data/BlogData";
-import type { BlogDataProps } from "../../../../data/BlogData";
+import { useBlogData } from "../../../../core/hooks/useBlogData/useBlogData";
+import type { BlogDataProps } from "../../../../types/models/BlogTypes";
 
 export default function BlogCategoryTagsSection(): React.JSX.Element {
-  // Reference to section for intersection animation
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  // URL params and location state
+  // Get URL params and location state
   const location = useLocation();
   const { type, value } = useParams<{ type?: string; value?: string }>();
   const locationState = location.state as
@@ -30,48 +29,48 @@ export default function BlogCategoryTagsSection(): React.JSX.Element {
   const category =
     locationState?.category || (type === "category" ? value : undefined);
   const tag = locationState?.tag || (type === "tags" ? value : undefined);
-
   const pageType = category ? "category" : tag ? "tag" : null;
 
-  // If neither category nor tag is provided, show fallback
   if (!pageType) return <p>No category or tag provided.</p>;
 
-  // Memoized filtered posts to avoid recalculation on every render
-  const filteredPosts = useMemo(() => {
-    if (pageType === "category") {
-      return BlogData.filter((post) => post.categories.trim() === category);
-    } else {
-      return BlogData.filter((post) =>
-        post.tags.some((t) => t.trim() === tag)
-      );
-    }
-  }, [category, tag, pageType]);
+  // Fetch blog data using custom hook
+  const { blogs, loading } = useBlogData();
 
-  // Initialize intersection animation for all blog cards
+  // Filter blogs based on category or tag
+  const filteredPosts = useMemo(() => {
+    if (!blogs?.length) return [];
+    return pageType === "category"
+      ? blogs.filter((post) => post.categories.trim() === category)
+      : blogs.filter((post) => post.tags.some((t) => t.trim() === tag));
+  }, [blogs, category, tag, pageType]);
+
+  // Initialize intersection animation for blog cards
   useIntersectionAnimation(".blog-categories-card");
 
-  // Custom navigation hook to navigate to single blog page
+  // Navigation to single blog page
   const { navigateTo } = useDynamicNavigate();
   const handleReadMore = (post: BlogDataProps) => {
     navigateTo(`/blog/${post.id}`, { post });
   };
 
+  if (loading) return <p>Loading blogs...</p>;
+
   return (
     <>
-      {/* Navigation Bar */}
+      {/* Navigation bar */}
       <NavBar />
 
-      {/* Page Header */}
+      {/* Page header */}
       <PageHeader
         title={
           pageType === "category" ? `Category: ${category}` : `Tag: ${tag}`
         }
       />
 
-      {/* Blog Cards Section */}
+      {/* Blog cards section */}
       <div className="blog-categories-bg">
         <section className="blog-categories-section" ref={sectionRef}>
-          {filteredPosts.length > 0 ? (
+          {filteredPosts.length ? (
             filteredPosts.map((post) => {
               const firstParagraph = post.content.find(
                 (item) => item.type === "paragraph"
@@ -98,7 +97,7 @@ export default function BlogCategoryTagsSection(): React.JSX.Element {
                       </p>
                     )}
 
-                    {/* Read More Button */}
+                    {/* Read more button */}
                     <button
                       className="blog-categories-read-more"
                       onClick={() => handleReadMore(post)}
@@ -119,7 +118,7 @@ export default function BlogCategoryTagsSection(): React.JSX.Element {
         </section>
       </div>
 
-      {/* Social Links and Footer */}
+      {/* Social links and footer */}
       <SocialSection />
       <Footer />
     </>

@@ -10,7 +10,7 @@ import "./NavBar.css";
 
 import OrderNowBtn from "../OrderNowBtn/OrderNowBtn";
 import useClickOutside from "../../../core/hooks/useClickOutSide/useClickOutSide";
-import logo from "../../../assets/images/661caca505c900f7a61a73ce_logo (1).png";
+import logo from "/images/661caca505c900f7a61a73ce_logo (1).png";
 
 import ShoppingBasketSection from "../ShoppingBasketSection/ShoppingBasketSection";
 import { LuShoppingBasket } from "react-icons/lu";

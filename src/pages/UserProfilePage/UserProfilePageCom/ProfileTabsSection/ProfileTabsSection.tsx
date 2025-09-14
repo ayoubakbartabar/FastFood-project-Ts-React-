@@ -10,7 +10,7 @@ interface Props {
 const ProfileTabsSection: React.FC<Props> = ({ activeTab, setActiveTab }) => {
   const tabs = [
     { key: "account", label: "Account Settings", icon: <FaUserCog /> },
-    { key: "shopping basket", label: "shopping basket", icon: <FaShoppingBasket /> },
+    { key: "Orders", label: "Orders", icon: <FaShoppingBasket /> },
     { key: "notifications", label: "Notifications", icon: <FaBell /> },
   ];
 

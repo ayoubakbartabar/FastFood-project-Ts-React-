@@ -2,9 +2,10 @@ import React, { useState, useMemo } from "react";
 import SidebarProfileSection from "./UserProfilePageCom/SidebarProfileSection/SidebarProfileSection";
 import ProfileTabsSection from "./UserProfilePageCom/ProfileTabsSection/ProfileTabsSection";
 import AccountFormSection from "./UserProfilePageCom/AccountFormSection/AccountFormSection";
-import ShoppingBasketSection from "../../components/layout/ShoppingBasketSection/ShoppingBasketSection";
+
 import "./UserProfilePage.css";
 import PageHeader from "../../components/layout/PageHeader/PageHeader";
+import OrderSection from "../../components/layout/OrderSection/OrderSection";
 
 const UserProfilePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState("account");
@@ -14,11 +15,11 @@ const UserProfilePage: React.FC = () => {
     switch (activeTab) {
       case "account":
         return <AccountFormSection />;
-      case "shopping basket":
-        return <ShoppingBasketSection />;
+      case "Orders":
+        return <OrderSection/>;
       case "notifications":
         return (
-          <p className="text-gray-500">Notifications Settings Content...</p>
+          <p>Notifications Settings Content...</p>
         );
       default:
         return null;

@@ -1,51 +1,39 @@
-import React, { useRef } from "react";
-import type { FC } from "react";
-
-import "./BlogsContentSection.css";
-
-// Blog data import
-import BlogData from "../../../../data/BlogData";
-
-// Icons
+import React, { useRef, FC } from "react";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 
-// Custom hooks
+import "./BlogsContentSection.css";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 import useDynamicNavigate from "../../../../core/hooks/useNavigateTo/useNavigateTo";
+import { useBlogData } from "../../../../core/hooks/useBlogData/useBlogData";
+import type { BlogDataProps } from "../../../../types/models/BlogTypes";
 
 const BlogsContentSection: FC = () => {
-  // Reference to the section for intersection animation
   const sectionRef = useRef<HTMLElement | null>(null);
-
-  // Apply scroll/fade animation to all blog cards inside this section
+  const { blogs, loading } = useBlogData();
   useIntersectionAnimation(".blog-content-card");
 
-  // Custom navigation hook for dynamic routing
   const { navigateTo } = useDynamicNavigate();
 
-  // Navigate to single blog page
-  const handleReadMore = (post: typeof BlogData[number]) => {
-    navigateTo(`/blog/${post.id}`, { post });
+  const handleReadMore = (post: BlogDataProps) => {
+    navigateTo(`/blog/${post.id}`, { post });2
   };
+
+  if (loading) return <p>Loading blogs...</p>;
+  if (!blogs.length) return <p>No blogs found.</p>;
 
   return (
     <section className="blog-content-section" ref={sectionRef}>
       <div className="blog-content-grid">
-        {BlogData.map((post) => (
+        {blogs.map((post) => (
           <article className="blog-content-card" key={post.id}>
-            {/* Blog featured image */}
             <img
               src={post.image}
               alt={post.title}
               className="blog-content-image"
             />
-
-            {/* Blog content */}
             <div className="blog-content-content">
               <span className="blog-content-category">{post.categories}</span>
               <h3 className="blog-content-title">{post.title}</h3>
-
-              {/* Read more button with icon */}
               <button
                 className="read-more"
                 onClick={() => handleReadMore(post)}

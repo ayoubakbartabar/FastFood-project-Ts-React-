@@ -1,9 +1,9 @@
 // data/HomeHeaderSectionData.ts
-import slide1 from "../assets/images/661cbfbcac04478f46ca34b9_78178740_Fresh beef burger isolated -1 2.png";
-import slide2 from "../assets/images/66210f2fc3b3464a6a180ca7_wepik-export-202404181214557fEP-p-2000.png";
-import slide3 from "../assets/images/66210df4c3b3464a6a16c59c_image.png";
-import slide4 from "../assets/images/66210efa8e4b4099fd114212_pasta image.png";
-import slide5 from "../assets/images/66210efa802edd9170475c57_image (1).png";
+import slide1 from "/images/661cbfbcac04478f46ca34b9_78178740_Fresh beef burger isolated -1 2.png";
+import slide2 from "/images/66210f2fc3b3464a6a180ca7_wepik-export-202404181214557fEP-p-2000.png";
+import slide3 from "/images/66210df4c3b3464a6a16c59c_image.png";
+import slide4 from "/images/66210efa8e4b4099fd114212_pasta image.png";
+import slide5 from "/images/66210efa802edd9170475c57_image (1).png";
 
 // TypeScript interface for each slide
 export interface Slide {

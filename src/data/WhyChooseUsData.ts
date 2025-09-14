@@ -1,11 +1,11 @@
-import FlavorIcon from "../assets/images/661cceffefc1a1ed7ffd276a_Flavor icon.png";
-import FoodSafetyIcon from "../assets/images/661cceff9911086b9044d821_food-safety icon.png";
-import FreshFoodIcon from "../assets/images/661cceffce5a04ced087edb6_fresh food icon.png";
-import FoodIcon from "../assets/images/661cceffce5a04ced087edb1_food icon.png";
-import HappyClientIcon from "../assets/images/661cceff4907e55afedda051_happy-client 1.png";
-import TableIcon from "../assets/images/661cceff2d1e145399faea3a_table 1.png";
-import OnlineShoppingIcon from "../assets/images/661cceffeebef79d631b7758_online-shopping 1.png";
-import NetworkIcon from "../assets/images/661cceffec7af83cd0a6f61d_network 1.png";
+import FlavorIcon from "/images/661cceffefc1a1ed7ffd276a_Flavor icon.png";
+import FoodSafetyIcon from "/images/661cceff9911086b9044d821_food-safety icon.png";
+import FreshFoodIcon from "/images/661cceffce5a04ced087edb6_fresh food icon.png";
+import FoodIcon from "/images/661cceffce5a04ced087edb1_food icon.png";
+import HappyClientIcon from "/images/661cceff4907e55afedda051_happy-client 1.png";
+import TableIcon from "/images/661cceff2d1e145399faea3a_table 1.png";
+import OnlineShoppingIcon from "/images/661cceffeebef79d631b7758_online-shopping 1.png";
+import NetworkIcon from "/images/661cceffec7af83cd0a6f61d_network 1.png";
 
 export type WhyChooseUsItem = {
   id: number;

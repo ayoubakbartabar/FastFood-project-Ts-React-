@@ -1,13 +1,13 @@
-import type { Product } from "../core/context/CartContext/CartContext.type";
+import type { Product } from "../store/cartStore";
 
-import Img1 from "../assets/images/66210efa8e4b4099fd114212_pasta image.png";
-import Img2 from "../assets/images/661cbfbcac04478f46ca34b9_78178740_Fresh beef burger isolated -1 2.png";
-import Img3 from "../assets/images/661cc038dcc14c75443911c3_image.png";
-import Img4 from "../assets/images/661cc01f38e41da22474a52a_fast_food_set 1.png";
-import Img5 from "../assets/images/661cc047c3a82b8be8890aa0_wepik-export-20240119111930TbUs 1.png";
-import Img6 from "../assets/images/661cc009926e82c8f0e27899_Tasty mint julep cocktail 1.png";
-import Img7 from "../assets/images/66210df4c3b3464a6a16c59c_image.png";
-import Img8 from "../assets/images/661cbf8e0563fed591d090fd_image-2.png";
+import Img1 from "/images/66210efa8e4b4099fd114212_pasta image.png";
+import Img2 from "/images/661cbfbcac04478f46ca34b9_78178740_Fresh beef burger isolated -1 2.png";
+import Img3 from "/images/661cc038dcc14c75443911c3_image.png";
+import Img4 from "/images/661cc01f38e41da22474a52a_fast_food_set 1.png";
+import Img5 from "/images/661cc047c3a82b8be8890aa0_wepik-export-20240119111930TbUs 1.png";
+import Img6 from "/images/661cc009926e82c8f0e27899_Tasty mint julep cocktail 1.png";
+import Img7 from "/images/66210df4c3b3464a6a16c59c_image.png";
+import Img8 from "/images/661cbf8e0563fed591d090fd_image-2.png";
 
 const ProductsData: Product[] = [
   {

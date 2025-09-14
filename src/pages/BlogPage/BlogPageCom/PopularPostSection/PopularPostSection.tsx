@@ -1,35 +1,37 @@
-import React, { useRef } from "react";
-import type { FC } from "react";
-
+import React, { FC, useRef } from "react";
 import { IoSearch } from "react-icons/io5";
-
-import "./PopularPostSection.css";
 
 // Custom hooks
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 import useDynamicNavigate from "../../../../core/hooks/useNavigateTo/useNavigateTo";
+import { useBlogData } from "../../../../core/hooks/useBlogData/useBlogData";
 
-// Blog data
-import BlogData from "../../../../data/BlogData";
-import type { BlogDataProps } from "../../../../data/BlogData";
+// Styles
+import "./PopularPostSection.css";
 
 const PopularPostSection: FC = () => {
-  // Reference to aside section for intersection animation
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  // Trigger scroll/fade animation for each popular post item
+  // Fetch blogs
+  const { blogs, loading } = useBlogData();
+
+  // Animate list items when visible
   useIntersectionAnimation(".popular-post-item");
 
-  // Custom navigation hook
+  // Dynamic navigation
   const { navigateTo } = useDynamicNavigate();
 
-  // Navigate to blog detail page on click
-  const handleReadMore = (post: BlogDataProps) => {
-    navigateTo(`/blog/${post.id}`, { post });
+  // Navigate to BlogDetailsSection with state
+  const handleReadMore = (postId: number) => {
+    const post = blogs.find((b) => b.id === postId);
+    if (post) {
+      // Pass blog data via state to avoid refetch
+      navigateTo(`/blog/${postId}`, { state: { post } });
+    }
   };
 
-  // Limit to first 5 posts for popular section
-  const posts = BlogData.slice(0, 5);
+  // Show top 5 posts
+  const popularPosts = blogs.slice(0, 5);
 
   return (
     <aside className="blog-aside" ref={sectionRef}>
@@ -46,22 +48,28 @@ const PopularPostSection: FC = () => {
         <h3 className="popular-posts-title">Popular Posts</h3>
         <div className="underline"></div>
 
-        <ul className="popular-posts-list">
-          {posts.map((post) => (
-            <li
-              key={post.id}
-              className="popular-post-item"
-              onClick={() => handleReadMore(post)}
-            >
-              <img
-                src={post.image}
-                alt={post.title}
-                className="popular-post-image"
-              />
-              <span className="popular-post-title">{post.title}</span>
-            </li>
-          ))}
-        </ul>
+        {loading ? (
+          <p>Loading...</p>
+        ) : popularPosts.length ? (
+          <ul className="popular-posts-list">
+            {popularPosts.map((post) => (
+              <li
+                key={post.id}
+                className="popular-post-item"
+                onClick={() => handleReadMore(post.id)}
+              >
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="popular-post-image"
+                />
+                <span className="popular-post-title">{post.title}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No posts found.</p>
+        )}
       </div>
     </aside>
   );

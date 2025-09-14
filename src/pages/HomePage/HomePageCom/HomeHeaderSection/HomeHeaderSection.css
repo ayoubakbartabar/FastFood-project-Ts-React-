@@ -1,6 +1,6 @@
 .home-header-bg {
     background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
-        url("src/assets/images/661caddb2719d5ff96cc1ab4_bg.png") no-repeat center center fixed;
+        url("/images/661caddb2719d5ff96cc1ab4_bg.png") no-repeat center center fixed;
     background-size: cover;
     position: relative;
     padding-top: 120px;

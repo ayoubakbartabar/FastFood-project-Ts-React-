@@ -4,9 +4,9 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 
 // Import images directly
-import BgShape from "../../../../assets/images/661e02d69d8c67c1854e7950_Rectangle 52.png";
-import HappyMan from "../../../../assets/images/661e02d6b08a6673bc5127ad_Rectangle 50-p-500.png";
-import HappyWoman from "../../../../assets/images/661e02d62401c65334b8f23c_Rectangle 51-p-500.png";
+import BgShape from "/images/661e02d69d8c67c1854e7950_Rectangle 52.png";
+import HappyMan from "/images/661e02d6b08a6673bc5127ad_Rectangle 50-p-500.png";
+import HappyWoman from "/images/661e02d62401c65334b8f23c_Rectangle 51-p-500.png";
 
 const BrandIntroSection: React.FC = () => {
   // Trigger scroll animation on all elements with class 'scroll-fade'

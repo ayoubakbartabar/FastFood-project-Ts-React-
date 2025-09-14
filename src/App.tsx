@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-// Import all pages
 import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ShopPage from "./pages/ShopPage/ShopPage";
@@ -16,25 +15,24 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignInPage from "./pages/SingInPage/SignInPage";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 
-
-
 const App: React.FC = () => {
   return (
     <Routes>
-      {/* Main pages */}
+      {/* Main static pages */}
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/shop" element={<ShopPage />} />
+      <Route path="/blogs" element={<BlogPage />} />
       <Route path="/service" element={<ServicesPage />} />
       <Route path="/menu" element={<MenuPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignInPage />} />
       <Route path="/userprofile" element={<UserProfilePage />} />
 
-      {/* Dynamic / details pages */}
+      {/* Dynamic pages / details */}
+      <Route path="/blog/:id" element={<BlogDetailsSection />} />
       <Route path="/service/:id" element={<ServiceCardDetails />} />
       <Route path="/blogs" element={<BlogPage />} />
-      <Route path="/blog/:id" element={<BlogDetailsSection />} />
       <Route path="/blog/:type/:value" element={<BlogCategoryTagsSection />} />
       <Route path="/product/:id" element={<CheckOutPage />} />
     </Routes>

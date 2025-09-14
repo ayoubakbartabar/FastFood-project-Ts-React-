@@ -2,7 +2,7 @@ import React from "react";
 import RequestReservationForm from "./RequestReservationForm";
 import "./RequestReservationSection.css";
 
-import ReservationImage from "../../../../assets/images/661ccbf8ce5a04ced085a82f_image.png";
+import ReservationImage from "/images/661ccbf8ce5a04ced085a82f_image.png";
 
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 

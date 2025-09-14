@@ -1,7 +1,7 @@
 import React from "react";
 import "./PageHeader.css"; // Component-specific styles
 import { FaLongArrowAltRight } from "react-icons/fa";
-import headerBg from "../../../assets/images/661caddb2719d5ff96cc1ab4_bg.png";
+import headerBg from "/images/661caddb2719d5ff96cc1ab4_bg.png";
 
 // Props for PageHeader component
 interface PageHeaderProps {

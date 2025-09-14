@@ -8,7 +8,7 @@ import type { FAQDataProps } from "../../../../data/FAQData";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 
 // Import images for professional bundler handling
-import FAQBg from "../../../../assets/images/661e0da93587e5adbe8d8031_bg (1).png";
+import FAQBg from "/images/661e0da93587e5adbe8d8031_bg (1).png";
 import MessagingIcon from "../../../../assets/svg/661e0d75b08a6673bc59fb4a_messaging 1.svg";
 
 import "./FAQSection.css";

@@ -3,9 +3,9 @@ import "./FeedbackSupportSection.css";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 
 // Import images
-import FeedbackImg1 from "../../../../assets/images/6620ae10f9fb43094b9427e9_image 1-p-500.png";
-import FeedbackImg2 from "../../../../assets/images/6620ae1075f767e21dad441e_image 2-p-500.png";
-import FeedbackImg3 from "../../../../assets/images/6620ae10531cab63f6d441d6_image 3-p-500.png";
+import FeedbackImg1 from "/images/6620ae10f9fb43094b9427e9_image 1-p-500.png";
+import FeedbackImg2 from "/images/6620ae1075f767e21dad441e_image 2-p-500.png";
+import FeedbackImg3 from "/images/6620ae10531cab63f6d441d6_image 3-p-500.png";
 
 const FeedbackSupportSection: React.FC = (): React.JSX.Element => {
   const sectionRef = useRef<HTMLDivElement | null>(null); // Reference to the container
