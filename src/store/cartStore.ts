@@ -1,4 +1,3 @@
-// store/cartStore.ts
 import { create } from "zustand";
 import { useAuthStore } from "./authStore";
 

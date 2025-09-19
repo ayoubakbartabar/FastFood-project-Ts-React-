@@ -30,17 +30,15 @@
 }
 
 .circle-bg {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background: var(--tertiary);
+    width: 380px;
+    height: 380px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .signin-icon {
-    width: 120px;
+    width: 100%;
     opacity: 0.9;
 }
 

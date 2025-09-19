@@ -1,11 +1,10 @@
 import React, { useRef, useMemo } from "react";
 import "./ShopAsideSection.css";
-import ProductsData from "../../../../data/ProductsData";
 import type { Product } from "../../../../store/cartStore";
 import { FaSearch } from "react-icons/fa";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
+import { useProductData } from "../../../../core/hooks/useProductData/useProductData"
 
-// Props type for ShopAsideSection
 interface ShopAsideSectionProps {
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
@@ -20,23 +19,25 @@ const ShopAsideSection: React.FC<ShopAsideSectionProps> = ({
   setSearchTerm,
 }) => {
   const asideRef = useRef<HTMLElement | null>(null);
+  const { products, loading, error } = useProductData(); 
 
-  // Apply fade-in animation when element is in view
   useIntersectionAnimation(".shop-aside");
 
-  // Memoize unique categories to avoid unnecessary recalculations
   const categories = useMemo(() => {
+    if (!products) return ["all"];
     const uniqueCategories = Array.from(
       new Set(
-        ProductsData.map((item: Product) => item.category.trim().toLowerCase())
+        products.map((item: Product) => item.category.trim().toLowerCase())
       )
     );
     return ["all", ...uniqueCategories];
-  }, []);
+  }, [products]);
+
+  if (loading) return <p>Loading categories...</p>;
+  if (error) return <p>Error loading categories: {error}</p>;
 
   return (
     <aside ref={asideRef} className="shop-aside show">
-      {/* Search box for filtering products */}
       <div className="shop-search-box">
         <input
           type="text"
@@ -50,14 +51,13 @@ const ShopAsideSection: React.FC<ShopAsideSectionProps> = ({
         </button>
       </div>
 
-      {/* Categories list */}
       <div className="shop-aside-container">
         <div className="shop-categories-box">
           <h3 className="shop-categories-title">Categories</h3>
           <ul className="shop-categories-list">
             {categories.map((category) => (
               <li
-                key={category} // Using category as key since it's unique
+                key={category}
                 className={`shop-category-item ${
                   selectedCategory === category ? "active" : ""
                 }`}

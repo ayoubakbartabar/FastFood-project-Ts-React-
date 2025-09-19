@@ -1,10 +1,11 @@
 import React, { useRef, useMemo } from "react";
 import "./ShopProductSection.css";
-import ProductsData from "../../../../data/ProductsData";
+
 import type { Product } from "../../../../store/cartStore";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 import useDynamicNavigate from "../../../../core/hooks/useNavigateTo/useNavigateTo";
 import { useRenderStars } from "../../../../core/hooks/useRenderStars/useRenderStars";
+import { useProductData } from "../../../../core/hooks/useProductData/useProductData";
 
 interface ShopProductSectionProps {
   selectedCategory: string;
@@ -20,10 +21,13 @@ const ShopProductSection: React.FC<ShopProductSectionProps> = ({
   const { navigateTo } = useDynamicNavigate();
   const { renderStars } = useRenderStars();
 
+
+  const { products, loading, error } = useProductData();
+
   // Memoize filtered products to optimize re-renders
   const filteredProducts: Product[] = useMemo(
     () =>
-      ProductsData.filter(
+      products.filter(
         (product) =>
           product.image &&
           product.title &&
@@ -31,11 +35,14 @@ const ShopProductSection: React.FC<ShopProductSectionProps> = ({
             product.category.trim().toLowerCase() === selectedCategory) &&
           product.title.toLowerCase().includes(searchTerm.toLowerCase())
       ),
-    [selectedCategory, searchTerm]
+    [products, selectedCategory, searchTerm]
   );
 
   // Apply fade-in animation for product cards when they enter viewport
   useIntersectionAnimation(".shop-product-card");
+
+  if (loading) return <p>Loading products...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <section ref={sectionRef} className="shop-product-section">

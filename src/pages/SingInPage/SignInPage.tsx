@@ -7,7 +7,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 import "./SignInPage.css";
-
+import SignInImage from '/images/pngtree-a-chef-holding-hamburger-and-fries-png-image_20111871.png'
 interface SignUpForm {
   name: string;
   email: string;
@@ -81,7 +81,7 @@ const SignInPage: React.FC = () => {
         <div className="signin-illustration">
           <div className="circle-bg">
             <img
-              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              src={SignInImage}
               alt="signup icon"
               className="signin-icon"
             />

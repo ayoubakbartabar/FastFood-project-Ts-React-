@@ -2,16 +2,16 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./MenuListSection.css";
-
-import ProductsData from "../../../../data/ProductsData";
+import type { Product } from "../../../../store/cartStore";
 import { useRenderStars } from "../../../../core/hooks/useRenderStars/useRenderStars";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
-import type { Product } from "../../../../store/cartStore";
+import { useProductData } from "../../../../core/hooks/useProductData/useProductData";
 
 export default function MenuListSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const { renderStars } = useRenderStars();
   const navigate = useNavigate();
+  const { products, loading, error } = useProductData();
 
   // Intersection animation for cards
   useIntersectionAnimation(".menu-card");
@@ -20,11 +20,14 @@ export default function MenuListSection() {
     navigate(`/product/${product.id}`, { state: product });
   };
 
+  if (loading) return <p>Loading products...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <div className="menu-list-bg">
       <section ref={sectionRef} className="menu-list-section">
         <div className="menu-list-grid">
-          {ProductsData.map((item) => (
+          {products.map((item) => (
             <div key={item.id} className="menu-card animate-entry">
               <div
                 className="menu-card-image"

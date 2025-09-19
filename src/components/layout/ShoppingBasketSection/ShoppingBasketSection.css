@@ -134,3 +134,134 @@
         padding: 4px;
     }
 }
+
+/* /////////////////////////////////////////////////////// */
+
+/* Login/Register Modal */
+.login-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    animation: fadeIn 0.25s forwards;
+}
+
+/* Modal Box */
+.login-modal {
+    background: var(--tertiary);
+    padding: 30px 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    animation: slideDown 0.25s forwards;
+}
+
+
+.login-modal h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--heading);
+    margin-bottom: 15px;
+}
+
+.login-modal p {
+    font-size: 14px;
+    color: var(--paragraph);
+    margin-bottom: 25px;
+}
+
+/* Buttons container */
+.login-modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Buttons styles */
+.login-modal-buttons button {
+    padding: 12px 0;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Primary button: Login */
+.login-modal-buttons button:nth-child(1) {
+    background: var(--highlight);
+    color: #fff;
+}
+
+.login-modal-buttons button:nth-child(1):hover {
+    background: #e6a200;
+    transform: scale(1.05);
+}
+
+/* Secondary button: Register */
+.login-modal-buttons button:nth-child(2) {
+    background: var(--color-gray-dark);
+    color: #fff;
+}
+
+.login-modal-buttons button:nth-child(2):hover {
+    background: #555;
+    transform: scale(1.05);
+}
+
+/* Cancel button */
+.login-modal-buttons button:nth-child(3) {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--heading);
+}
+
+.login-modal-buttons button:nth-child(3):hover {
+    background: var(--secondary-text);
+    color: #fff;
+    transform: scale(1.03);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .login-modal {
+        padding: 20px 15px;
+    }
+
+    .login-modal h2 {
+        font-size: 18px;
+    }
+
+    .login-modal p {
+        font-size: 13px;
+    }
+
+    .login-modal-buttons button {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+}

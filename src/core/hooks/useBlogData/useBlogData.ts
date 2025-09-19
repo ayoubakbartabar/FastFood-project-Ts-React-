@@ -9,7 +9,7 @@ export const useBlogData = () => {
   const [error, setError] = useState<string | null>(null);
 
   // Base API URL (better managed via .env file)
-  const API_URL = "http://localhost:5000/blogs";
+  const API_URL = "http://localhost:3001/blogs";
 
   useEffect(() => {
     const controller = new AbortController();

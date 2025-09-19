@@ -1,55 +1,78 @@
 import { create } from "zustand";
 import {
-  NewUser,
+  User,
   signUp,
   fetchUsers,
   updateUser,
 } from "../types/services/authService";
 
+// Extend User to include orders
+export interface UserWithOrders extends User {
+  orders: any[];
+}
+
 // Auth state interface
 interface AuthState {
-  currentUser: NewUser | null; // Currently logged-in user
-  register: (user: NewUser) => Promise<void>; // Register a new user
-  login: (email: string, password: string) => Promise<void>; // Login existing user
-  loadUser: () => void; // Load user from localStorage
-  logout: () => void; // Logout user
-  updateProfile: (data: Partial<NewUser>) => Promise<void>; // Update logged-in user's profile
+  currentUser: UserWithOrders | null;
+  register: (user: Omit<User, "id">) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
+  loadUser: () => void;
+  logout: () => void;
+  updateProfile: (data: Partial<UserWithOrders>) => Promise<void>;
+  addOrder: (order: any) => Promise<void>;
 }
+
+// Helper function to save user to localStorage
+const saveUserToLocalStorage = (user: UserWithOrders) => {
+  localStorage.setItem("currentUser", JSON.stringify(user));
+};
 
 // Zustand auth store
 export const useAuthStore = create<AuthState>((set, get) => ({
-  currentUser: null, // initial state
+  currentUser: null,
 
   // Register a new user
   register: async (user) => {
-    try {
-      const users = await fetchUsers();
-      if (users.some((u) => u.email === user.email)) {
-        throw new Error("This email is already registered ❌");
-      }
+    // Fetch all existing users
+    const users = await fetchUsers();
 
-      const savedUser = await signUp(user);
-      localStorage.setItem("currentUser", JSON.stringify(savedUser));
-      set({ currentUser: savedUser });
-    } catch (error: any) {
-      throw new Error(error.message || "Failed to register user");
+    // Check if email is already registered
+    if (users.some((u) => u.email === user.email)) {
+      throw new Error("This email is already registered ❌");
     }
+
+    // Sign up the new user
+    const savedUser = await signUp(user);
+    if (!savedUser) throw new Error("Failed to register user");
+
+    // Add empty orders array
+    const userWithOrders: UserWithOrders = { ...savedUser, orders: [] };
+
+    // Save to localStorage and set state
+    saveUserToLocalStorage(userWithOrders);
+    set({ currentUser: userWithOrders });
   },
 
-  // Login existing user
+  // Login an existing user
   login: async (email, password) => {
-    try {
-      const users = await fetchUsers();
-      const foundUser = users.find(
-        (u) => u.email === email && u.password === password
-      );
-      if (!foundUser) throw new Error("Invalid email or password ❌");
+    // Fetch all users
+    const users = await fetchUsers();
 
-      localStorage.setItem("currentUser", JSON.stringify(foundUser));
-      set({ currentUser: foundUser });
-    } catch (error: any) {
-      throw new Error(error.message || "Failed to login");
-    }
+    // Find user with matching email and password
+    const foundUser = users.find(
+      (u) => u.email === email && u.password === password
+    );
+    if (!foundUser) throw new Error("Invalid email or password ❌");
+
+    // Ensure orders array exists
+    const userWithOrders: UserWithOrders = {
+      ...foundUser,
+      orders: foundUser.orders || [],
+    };
+
+    // Save to localStorage and set state
+    saveUserToLocalStorage(userWithOrders);
+    set({ currentUser: userWithOrders });
   },
 
   // Load user from localStorage (persistent login)
@@ -58,6 +81,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       const user = localStorage.getItem("currentUser");
       if (user) set({ currentUser: JSON.parse(user) });
     } catch {
+      // Clear corrupted localStorage and reset state
       localStorage.removeItem("currentUser");
       set({ currentUser: null });
     }
@@ -69,18 +93,46 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     set({ currentUser: null });
   },
 
-  // Update profile of logged-in user
+  // Update the profile of the logged-in user
   updateProfile: async (data) => {
     const { currentUser } = get();
     if (!currentUser) throw new Error("No user logged in");
 
-    try {
-      // Update user via API
-      const updatedUser = await updateUser(currentUser.id!, data);
-      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-      set({ currentUser: updatedUser });
-    } catch (error: any) {
-      throw new Error(error.message || "Failed to update profile");
-    }
+    // Update user via API
+    const updatedUser = await updateUser(currentUser.id!, data);
+    if (!updatedUser) throw new Error("Failed to update user");
+
+    // Preserve previous orders array
+    const userWithOrders: UserWithOrders = {
+      ...updatedUser,
+      orders: currentUser.orders,
+    };
+
+    // Save to localStorage and set state
+    saveUserToLocalStorage(userWithOrders);
+    set({ currentUser: userWithOrders });
+  },
+
+  // Add a new order for the logged-in user
+  addOrder: async (order) => {
+    const { currentUser } = get();
+    if (!currentUser) throw new Error("No user logged in");
+
+    // Add new order to existing orders
+    const updatedOrders = [...currentUser.orders, order];
+
+    // Update user with new orders via API
+    const updatedUser = await updateUser(currentUser.id!, {
+      orders: updatedOrders,
+    });
+    if (!updatedUser) throw new Error("Failed to add order");
+
+    // Update state and localStorage
+    const userWithOrders: UserWithOrders = {
+      ...updatedUser,
+      orders: updatedOrders,
+    };
+    saveUserToLocalStorage(userWithOrders);
+    set({ currentUser: userWithOrders });
   },
 }));

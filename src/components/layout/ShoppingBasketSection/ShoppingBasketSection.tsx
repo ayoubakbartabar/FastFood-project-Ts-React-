@@ -1,6 +1,8 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useCartStore } from "../../../store/cartStore";
 import { useOrderStore } from "../../../store/orderStore";
+import { useAuthStore } from "../../../store/authStore";
+import { useNavigate } from "react-router-dom";
 import "./ShoppingBasketSection.css";
 
 const ShoppingBasketSection: React.FC = () => {
@@ -8,23 +10,29 @@ const ShoppingBasketSection: React.FC = () => {
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const clearCart = useCartStore((state) => state.clearCart);
   const addOrder = useOrderStore((state) => state.addOrder);
+  const currentUser = useAuthStore((state) => state.currentUser);
 
-  // Calculate subtotal using useMemo to prevent unnecessary recalculations
+  const navigate = useNavigate();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
   const subtotal = useMemo(
     () => cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
     [cart]
   );
 
   const handleCheckout = () => {
+    if (!currentUser) {
+      setShowLoginModal(true);
+      return;
+    }
+
     if (cart.length === 0) {
       alert("Your cart is empty!");
       return;
     }
-    // Add order for current user
-    addOrder(cart);
-    // Clear the cart after successful checkout
-    clearCart();
 
+    addOrder(cart);
+    clearCart();
     alert("Payment confirmed! Order placed successfully!");
   };
 
@@ -75,6 +83,35 @@ const ShoppingBasketSection: React.FC = () => {
             Continue to Checkout
           </button>
         </>
+      )}
+
+      {/* Modal for login prompt */}
+      {showLoginModal && (
+        <div className="login-modal-backdrop">
+          <div className="login-modal">
+            <h2>Login Required</h2>
+            <p>You need to login or register before making a purchase.</p>
+            <div className="login-modal-buttons">
+              <button
+                onClick={() => {
+                  navigate("/login");
+                  setShowLoginModal(false);
+                }}
+              >
+                Login
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/signup");
+                  setShowLoginModal(false);
+                }}
+              >
+                Register
+              </button>
+              <button onClick={() => setShowLoginModal(false)}>Cancel</button>
+            </div>
+          </div>
+        </div>
       )}
     </section>
   );

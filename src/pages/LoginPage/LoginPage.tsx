@@ -6,6 +6,8 @@ import { useAuthStore } from "../../store/authStore";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./LoginPage.css";
+import LoginImage from '/images/pngtree-friendly-chef-cartoon-graphic-png-image_16913862.png'
+
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -54,7 +56,7 @@ const LoginPage: React.FC = () => {
         <div className="login-illustration">
           <div className="circle-bg">
             <img
-              src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
+              src={LoginImage}
               alt="user icon"
               className="login-icon"
             />

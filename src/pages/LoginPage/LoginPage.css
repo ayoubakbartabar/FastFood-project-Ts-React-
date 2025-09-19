@@ -37,15 +37,13 @@
 .circle-bg {
     width: 250px;
     height: 250px;
-    border-radius: 50%;
-    background: var(--tertiary);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .login-icon {
-    width: 120px;
+    width: 100%;
     opacity: 0.9;
 }
 
