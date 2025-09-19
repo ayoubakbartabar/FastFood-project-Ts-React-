@@ -15,7 +15,7 @@ const BlogsContentSection: FC = () => {
   const { navigateTo } = useDynamicNavigate();
 
   const handleReadMore = (post: BlogDataProps) => {
-    navigateTo(`/blog/${post.id}`, { post });2
+    navigateTo(`/blog/${post.id}`, { post });
   };
 
   if (loading) return <p>Loading blogs...</p>;

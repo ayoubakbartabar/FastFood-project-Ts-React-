@@ -1,40 +1,35 @@
-// components/BestSellingSection.tsx
+// BestSellingSection.tsx
 import React, { FC, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ProductData from "../../../../data/ProductsData";
 import type { Product } from "../../../../store/cartStore";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useRenderStars } from "../../../../core/hooks/useRenderStars/useRenderStars";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
+import { useProductData } from "../../../../core/hooks/useProductData/useProductData";
 import "./BestSellingSection.css";
 
 const BestSellingSection: FC = () => {
-  // Carousel state
+  const { products, loading, error } = useProductData(); 
   const [index, setIndex] = useState<number>(0);
-
-  // Detect if the viewport is mobile
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 1024);
-
-  const total: number = ProductData.length;
-  const visibleCards: number = isMobile ? total : 4; // Show all on mobile
 
   const navigate = useNavigate();
   const { renderStars } = useRenderStars();
 
-  // Animate product cards when entering viewport
   useIntersectionAnimation(".product-card");
 
-  // Update isMobile state on window resize
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1024);
-      setIndex(0); // Reset index when resizing
+      setIndex(0);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Navigate carousel forward (desktop only)
+  const total: number = products.length;
+  const visibleCards: number = isMobile ? total : 4;
+
   const next = () => {
     if (isMobile) return;
     setIndex((prev) =>
@@ -42,7 +37,6 @@ const BestSellingSection: FC = () => {
     );
   };
 
-  // Navigate carousel backward (desktop only)
   const prev = () => {
     if (isMobile) return;
     setIndex((prev) =>
@@ -50,28 +44,27 @@ const BestSellingSection: FC = () => {
     );
   };
 
-  // Get products currently visible in the carousel
   const getVisibleData = (): Product[] => {
-    if (isMobile) return ProductData;
+    if (isMobile) return products;
     if (index + visibleCards > total) {
-      // Wrap around at the end
       return [
-        ...ProductData.slice(index),
-        ...ProductData.slice(0, visibleCards - (total - index)),
+        ...products.slice(index),
+        ...products.slice(0, visibleCards - (total - index)),
       ];
     }
-    return ProductData.slice(index, index + visibleCards);
+    return products.slice(index, index + visibleCards);
   };
 
-  // Navigate to product details page
   const goToProductPage = (item: Product) => {
     navigate(`/product/${item.id}`, { state: item });
   };
 
+  if (loading) return <p>Loading products...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <div className="best-selling-bg">
       <section className="best-selling-section">
-        {/* Top section */}
         <div className="best-selling-top">
           <h1 className="best-selling-title">Best Selling Items</h1>
           <p className="best-selling-paragraph">
@@ -80,16 +73,13 @@ const BestSellingSection: FC = () => {
           </p>
         </div>
 
-        {/* Carousel */}
         <div className="carousel-wrapper">
-          {/* Left arrow */}
           {!isMobile && (
             <button className="carousel-button left" onClick={prev}>
               <IoChevronBack />
             </button>
           )}
 
-          {/* Carousel track */}
           <div
             className={`carousel-track ${
               isMobile ? "grid-view" : "carousel-view"
@@ -119,7 +109,6 @@ const BestSellingSection: FC = () => {
             ))}
           </div>
 
-          {/* Right arrow */}
           {!isMobile && (
             <button className="carousel-button right" onClick={next}>
               <IoChevronForward />

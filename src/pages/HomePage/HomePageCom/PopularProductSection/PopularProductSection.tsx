@@ -1,16 +1,21 @@
 import React, { useRef, useState } from "react";
 import "./PopularProductSection.css";
-import ProductsData from "../../../../data/ProductsData";
-
 import { useRenderStars } from "../../../../core/hooks/useRenderStars/useRenderStars";
-import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation.ts";
+import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
+import { useProductData } from "../../../../core/hooks/useProductData/useProductData";
+import type { Product } from "../../../../store/cartStore";
 
 function PopularProductSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const { renderStars } = useRenderStars();
+  const { products, loading, error } = useProductData();
+
   useIntersectionAnimation(".popular-items-section");
+
+  if (loading) return <p>Loading products...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="popular-items-bg">
@@ -29,9 +34,8 @@ function PopularProductSection() {
           </p>
         </div>
 
-        {/* Grid container for popular item cards */}
         <div className="popular-items-grid">
-          {ProductsData.map((item) => (
+          {products.map((item: Product) => (
             <div key={item.id} className="popular-item-card">
               <img
                 src={item.image}
