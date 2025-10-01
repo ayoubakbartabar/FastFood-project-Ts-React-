@@ -618,6 +618,34 @@
     }
   ],
   "footer": {
-    
+    "company": {
+      "name": "FastFood TNC",
+      "description": "Elevate bites, build community, deliver culinary excellence with FastFood TNC",
+      "address": "4XX7 Washington Ave. Manchester, Kentucky 39495",
+      "phone": "(406) 5XX-012X",
+      "email": "exampleX@gmail.com"
+    },
+    "links": [
+      { "id": 1, "title": "Home", "href": "/" },
+      { "id": 2, "title": "About Us", "href": "/about" },
+      { "id": 3, "title": "Shop", "href": "/shop" },
+      { "id": 4, "title": "Blog", "href": "/blog" },
+      { "id": 5, "title": "Contact Us", "href": "/contact-us" }
+    ],
+    "hours": [
+      { "day": "Monday to Friday", "time": "10:00 AM to 12:00 PM" },
+      { "day": "Saturday", "time": "12:00 PM to 6:00 PM" }
+    ],
+    "newsletter": {
+      "placeholder": "Your Email",
+      "description": "Stay in the loop: unlock exclusive offers, culinary insights, and more."
+    },
+    "social": [
+      { "id": 1, "platform": "Facebook", "href": "#" },
+      { "id": 2, "platform": "Twitter", "href": "#" },
+      { "id": 3, "platform": "Pinterest", "href": "#" },
+      { "id": 4, "platform": "YouTube", "href": "#" }
+    ],
+    "copyright": "© 2025 FastFood TNC | Designed by Ayoub Akbartabar | Powered by Webflow"
   }
 }

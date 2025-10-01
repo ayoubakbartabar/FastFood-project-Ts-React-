@@ -10,35 +10,34 @@ import {
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import useIntersectionAnimation from "../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
+import { useFooterData } from "../../../core/hooks/useFooterData/useFooterData";
 
-// Footer component props (currently empty but ready for future use)
 interface FooterProps {}
 
 const Footer: FC<FooterProps> = () => {
-  // Animate all elements with class .fade-up-init when they appear in viewport
   useIntersectionAnimation(".fade-up-init");
 
+  const { data, isLoading, isError } = useFooterData();
   const currentYear = new Date().getFullYear();
+
+  if (isLoading) return <div>Loading Footer...</div>;
+  if (isError || !data) return <div>Failed to load Footer</div>;
 
   return (
     <footer className="footer-bg">
       <section className="footer-section">
-        {/* Brand & Address */}
+        {/* Company Info */}
         <div className="footer-company fade-up-init">
-          <h2 className="footer-title">
-            Elevate bites, build community, deliver culinary excellence with
-            FastFood TNC
-          </h2>
+          <h2 className="footer-title">{data.company.description}</h2>
           <address className="footer-address">
             <div className="footer-location">
-              <FaHome aria-hidden="true" /> 4XX7 Washington Ave. Manchester,
-              Kentucky 39495.
+              <FaHome aria-hidden="true" /> {data.company.address}
             </div>
             <div className="footer-phone">
-              <FaPhone aria-hidden="true" /> (406) 5XX-012X
+              <FaPhone aria-hidden="true" /> {data.company.phone}
             </div>
             <div className="footer-email">
-              <MdEmail aria-hidden="true" /> exampleX@gmail.com
+              <MdEmail aria-hidden="true" /> {data.company.email}
             </div>
           </address>
         </div>
@@ -47,49 +46,36 @@ const Footer: FC<FooterProps> = () => {
         <nav className="footer-links fade-up-init" aria-label="Quick Links">
           <h3 className="footer-heading">Quick Links</h3>
           <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/about">About Us</a>
-            </li>
-            <li>
-              <a href="/shop">Shop</a>
-            </li>
-            <li>
-              <a href="/blog">Blog</a>
-            </li>
-            <li>
-              <a href="/contact-us">Contact Us</a>
-            </li>
+            {data.links.map((link) => (
+              <li key={link.id}>
+                <a href={link.href}>{link.title}</a>
+              </li>
+            ))}
           </ul>
         </nav>
 
-        {/* Business Hours */}
+        {/* Opening Hours */}
         <div className="footer-hours fade-up-init">
           <h3 className="footer-heading">Opening Hours</h3>
-          <p>Monday to Friday</p>
-          <p className="footer-subtext">10:00 AM to 12:00 PM</p>
-          <p>Saturday</p>
-          <p className="footer-subtext">12:00 PM to 6:00 PM</p>
+          {data.hours.map((hour, idx) => (
+            <React.Fragment key={idx}>
+              <p>{hour.day}</p>
+              <p className="footer-subtext">{hour.time}</p>
+            </React.Fragment>
+          ))}
         </div>
 
-        {/* Newsletter Subscription */}
+        {/* Newsletter */}
         <div className="footer-newsletter fade-up-init">
           <h3 className="footer-heading">Newsletter Subscribe</h3>
-          <p className="footer-subscribe-text">
-            Stay in the loop: unlock exclusive offers, culinary insights, and
-            more.
-          </p>
+          <p className="footer-subscribe-text">{data.newsletter.description}</p>
           <form
             className="footer-input-group"
-            onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-              e.preventDefault()
-            }
+            onSubmit={(e) => e.preventDefault()}
           >
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder={data.newsletter.placeholder}
               required
               aria-label="Email input for newsletter subscription"
             />
@@ -98,26 +84,38 @@ const Footer: FC<FooterProps> = () => {
             </button>
           </form>
 
-          {/* Social Media Links */}
+          {/* Social Icons */}
           <div className="footer-social-icons" aria-label="Social media links">
-            <a href="#" aria-label="Facebook">
-              <FaFacebookF />
-            </a>
-            <a href="#" aria-label="Twitter">
-              <FaTwitter />
-            </a>
-            <a href="#" aria-label="Pinterest">
-              <FaPinterestP />
-            </a>
-            <a href="#" aria-label="YouTube">
-              <FaYoutube />
-            </a>
+            {data.social.map((item) => {
+              let IconComponent;
+              switch (item.platform.toLowerCase()) {
+                case "facebook":
+                  IconComponent = FaFacebookF;
+                  break;
+                case "twitter":
+                  IconComponent = FaTwitter;
+                  break;
+                case "pinterest":
+                  IconComponent = FaPinterestP;
+                  break;
+                case "youtube":
+                  IconComponent = FaYoutube;
+                  break;
+                default:
+                  return null;
+              }
+              return (
+                <a key={item.id} href={item.href} aria-label={item.platform}>
+                  <IconComponent />
+                </a>
+              );
+            })}
           </div>
         </div>
 
         {/* Copyright */}
         <div className="footer-copy fade-up-init">
-          © {currentYear} FastFood TNC | Designed by{" "}
+          © {currentYear} {data.company.name} | Designed by{" "}
           <a
             href="https://github.com/ayoubakbartabar"
             className="developer-link"
