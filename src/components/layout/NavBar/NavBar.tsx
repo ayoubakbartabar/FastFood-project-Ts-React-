@@ -1,31 +1,29 @@
-import React, {
-  useState,
-  useRef,
-  useCallback,
-  useEffect,
-  useMemo,
-} from "react";
+import React, { useState, useRef, useCallback, useEffect, JSX } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 
 import OrderNowBtn from "../OrderNowBtn/OrderNowBtn";
 import useClickOutside from "../../../core/hooks/useClickOutSide/useClickOutSide";
-import logo from "/images/661caca505c900f7a61a73ce_logo (1).png";
-
 import ShoppingBasketSection from "../ShoppingBasketSection/ShoppingBasketSection";
+
 import { LuShoppingBasket } from "react-icons/lu";
 import { FaHamburger, FaUserCircle } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
+
 import { useCartStore } from "../../../store/cartStore";
 import { useAuthStore } from "../../../store/authStore";
+import { useNavBarData } from "../../../core/hooks/useNavBarData/useNavBarData";
 
-interface NavbarMenuItem {
-  id: number;
-  title: string;
-  href: string;
-}
+// icons map
+const iconMap: Record<string, JSX.Element> = {
+  LuShoppingBasket: <LuShoppingBasket className="shop-basket-btn" />,
+  FaUserCircle: <FaUserCircle size={26} />,
+  FaHamburger: <FaHamburger />,
+  IoCloseCircle: <IoCloseCircle />,
+};
 
 const NavBar: React.FC = () => {
+
   const cart = useCartStore((state) => state.cart);
   const totalItems = useCartStore((state) => state.totalItems);
   const { currentUser, logout, loadUser } = useAuthStore();
@@ -41,19 +39,8 @@ const NavBar: React.FC = () => {
   const basketRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
-  // Navbar links
-  const navbarMenus: NavbarMenuItem[] = useMemo(
-    () => [
-      { id: 1, title: "Home", href: "/" },
-      { id: 2, title: "About", href: "/about" },
-      { id: 3, title: "Shop", href: "/shop" },
-      { id: 4, title: "Service", href: "/service" },
-      { id: 5, title: "Blog", href: "/blogs" },
-      { id: 6, title: "Menu", href: "/menu" },
-      { id: 7, title: "Contact Us", href: "/contact-us" },
-    ],
-    []
-  );
+  // API Data
+  const { data, isLoading, isError } = useNavBarData();
 
   // Handlers
   const openBasket = useCallback(() => setIsBasketOpen(true), []);
@@ -73,34 +60,18 @@ const NavBar: React.FC = () => {
     loadUser();
   }, [loadUser]);
 
-  // Close user menu on outside click
-  useEffect(() => {
-    if (!isUserMenuOpen) return;
-
-    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      if (!(event.target instanceof HTMLElement)) return;
-      if (!event.target.closest(".user-menu-container"))
-        setIsUserMenuOpen(false);
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
-    };
-  }, [isUserMenuOpen]);
+  if (isLoading) return <div>Loading Navbar...</div>;
+  if (isError) return <div>Failed to load Navbar</div>;
 
   return (
     <div className="navbar-bg">
       <section className="navbar-section">
         {/* Logo */}
-        <img className="navbar-logo" src={logo} alt="logo" />
+        <img className="navbar-logo" src={data?.logo[0]} alt="logo" />
 
         {/* Desktop Menu */}
         <ul className="menu-list desktop-menu">
-          {navbarMenus.map((item) => (
+          {data?.Menu.map((item) => (
             <li key={item.id} className="menu-item">
               <NavLink
                 to={item.href}
@@ -123,7 +94,7 @@ const NavBar: React.FC = () => {
               onClick={toggleUserMenu}
               aria-label="User menu"
             >
-              <FaUserCircle size={26} />
+              {iconMap["FaUserCircle"]}
             </button>
 
             <div className={`user-dropdown ${isUserMenuOpen ? "open" : ""}`}>
@@ -150,7 +121,6 @@ const NavBar: React.FC = () => {
                 </>
               ) : (
                 <>
-                  {/* Navigate to user profile on click */}
                   <NavLink
                     to="/userprofile"
                     className="dropdown-item user-name-link"
@@ -180,7 +150,7 @@ const NavBar: React.FC = () => {
             aria-label="Shopping basket"
             onClick={openBasket}
           >
-            <LuShoppingBasket className="shop-basket-icon" />
+            {iconMap["LuShoppingBasket"]}
             {totalItems > 0 && <span className="basket-badge"></span>}
           </button>
 
@@ -193,7 +163,7 @@ const NavBar: React.FC = () => {
             onClick={openMobileMenu}
             aria-label="Open menu"
           >
-            <FaHamburger />
+            {iconMap["FaHamburger"]}
           </button>
         </div>
       </section>
@@ -207,11 +177,11 @@ const NavBar: React.FC = () => {
               onClick={closeMobileMenu}
               aria-label="Close menu"
             >
-              <IoCloseCircle />
+              {iconMap["IoCloseCircle"]}
             </button>
           </div>
           <ul className="menu-list mobile-menu">
-            {navbarMenus.map((item) => (
+            {data?.Menu.map((item) => (
               <li key={item.id} className="menu-item">
                 <NavLink
                   to={item.href}
@@ -239,7 +209,7 @@ const NavBar: React.FC = () => {
           onClick={closeBasket}
           aria-label="Close basket"
         >
-          <IoCloseCircle size={28} />
+          {iconMap["IoCloseCircle"]}
         </button>
         <ShoppingBasketSection />
       </div>

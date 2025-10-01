@@ -1,13 +1,10 @@
-/* Navbar background */
 .navbar-bg {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
     background: rgba(0, 0, 0, 0.6);
-    /* slightly darker for contrast */
     backdrop-filter: blur(8px);
-    /* smooth blur effect */
     color: white;
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
@@ -164,6 +161,8 @@
 
 /* Shopping basket button */
 .shop-basket-btn {
+    height: 22px;
+    width: 22px;
     background: transparent;
     border: none;
     cursor: pointer;

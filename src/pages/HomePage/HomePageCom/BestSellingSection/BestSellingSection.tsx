@@ -1,11 +1,14 @@
-// BestSellingSection.tsx
 import React, { FC, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import type { Product } from "../../../../store/cartStore";
+
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
+
 import { useRenderStars } from "../../../../core/hooks/useRenderStars/useRenderStars";
 import useIntersectionAnimation from "../../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 import { useProductData } from "../../../../core/hooks/useProductData/useProductData";
+
 import "./BestSellingSection.css";
 
 const BestSellingSection: FC = () => {
