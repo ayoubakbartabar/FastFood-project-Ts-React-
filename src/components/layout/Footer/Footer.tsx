@@ -12,13 +12,10 @@ import { MdEmail } from "react-icons/md";
 import useIntersectionAnimation from "../../../core/hooks/useIntersectionAnimation/useIntersectionAnimation";
 import { useFooterData } from "../../../core/hooks/useFooterData/useFooterData";
 
-interface FooterProps {}
-
-const Footer: FC<FooterProps> = () => {
+const Footer: FC = () => {
   useIntersectionAnimation(".fade-up-init");
 
   const { data, isLoading, isError } = useFooterData();
-  const currentYear = new Date().getFullYear();
 
   if (isLoading) return <div>Loading Footer...</div>;
   if (isError || !data) return <div>Failed to load Footer</div>;
@@ -28,7 +25,8 @@ const Footer: FC<FooterProps> = () => {
       <section className="footer-section">
         {/* Company Info */}
         <div className="footer-company fade-up-init">
-          <h2 className="footer-title">{data.company.description}</h2>
+          <h2 className="footer-title">{data.company.name}</h2>
+          <p className="footer-description">{data.company.description}</p>
           <address className="footer-address">
             <div className="footer-location">
               <FaHome aria-hidden="true" /> {data.company.address}
@@ -114,18 +112,7 @@ const Footer: FC<FooterProps> = () => {
         </div>
 
         {/* Copyright */}
-        <div className="footer-copy fade-up-init">
-          © {currentYear} {data.company.name} | Designed by{" "}
-          <a
-            href="https://github.com/ayoubakbartabar"
-            className="developer-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ayoub Akbartabar
-          </a>{" "}
-          | Powered by Webflow
-        </div>
+        <div className="footer-copy fade-up-init">{data.copyright}</div>
       </section>
     </footer>
   );
