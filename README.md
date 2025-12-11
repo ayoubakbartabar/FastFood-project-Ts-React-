@@ -69,6 +69,10 @@ Follow the steps below to set up FastFood on your machine:
    ```sh
    npm run dev
    ```
+5. **Run the server:**
+   ```sh
+   json-server --watch db.json --port 3001
+   ```
 
 ---
 
