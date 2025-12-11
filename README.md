@@ -9,8 +9,6 @@ Everything — from menu items and categories to blogs, news, and orders — is 
 
 By combining clean UI, smooth user interactions, and a structured content management system, FastFood becomes a reliable and scalable restaurant solution suitable for real businesses.
 
-🌐 Live Demo (add your link here)
-
 ---
 
 ## 🌟 Key Features
@@ -101,6 +99,7 @@ https://github.com/ayoubakbartabar/FastFood-Admin-Panel-project
    ```sh
    npm run dev
    ```
+
 
 ---
 
