@@ -113,7 +113,7 @@ Feel free to reach out if you’re interested in collaborating or have any quest
 ## 👤 About the Developer
 
 Crafted with passion by **[Ayoub Akbartabar](ayoubakbartabar1887@gmail.com)** – a developer who believes digital experiences should feel magical.  
-If this project sparks your interest or you have any questions, feel free to reach out! ✉️
+If this project sparks your interest or you have any questions, feel free to reach out! ✉️❣️
 
 <p align="left">
   <a href="https://www.linkedin.com/in/ayoub-akbartabar-bb78b2212/" target="_blank">
